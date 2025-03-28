@@ -1,6 +1,6 @@
 part of 'expenses_cubit.dart';
 
-abstract class ExpensesState extends Equatable {
+abstract class ExpensesState  {
   const ExpensesState();
 
   @override

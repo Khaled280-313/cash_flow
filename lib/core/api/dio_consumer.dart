@@ -1,8 +1,8 @@
+import 'package:cash_flow/core/api/api_consumer.dart';
+import 'package:cash_flow/core/api/api_interceptors.dart';
+import 'package:cash_flow/core/api/endpoint.dart';
+import 'package:cash_flow/core/errors/exception.dart';
 import 'package:dio/dio.dart';
-import 'package:happy_tech_mastering_api_with_flutter/core/api/api_consumer.dart';
-import 'package:happy_tech_mastering_api_with_flutter/core/api/api_interceptors.dart';
-import 'package:happy_tech_mastering_api_with_flutter/core/api/endpoint.dart';
-import 'package:happy_tech_mastering_api_with_flutter/core/errors/exception.dart';
 
 //هذا الكلاس يقوم بتنفيذ الطلبات الى السيرفر
 class DioConsumer extends ApiConsumer {

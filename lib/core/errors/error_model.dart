@@ -1,5 +1,7 @@
-import 'package:happy_tech_mastering_api_with_flutter/core/api/endpoint.dart';
+
 //هذا الكلاس يحتوي على الايرور الذي يتم ارجاعه من السيرفر
+import '../api/endpoint.dart';
+
 class ErrorModel {
   final int status; 
   final String errorMassage;
