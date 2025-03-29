@@ -9,6 +9,6 @@ final GoRouter router = GoRouter(routes: [
   ),
   GoRoute(
     path: "/onboarding",
-    builder: (context, state) => const OnboardingPage(),
+    builder: (context, state) =>  OnboardingPage(),
   )
 ]);

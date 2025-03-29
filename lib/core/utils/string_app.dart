@@ -8,5 +8,8 @@ abstract class StringsApp {
           'Create budgets for different categories and track your adherence to them',
       onBoardingTitle3 = 'Advanced financial analysis',
       onBoardingSubTitle3 =
-          'Get detailed reports and charts to better understand your spending patterns';
+          'Get detailed reports and charts to better understand your spending patterns',
+          skip ='Skip',
+          next ='Next',
+          getStarted='Get Started';
 }
