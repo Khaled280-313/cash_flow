@@ -1,6 +1,5 @@
 import 'package:cash_flow/core/routes/app_routes.dart';
 import 'package:cash_flow/core/utils/colors_app.dart';
-import 'package:cash_flow/core/utils/size_config.dart';
 import 'package:cash_flow/core/utils/string_app.dart';
 import 'package:flutter/material.dart';
 

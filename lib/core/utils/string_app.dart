@@ -9,7 +9,19 @@ abstract class StringsApp {
       onBoardingTitle3 = 'Advanced financial analysis',
       onBoardingSubTitle3 =
           'Get detailed reports and charts to better understand your spending patterns',
-          skip ='Skip',
-          next ='Next',
-          getStarted='Get Started';
+      skip = 'Skip',
+      next = 'Next',
+      getStarted = 'Get Started',
+      createAccount = 'Create Account',
+      youHaveAccount = 'You have an account?',
+      alreadyHaveAccount = 'Already have an account?',
+      signUp = 'Sign Up',
+      signIn = 'Sign In',
+      email = 'Email',
+      password = 'Password',
+      confirmPassword = 'Confirm Password',
+      forgotPassword = 'Forgot Password?',
+      login = 'Login',
+      welcome = 'Welcome',
+      welcomeBack = 'Welcome Back';
 }

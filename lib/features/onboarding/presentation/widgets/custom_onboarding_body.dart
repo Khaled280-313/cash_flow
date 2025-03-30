@@ -1,19 +1,21 @@
 import 'package:cash_flow/core/utils/app_text_style.dart';
-import 'package:cash_flow/core/utils/assets.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:flutter/material.dart';
 
 class CustomOnboardingBody extends StatelessWidget {
   final PageController pageController;
-  const CustomOnboardingBody({super.key, required this.pageController});
+  final Function(int)? onPageChanged;
+  const CustomOnboardingBody(
+      {super.key, required this.pageController, required this.onPageChanged});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: 500,
       child: PageView.builder(
+        onPageChanged: onPageChanged,
         controller: pageController,
-        itemCount: 3,
+        itemCount: onBoardingList.length,
         itemBuilder: (context, index) {
           return Column(
             children: [
@@ -22,12 +24,12 @@ class CustomOnboardingBody extends StatelessWidget {
                 width: 343,
                 decoration: BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage(Assets.imagesImag1),
+                        image: AssetImage(onBoardingList[index].image),
                         fit: BoxFit.fill)),
               ),
               SizedBox(height: 24),
               Text(
-                StringsApp.onBoardingTitle1,
+                onBoardingList[index].title,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.montserrat500Style24,
                 maxLines: 2,
@@ -35,7 +37,7 @@ class CustomOnboardingBody extends StatelessWidget {
               ),
               SizedBox(height: 10),
               Text(
-                StringsApp.onBoardingSubTitle1,
+                onBoardingList[index].description,
                 textAlign: TextAlign.center,
                 style: AppTextStyle.montserrat300Style16,
                 maxLines: 2,
