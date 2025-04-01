@@ -1,3 +1,4 @@
+import 'package:cash_flow/core/cache/cache_helper.dart';
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/string_app.dart';
@@ -13,7 +14,14 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    delayedNavigator(context);
+    bool isOnBoardingVisited =
+        CacheHelper().getData(key: "isOnBoardingVisited") ?? false;
+    if (isOnBoardingVisited == true) {
+      delayedNavigator(context, "/SignUp");
+    } else {
+      delayedNavigator(context, "/onboarding");
+    }
+
     super.initState();
   }
 
@@ -28,11 +36,4 @@ class _SplashViewState extends State<SplashView> {
       ),
     );
   }
-}
-
-void delayedNavigator(context) {
-  Future.delayed(
-      Duration(seconds: 2),
-      () =>
-          customNavigatPushReplacement(context: context, path: '/onboarding'));
 }

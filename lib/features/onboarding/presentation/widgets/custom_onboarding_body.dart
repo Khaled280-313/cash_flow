@@ -1,5 +1,6 @@
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
+import 'package:cash_flow/features/onboarding/presentation/widgets/custom_page_indicator.dart';
 import 'package:flutter/material.dart';
 
 class CustomOnboardingBody extends StatelessWidget {
@@ -27,7 +28,11 @@ class CustomOnboardingBody extends StatelessWidget {
                         image: AssetImage(onBoardingList[index].image),
                         fit: BoxFit.fill)),
               ),
-              SizedBox(height: 24),
+              SizedBox(height: 80),
+              CustomPageIndicator(
+                pageController: pageController,
+              ),
+              SizedBox(height: 10),
               Text(
                 onBoardingList[index].title,
                 textAlign: TextAlign.center,

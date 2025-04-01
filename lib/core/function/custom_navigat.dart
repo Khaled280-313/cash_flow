@@ -6,3 +6,8 @@ void customNavigatPushReplacement({required context, required String path}) {
 void customNavigatPush({required context, required String path}) {
   GoRouter.of(context).push(path);
 }
+
+void delayedNavigator(context, String path) {
+  Future.delayed(Duration(seconds: 2),
+      () => customNavigatPushReplacement(context: context, path: path));
+}

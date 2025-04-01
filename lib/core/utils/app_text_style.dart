@@ -11,13 +11,13 @@ abstract class AppTextStyle {
   static final montserrat500Style24 = TextStyle(
     fontSize: 24,
     fontWeight: FontWeight.bold,
-    color: ColorsApp.black,
+    color: ColorsApp.primary,
     fontFamily: 'Montserrat',
   );
   static final montserrat300Style16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w300,
-    color: ColorsApp.black,
+    color: const Color.fromARGB(255, 90, 89, 89),
     fontFamily: 'Montserrat',
   );
 }
