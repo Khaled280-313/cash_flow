@@ -41,7 +41,7 @@ class GetBotton extends StatelessWidget {
           SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: ColorsApp.primary),
+              border: Border.all(color: ColorsApp.primary, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
             width: double.infinity,

@@ -1,4 +1,3 @@
-import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/utils/colors_app.dart';
 import 'package:cash_flow/core/utils/string_app.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
@@ -18,7 +17,7 @@ class CustombottonSkip extends StatelessWidget {
       splashColor: ColorsApp.primary,
       borderRadius: BorderRadius.circular(10),
       onTap: () {
-        customNavigatPushReplacement(context: context, path: "/SignUp");
+        // customNavigatPushReplacement(context: context, path: "/SignUp");
         pageController.jumpToPage(onBoardingList.length - 1);
       },
       child: Container(
