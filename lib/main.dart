@@ -1,12 +1,16 @@
 import 'package:cash_flow/core/cache/cache_helper.dart';
 import 'package:cash_flow/core/routes/app_routes.dart';
+import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
+  // Ensure that plugin services are initialized before running the app
   WidgetsFlutterBinding.ensureInitialized();
-  await CacheHelper().init();
+  // Initialize the service locator and cache helper
+  setupServiceLocator();
+  await getIt<CacheHelper>().init(); 
   runApp(const MyApp());
 }
 

@@ -1,9 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheHelper {
-  static final CacheHelper _instance = CacheHelper._internal();
-  factory CacheHelper() => _instance;
-  CacheHelper._internal();
   static late SharedPreferences sharedPreferences;
 
 //! Here The Initialize of cache .
@@ -17,7 +14,7 @@ class CacheHelper {
 
 //! this method to put data in local database using key
 
-   Future<bool> saveData({required String key, required dynamic value}) async {
+  Future<bool> saveData({required String key, required dynamic value}) async {
     if (value is bool) {
       return await sharedPreferences.setBool(key, value);
     }

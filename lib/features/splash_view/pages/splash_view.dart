@@ -1,5 +1,6 @@
 import 'package:cash_flow/core/cache/cache_helper.dart';
 import 'package:cash_flow/core/function/custom_navigat.dart';
+import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     bool isOnBoardingVisited =
-        CacheHelper().getData(key: "isOnBoardingVisited") ?? false;
+        getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
     if (isOnBoardingVisited == true) {
       delayedNavigator(context, "/SignUp");
     } else {
