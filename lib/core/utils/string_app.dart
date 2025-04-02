@@ -23,5 +23,9 @@ abstract class StringsApp {
       forgotPassword = 'Forgot Password?',
       login = 'Login',
       welcome = 'Welcome',
-      welcomeBack = 'Welcome Back';
+      welcomeBack = 'Welcome Back',
+      lets = "Let’s",
+      start = "Start!",
+      userName ="User Name";
+
 }

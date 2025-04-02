@@ -27,10 +27,10 @@ class GetBotton extends StatelessWidget {
               height: 50,
               onPressed: () {
                 isOnBoardingVisited();
-                customNavigatPushReplacement(context: context, path: "/SignUp");
+                customNavigatPushReplacement(context: context, path: "/SignIn");
               },
               child: Text(
-                StringsApp.createAccount,
+                StringsApp.signIn,
                 style: AppTextStyle.montserrat300Style16.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,

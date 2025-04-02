@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 abstract class AppTextStyle {
   static final kaushan400Style64 = TextStyle(
     fontSize: 44,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.bold,
     color: ColorsApp.primary,
     fontFamily: 'Pacifico',
   );
@@ -17,7 +17,7 @@ abstract class AppTextStyle {
   static final montserrat300Style16 = TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w300,
-    color: const Color.fromARGB(255, 90, 89, 89),
+    color: ColorsApp.textSecondary,
     fontFamily: 'Montserrat',
   );
 }

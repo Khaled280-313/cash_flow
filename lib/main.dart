@@ -4,7 +4,7 @@ import 'package:cash_flow/core/utils/colors_app.dart';
 import 'package:cash_flow/core/utils/string_app.dart';
 import 'package:flutter/material.dart';
 
-void main() async {
+void main() async { 
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper().init();
   runApp(const MyApp());
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: StringsApp.appName,
           theme: ThemeData(
-            scaffoldBackgroundColor: ColorsApp.white,
+            scaffoldBackgroundColor: ColorsApp.background,
             useMaterial3: true,
           ),
         );
