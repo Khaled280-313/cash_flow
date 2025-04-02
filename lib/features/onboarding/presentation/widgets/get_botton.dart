@@ -1,8 +1,8 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/function/on_boarding_visited.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
-import 'package:cash_flow/core/utils/colors_app.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_botton.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_botton_skip.dart';
@@ -23,14 +23,14 @@ class GetBotton extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: CustomBotton(
-              color: ColorsApp.primary,
+              color: AppColor.primary,
               height: 50,
               onPressed: () {
                 isOnBoardingVisited();
                 customNavigatPushReplacement(context: context, path: "/SignIn");
               },
               child: Text(
-                StringsApp.signIn,
+                AppStrings.signIn,
                 style: AppTextStyle.montserrat300Style16.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -41,21 +41,21 @@ class GetBotton extends StatelessWidget {
           SizedBox(height: 10),
           Container(
             decoration: BoxDecoration(
-              border: Border.all(color: ColorsApp.primary, width: 2),
+              border: Border.all(color: AppColor.primary, width: 2),
               borderRadius: BorderRadius.circular(10),
             ),
             width: double.infinity,
             child: CustomBotton(
-              color: ColorsApp.white,
+              color: AppColor.white,
               height: 50,
               onPressed: () {
                 isOnBoardingVisited();
                 customNavigatPushReplacement(context: context, path: "/SignUp");
               },
               child: Text(
-                StringsApp.createAccount,
+                AppStrings.createAccount,
                 style: AppTextStyle.montserrat300Style16.copyWith(
-                  color: ColorsApp.primary,
+                  color: AppColor.primary,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -73,15 +73,15 @@ class GetBotton extends StatelessWidget {
               CustombottonSkip(pageController: pageController),
               CustomBotton(
                 height: 50,
-                color: ColorsApp.primary,
+                color: AppColor.primary,
                 onPressed: () {
                   pageController.nextPage(
                       duration: Duration(milliseconds: 300),
                       curve: Curves.easeInOutCubicEmphasized);
                 },
                 child: const Text(
-                  StringsApp.next,
-                  style: TextStyle(color: ColorsApp.white),
+                  AppStrings.next,
+                  style: TextStyle(color: AppColor.white),
                 ),
               ),
             ],

@@ -1,5 +1,5 @@
 import 'package:cash_flow/core/utils/assets.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 
 class OnBoardingModel {
   final String image;
@@ -16,17 +16,17 @@ class OnBoardingModel {
 List<OnBoardingModel> onBoardingList = [
   OnBoardingModel(
     image: Assets.imagesImag1,
-    title: StringsApp.onBoardingTitle1,
-    description: StringsApp.onBoardingSubTitle1,
+    title: AppStrings.onBoardingTitle1,
+    description: AppStrings.onBoardingSubTitle1,
   ),
   OnBoardingModel(
     image: Assets.imagesImag2,
-    title: StringsApp.onBoardingTitle2,
-    description: StringsApp.onBoardingSubTitle2,
+    title: AppStrings.onBoardingTitle2,
+    description: AppStrings.onBoardingSubTitle2,
   ),
   OnBoardingModel(
     image: Assets.imagesImag3,
-    title: StringsApp.onBoardingTitle3,
-    description: StringsApp.onBoardingSubTitle3,
+    title: AppStrings.onBoardingTitle3,
+    description: AppStrings.onBoardingSubTitle3,
   ),
 ];

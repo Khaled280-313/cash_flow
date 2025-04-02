@@ -1,13 +1,15 @@
-import 'package:cash_flow/core/utils/colors_app.dart';
+import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFeild extends StatelessWidget {
   final String text;
   final String hintText;
+  final TextInputType textInputType;
   const CustomTextFeild({
     super.key,
     required this.hintText,
     required this.text,
+    required this.textInputType,
   });
 
   @override
@@ -20,13 +22,14 @@ class CustomTextFeild extends StatelessWidget {
           child: Text(text),
         ),
         TextField(
-          cursorColor: ColorsApp.primary,
+          keyboardType: textInputType,
+          cursorColor: AppColor.primary,
           decoration: InputDecoration(
             enabled: true,
             filled: true,
-            fillColor: ColorsApp.white,
+            fillColor: AppColor.white,
             hintText: hintText,
-            hintStyle: TextStyle(color: ColorsApp.textSecondary),
+            hintStyle: TextStyle(color: AppColor.textSecondary),
             enabledBorder: getBorderStyle(),
             focusedBorder: getBorderStyle(),
           ),
@@ -40,7 +43,7 @@ OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
       borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
-        color: ColorsApp.white,
+        color: AppColor.white,
         width: 3,
       ));
 }

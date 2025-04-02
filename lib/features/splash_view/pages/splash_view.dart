@@ -1,7 +1,7 @@
 import 'package:cash_flow/core/cache/cache_helper.dart';
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class SplashView extends StatefulWidget {
@@ -30,7 +30,7 @@ class _SplashViewState extends State<SplashView> {
     return Scaffold(
       body: Center(
         child: Text(
-          StringsApp.appName,
+          AppStrings.appName,
           style: AppTextStyle.kaushan400Style64,
         ),
       ),

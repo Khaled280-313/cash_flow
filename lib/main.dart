@@ -1,10 +1,10 @@
 import 'package:cash_flow/core/cache/cache_helper.dart';
 import 'package:cash_flow/core/routes/app_routes.dart';
-import 'package:cash_flow/core/utils/colors_app.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
-void main() async { 
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper().init();
   runApp(const MyApp());
@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           routerConfig: router,
           debugShowCheckedModeBanner: false,
-          title: StringsApp.appName,
+          title: AppStrings.appName,
           theme: ThemeData(
-            scaffoldBackgroundColor: ColorsApp.background,
+            scaffoldBackgroundColor: AppColor.background,
             useMaterial3: true,
           ),
         );

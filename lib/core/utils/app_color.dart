@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-abstract class ColorsApp {
+abstract class AppColor {
   // Define your color palette here
   static const Color primary = Color(0xD0432BDC);
   static const Color background = Color(0xE8FAFAFA);

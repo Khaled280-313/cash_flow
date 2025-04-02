@@ -1,4 +1,4 @@
-abstract class StringsApp {
+abstract class AppStrings {
   static const String appName = 'Cash Flow',
       onBoardingTitle1 = 'Track your expenses with ease',
       onBoardingSubTitle1 =
@@ -15,8 +15,8 @@ abstract class StringsApp {
       createAccount = 'Create Account',
       youHaveAccount = 'You have an account?',
       alreadyHaveAccount = 'Already have an account?',
-      signUp = 'Sign Up',
-      signIn = 'Sign In',
+      signUp = ' Sign Up',
+      signIn = ' Sign In',
       email = 'Email',
       password = 'Password',
       confirmPassword = 'Confirm Password',
@@ -26,6 +26,5 @@ abstract class StringsApp {
       welcomeBack = 'Welcome Back',
       lets = "Let’s",
       start = "Start!",
-      userName ="User Name";
-
+      userName = "User Name";
 }

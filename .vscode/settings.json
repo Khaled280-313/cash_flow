@@ -4,7 +4,7 @@
         "plyconfig.json": "jsonc"
     },
     "editor.codeActionsOnSave": {
-        "source.fixAll": "explicit"
+        "source.fixAll": "always"
     },
     "editor.formatOnSave": true,
 }

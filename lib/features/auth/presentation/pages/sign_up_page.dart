@@ -1,11 +1,10 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
-import 'package:cash_flow/core/utils/app_text_style.dart';
-import 'package:cash_flow/core/utils/colors_app.dart';
-import 'package:cash_flow/core/utils/string_app.dart';
+import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_Welcom_text.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_row.dart';
+import 'package:cash_flow/features/auth/presentation/widgets/custom_row_text.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_text_feild.dart';
-import 'package:cash_flow/features/onboarding/presentation/widgets/custom_botton.dart';
 import 'package:flutter/material.dart';
 
 class SignUpPage extends StatelessWidget {
@@ -14,7 +13,7 @@ class SignUpPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorsApp.background,
+      backgroundColor: AppColor.background,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18),
@@ -23,34 +22,43 @@ class SignUpPage extends StatelessWidget {
               SliverToBoxAdapter(child: SizedBox(height: 100)),
               SliverToBoxAdapter(
                 child: CustomWelcomText(
-                    text1: StringsApp.lets, text2: StringsApp.start),
+                    text1: AppStrings.lets, text2: AppStrings.start),
               ),
               SliverToBoxAdapter(child: SizedBox(height: 50)),
               SliverToBoxAdapter(
                 child: CustomTextFeild(
-                  text: StringsApp.userName,
-                  hintText: StringsApp.userName,
+                  text: AppStrings.userName,
+                  hintText: AppStrings.userName,
+                  textInputType: TextInputType.name,
                 ),
               ),
               SliverToBoxAdapter(
                 child: CustomTextFeild(
-                  text: StringsApp.email,
-                  hintText: StringsApp.email,
+                  text: AppStrings.email,
+                  hintText: AppStrings.email,
+                  textInputType: TextInputType.emailAddress,
                 ),
               ),
               SliverToBoxAdapter(
                 child: CustomTextFeild(
-                  text: StringsApp.password,
-                  hintText: StringsApp.password,
+                  text: AppStrings.password,
+                  hintText: AppStrings.password,
+                  textInputType: TextInputType.emailAddress,
                 ),
               ),
               SliverToBoxAdapter(
                 child: CustomRow(
-                  text: StringsApp.signUp,
+                  text: AppStrings.signUp,
                   onPressed: () {
                     customNavigatPushReplacement(
                         context: context, path: "/SignIn");
                   },
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: CustomRowText(
+                  text1: AppStrings.alreadyHaveAccount,
+                  text2: AppStrings.signIn,
                 ),
               )
             ],
