@@ -81,7 +81,7 @@ class GetBotton extends StatelessWidget {
                 },
                 child: const Text(
                   StringsApp.next,
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: ColorsApp.white),
                 ),
               ),
             ],

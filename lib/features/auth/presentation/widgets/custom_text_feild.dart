@@ -26,7 +26,7 @@ class CustomTextFeild extends StatelessWidget {
             filled: true,
             fillColor: ColorsApp.white,
             hintText: hintText,
-            hintStyle: TextStyle(color: Colors.grey.shade600),
+            hintStyle: TextStyle(color: ColorsApp.textSecondary),
             enabledBorder: getBorderStyle(),
             focusedBorder: getBorderStyle(),
           ),
@@ -38,7 +38,7 @@ class CustomTextFeild extends StatelessWidget {
 
 OutlineInputBorder getBorderStyle() {
   return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(10),
       borderSide: BorderSide(
         color: ColorsApp.white,
         width: 3,
