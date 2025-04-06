@@ -1,6 +1,6 @@
-import 'package:cash_flow/core/api/api_consumer.dart';
-import 'package:cash_flow/core/api/api_interceptors.dart';
-import 'package:cash_flow/core/api/endpoint.dart';
+import 'package:cash_flow/core/database/api/api_consumer.dart';
+import 'package:cash_flow/core/database/api/api_interceptors.dart';
+import 'package:cash_flow/core/database/api/endpoint.dart';
 import 'package:cash_flow/core/errors/exception.dart';
 import 'package:dio/dio.dart';
 

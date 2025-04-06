@@ -1,19 +1,18 @@
-
 //هذا الكلاس يحتوي على الايرور الذي يتم ارجاعه من السيرفر
-import '../api/endpoint.dart';
+import '../database/api/endpoint.dart';
 
 class ErrorModel {
-  final int status; 
+  final int status;
   final String errorMassage;
   ErrorModel({
     required this.status,
     required this.errorMassage,
   });
 
-  factory ErrorModel.fromMap(Map<String, dynamic> map) {
+  factory ErrorModel.fromMap(Map<String, dynamic> jsonData) {
     return ErrorModel(
-      status: map[ApiKey.status] ,
-      errorMassage: map[ApiKey.errorMessage],
+      status: jsonData[ApiKey.status],
+      errorMassage: jsonData[ApiKey.errorMessage],
     );
   }
 }

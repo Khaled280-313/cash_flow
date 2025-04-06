@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomWelcomText extends StatelessWidget {
   final String text1;
-   final String? text2;
+  final String? text2;
   const CustomWelcomText({super.key, required this.text1, this.text2});
 
   @override
@@ -11,6 +11,7 @@ class CustomWelcomText extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             text1,

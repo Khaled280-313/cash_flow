@@ -15,6 +15,7 @@ abstract class AppStrings {
       createAccount = 'Create Account',
       youHaveAccount = 'You have an account?',
       alreadyHaveAccount = 'Already have an account?',
+      dontHaveAccount = 'Don’t have an account?',
       signUp = ' Sign Up',
       signIn = ' Sign In',
       email = 'Email',
@@ -22,9 +23,17 @@ abstract class AppStrings {
       confirmPassword = 'Confirm Password',
       forgotPassword = 'Forgot Password?',
       login = 'Login',
-      welcome = 'Welcome',
-      welcomeBack = 'Welcome Back',
+      welcome = 'Welcome!',
+      back = 'Back',
       lets = "Let’s",
       start = "Start!",
-      userName = "User Name";
+      userName = "User Name",
+      userNameError = "Please enter your user name",
+      userNameErrorLength = "User name must be at least 3 characters",
+      emailError = "Please enter your email",
+      emailErrorFormat = "Email format is incorrect",
+      emailErrorLength = "Email must be at least 3 characters",
+      passwordError = "Please enter your password",
+      passwordErrorMatch = "Password does not match",
+      passwordErrorLength = "Password must be at least 5 characters";
 }

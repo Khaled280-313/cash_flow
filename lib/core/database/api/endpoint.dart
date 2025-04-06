@@ -1,7 +1,7 @@
 class Endpoint {
   static const String baseUrl = 'https://food-api-omega.vercel.app/api/v1/';
-  static const String signIn = "user/signin";
-  static const String signUp = "user/signup";
+  static const String endpointSignIn = "user/signin";
+  static const String endpointSignUp = "user/signup";
   static String getUserDataAndIdEndpoint(id) {
     return "user/get-user/$id";
   }

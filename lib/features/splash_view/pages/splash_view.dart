@@ -1,4 +1,4 @@
-import 'package:cash_flow/core/cache/cache_helper.dart';
+import 'package:cash_flow/core/database/cache/cache_helper.dart';
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
@@ -17,11 +17,21 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     bool isOnBoardingVisited =
         getIt<CacheHelper>().getData(key: "isOnBoardingVisited") ?? false;
-    if (isOnBoardingVisited == true) {
+    bool isAuthVisited =
+        getIt<CacheHelper>().getData(key: "isAuthVisited") ?? false;
+    if (isAuthVisited == true) {
+      delayedNavigator(context, "/home");
+    } else if (isOnBoardingVisited == true) {
       delayedNavigator(context, "/SignUp");
     } else {
       delayedNavigator(context, "/onboarding");
     }
+
+    // if (isOnBoardingVisited == true) {
+    //   delayedNavigator(context, "/SignUp");
+    // } else {
+    //   delayedNavigator(context, "/onboarding");
+    // }
 
     super.initState();
   }
