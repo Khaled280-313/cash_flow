@@ -35,5 +35,9 @@ abstract class AppStrings {
       emailErrorLength = "Email must be at least 3 characters",
       passwordError = "Please enter your password",
       passwordErrorMatch = "Password does not match",
-      passwordErrorLength = "Password must be at least 5 characters";
+      passwordErrorLength = "Password must be at least 5 characters",
+      home = "Home",
+      analytics = "Analytics",
+      budgets = "Budgets",
+      transactions = "Transactions";
 }

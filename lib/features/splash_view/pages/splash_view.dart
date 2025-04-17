@@ -20,19 +20,12 @@ class _SplashViewState extends State<SplashView> {
     bool isAuthVisited =
         getIt<CacheHelper>().getData(key: "isAuthVisited") ?? false;
     if (isAuthVisited == true) {
-      delayedNavigator(context, "/home");
+      delayedNavigator(context, "/BottomNavigatin");
     } else if (isOnBoardingVisited == true) {
       delayedNavigator(context, "/SignUp");
     } else {
       delayedNavigator(context, "/onboarding");
     }
-
-    // if (isOnBoardingVisited == true) {
-    //   delayedNavigator(context, "/SignUp");
-    // } else {
-    //   delayedNavigator(context, "/onboarding");
-    // }
-
     super.initState();
   }
 

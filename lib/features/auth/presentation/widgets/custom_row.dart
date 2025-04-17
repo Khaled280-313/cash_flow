@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CustomRow extends StatelessWidget {
   final String text;
-  final Function()? onPressed;
+  final Function() onPressed;
   const CustomRow({super.key, required this.text, required this.onPressed});
 
   @override

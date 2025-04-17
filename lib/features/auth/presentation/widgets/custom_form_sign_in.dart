@@ -56,11 +56,11 @@ class CustomFormSignIn extends StatelessWidget {
               CustomRow(
                 text: AppStrings.signIn,
                 onPressed: () {
-                  if (authCubit.signUpFormKey.currentState!.validate()) {
+                  if (authCubit.signInFormKey.currentState!.validate()) {
                     authCubit.SignUpWithNameEmailAndPassword();
                     customNavigatPushReplacement(
-                        context: context, path: "/Home");
-                    isAuthVisited();
+                        context: context, path: "/BottomNavigatin");
+                      isAuthVisited();
                   }
                 },
               )

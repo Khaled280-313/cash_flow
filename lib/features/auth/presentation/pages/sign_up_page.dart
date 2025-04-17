@@ -17,6 +17,7 @@ class SignUpPage extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 18),
           child: CustomScrollView(
+            physics: BouncingScrollPhysics(),
             slivers: [
               SliverToBoxAdapter(child: SizedBox(height: 100)),
               SliverToBoxAdapter(

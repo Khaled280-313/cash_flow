@@ -45,6 +45,8 @@ dependencies:
   sqflite: ^2.4.1
   data_connection_checker_tv: ^0.3.5-nullsafety
   path_provider: ^2.1.5
+  persistent_bottom_nav_bar: ^6.2.1
+  fl_chart: ^0.71.0
 
 dev_dependencies:
   flutter_test:
@@ -95,10 +97,6 @@ flutter_assets:
     - family: Pacifico
       fonts:
         - asset: assets/fonts/Pacifico-Regular.ttf
-    #       - asset: fonts/Schyler-Italic.ttf
-    #         style: italic
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

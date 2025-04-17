@@ -2,7 +2,7 @@ import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_up_page.dart';
-import 'package:cash_flow/features/home/presentation/pages/home.dart';
+import 'package:cash_flow/features/home/presentation/widgets/bottom_Navigation_Bar.dart';
 import 'package:cash_flow/features/onboarding/presentation/page/onboarding_page.dart';
 import 'package:cash_flow/features/splash_view/pages/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,7 +32,7 @@ final GoRouter router = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: "/Home",
-    builder: (context, state) => Home(),
+    path: "/BottomNavigatin",
+    builder: (context, state) => BottomNavigationBarHome(),
   ),
 ]);
