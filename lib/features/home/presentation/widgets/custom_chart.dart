@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/features/home/presentation/widgets/custom_line_chart.dart';
@@ -11,22 +10,10 @@ class CustomChart extends StatelessWidget {
       dailyExpenses.fold(0, (sum, expense) => sum + expense.amount);
 
   CustomChart({super.key});
-=======
-import 'package:cash_flow/features/home/presentation/widgets/custom_line_chart.dart';
-import 'package:flutter/material.dart';
-
-import '../../../../core/utils/app_color.dart';
-
-class CustomChart extends StatelessWidget {
-  const CustomChart({
-    super.key,
-  });
->>>>>>> 6e8b6d927ff5786f0a964bd04d9f8cca989f8f0d
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
-<<<<<<< HEAD
       child: Container(
         height: 235,
         width: double.infinity,
@@ -48,15 +35,5 @@ class CustomChart extends StatelessWidget {
             ]),
       ),
     );
-=======
-        child: Container(
-      height: 200,
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      padding: const EdgeInsets.symmetric(horizontal: 10),
-      color: AppColor.background,
-      child: CustomLineChart(),
-    ));
->>>>>>> 6e8b6d927ff5786f0a964bd04d9f8cca989f8f0d
   }
 }

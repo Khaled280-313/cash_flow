@@ -7,8 +7,7 @@ import '../widgets/custom_chart.dart';
 import '../widgets/sliver_app_bar_home.dart';
 
 class Home extends StatelessWidget {
-  late GlobalKey<ScaffoldState> scaffoldKey;
-  Home({super.key});
+  const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
