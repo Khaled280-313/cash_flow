@@ -4,8 +4,6 @@ import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  //abdullah was here hahahaha.\
-  //abdullah was here hahahaha again.
   // هنا نستخدم WidgetsFlutterBinding.ensureInitialized() للتأكد من أن كل شيء جاهز قبل بدء التطبيق
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the service locator and cache helper

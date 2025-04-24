@@ -1,5 +1,4 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
-import 'package:cash_flow/core/function/on_boarding_visited.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';

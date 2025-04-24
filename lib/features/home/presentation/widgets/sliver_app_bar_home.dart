@@ -12,7 +12,7 @@ class SliverAppBarHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: AppColor.background,
+      backgroundColor: const Color.fromARGB(203, 235, 243, 246),
       expandedHeight: 100.0,
       leadingWidth: 100,
       leading: Text(

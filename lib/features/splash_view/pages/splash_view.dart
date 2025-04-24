@@ -1,6 +1,7 @@
 import 'package:cash_flow/core/database/cache/cache_helper.dart';
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/services/servic_locator.dart';
+import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,7 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.background,
       body: Center(
         child: Text(
           AppStrings.appName,

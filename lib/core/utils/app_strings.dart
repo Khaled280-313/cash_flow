@@ -39,5 +39,11 @@ abstract class AppStrings {
       home = "Home",
       analytics = "Analytics",
       budgets = "Budgets",
-      transactions = "Transactions";
+      transactions = "Transactions",
+      totalBalance = "Total Balance",
+      totalBalanceFilter = "Total Balance Filter",
+      cash = " Cash",
+      bankAccount = "Bank Account",
+      done = " Done",
+      allAccounts = "All Accounts";
 }
