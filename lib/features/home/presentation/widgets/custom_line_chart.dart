@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import '../../../../core/function/format_amount.dart';
 import '../../../../core/function/get_date_title.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../data/repositories/data.dart';
 
 class CustomLineChart extends StatefulWidget {
+  final List data;
   const CustomLineChart({
     super.key,
+    required this.data,
   });
 
   @override
@@ -22,7 +23,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
   late double maxValue;
   void _initializeChartData() {
 // 1. استخراج القيم وحذف التكرارات
-    amounts = dailyExpenses.map((e) => e.amount).toList().toSet().toList();
+    amounts =
+        widget.data.map((e) => e.amount as double).toList().toSet().toList();
 
     // 2. ترتيب تنازلي واختيار أكبر 5 قيم
     amounts.sort((a, b) => b.compareTo(a));
@@ -140,7 +142,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
                   ),
                 ),
 
-                spots: _convertToSpots(),
+                spots: _convertToSpots(widget.data),
                 isCurved: true,
                 color: AppColor.primary,
                 dotData: FlDotData(show: false),
@@ -153,8 +155,8 @@ class _CustomLineChartState extends State<CustomLineChart> {
   }
 }
 
-List<FlSpot> _convertToSpots() {
-  return dailyExpenses
+List<FlSpot> _convertToSpots(List data) {
+  return data
       .asMap()
       .entries
       .map(

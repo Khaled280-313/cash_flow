@@ -31,7 +31,9 @@ class CustomChart extends StatelessWidget {
                   padding: EdgeInsets.only(left: 20, bottom: 10),
                   child: Text("${totalAmount.toString()} \$",
                       style: AppTextStyle.montserratBoldStyle20)),
-              CustomLineChart(),
+              CustomLineChart(
+                data: dailyExpenses,
+              ),
             ]),
       ),
     );

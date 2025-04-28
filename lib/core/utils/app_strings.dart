@@ -45,5 +45,6 @@ abstract class AppStrings {
       cash = " Cash",
       bankAccount = "Bank Account",
       done = " Done",
-      allAccounts = "All Accounts";
+      allAccounts = "All Accounts",
+      account = " Account";
 }
