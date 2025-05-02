@@ -17,32 +17,35 @@ class CustomLineChart extends StatefulWidget {
 
 class _CustomLineChartState extends State<CustomLineChart> {
   late List<double> amounts;
+  late Set<double> uniqueAmounts;
+  late List<double> sortedDescending;
   late List<double> top5;
   late double interval;
-  late double minValue;
-  late double maxValue;
+
   void _initializeChartData() {
-// 1. استخراج القيم وحذف التكرارات
-    amounts =
-        widget.data.map((e) => e.amount as double).toList().toSet().toList();
+    amounts = widget.data.map((e) => e.amount as double).toList();
+    uniqueAmounts = amounts.toSet();
 
-    // 2. ترتيب تنازلي واختيار أكبر 5 قيم
-    amounts.sort((a, b) => b.compareTo(a));
-    top5 = amounts.length >= 5 ? amounts.sublist(0, 5) : amounts;
-    top5.sort(); // ترتيب تصاعدي للعرض
+    sortedDescending = uniqueAmounts.toList()..sort((a, b) => b.compareTo(a));
 
-    // 3. حساب المدى الكلي للقيم المختارة
-    minValue = top5.isNotEmpty ? top5.first : 0;
-    maxValue = top5.isNotEmpty ? top5.last : 0;
+    // حساب القيم النظرية المتساوية
+    final double minVal = sortedDescending.isEmpty ? 0 : sortedDescending.last;
+    final double maxVal = sortedDescending.isEmpty ? 0 : sortedDescending.first;
+    top5 = _calculateEqualSteps(minVal, maxVal);
 
-    // 4. حساب الفاصل الثابت بناءً على المدى الكلي
-    if (minValue == maxValue) maxValue += 100; // تجنب القسمة على صفر
-    interval = (maxValue - minValue) / 4;
+    interval = (maxVal - minVal) / 4; // خطوات متساوية
   }
 
-  bool _isValueInRange(double value, double epsilon) {
-    // 6. التحقق من وجود القيمة في المدى المطلوب
-    return value >= (minValue - epsilon) && value <= (maxValue + epsilon);
+  List<double> _calculateEqualSteps(double min, double max) {
+    if (min >= max) return [min];
+    final step = (max - min) / 4;
+    return [
+      min,
+      min + step,
+      min + 2 * step,
+      min + 3 * step,
+      max,
+    ];
   }
 
   @override
@@ -54,7 +57,7 @@ class _CustomLineChartState extends State<CustomLineChart> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 120,
+      height: 130,
       width: double.infinity,
       color: AppColor.white,
       margin: EdgeInsets.symmetric(horizontal: 20),
@@ -68,25 +71,24 @@ class _CustomLineChartState extends State<CustomLineChart> {
                 leftTitles: AxisTitles(
                   sideTitles: SideTitles(
                       showTitles: true,
-                      reservedSize: 60, // زيادة المساحة
+                      reservedSize: 60,
                       interval: interval,
+                      maxIncluded: false,
                       getTitlesWidget: (value, meta) {
-                        final epsilon = interval * 0.01;
-                        final exists = _isValueInRange(value, epsilon);
-                        return exists
-                            ? Padding(
-                                padding: const EdgeInsets.only(
-                                  right: 8.0,
-                                ),
-                                child: Text(
-                                  formatAmount(value),
-                                  style: TextStyle(
-                                    color: AppColor.primary,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ))
-                            : SizedBox.shrink();
+                        // final formattedValue = formatAmount(value);
+                        return Padding(
+                            padding: const EdgeInsets.only(
+                              right: 8.0,
+                            ),
+                            child: Text(
+                              formatAmount(value),
+                              style: TextStyle(
+                                color: AppColor.primary,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ));
+                        // : SizedBox.shrink();
                       }),
                 ),
                 bottomTitles: AxisTitles(

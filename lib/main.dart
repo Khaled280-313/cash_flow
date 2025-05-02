@@ -10,5 +10,6 @@ void main() async {
   setupServiceLocator();
   await getIt<CacheHelper>().init();
   // await getIt<DatabaseHelper>().database;
+  
   runApp(const MyApp());
 }

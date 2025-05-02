@@ -39,4 +39,9 @@ abstract class AppTextStyle {
     color: AppColor.black,
     fontFamily: 'Montserrat',
   );
+  static final montserratStyle12 = TextStyle(
+    fontSize: 14,
+    color: AppColor.textPrimary,
+    fontFamily: 'Montserrat',
+  );
 }

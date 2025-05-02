@@ -1,5 +1,8 @@
+
 import 'package:flutter/material.dart';
 import '../widgets/custom_chart.dart';
+import '../widgets/custom_chart_category.dart';
+import '../widgets/custom_widget_cash_flow.dart';
 import '../widgets/custum_widget_acount.dart';
 import '../widgets/sliver_app_bar_home.dart';
 
@@ -19,6 +22,9 @@ class Home extends StatelessWidget {
             SliverToBoxAdapter(child: SizedBox(height: 20)),
             CustomChart(),
             CustumWidgetAcount(),
+            CustomWidegtCashFlow(),
+            CustomChartCategory(),
+            SliverToBoxAdapter(child: SizedBox(height: 50)),
           ],
         ),
       ),

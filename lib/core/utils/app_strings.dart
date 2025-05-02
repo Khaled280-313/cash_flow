@@ -46,5 +46,12 @@ abstract class AppStrings {
       bankAccount = "Bank Account",
       done = " Done",
       allAccounts = "All Accounts",
-      account = " Account";
+      account = " Account",
+      income = "Income",
+      expenses = "Expenses",
+      addTransaction = "Add Transaction",
+      addTransactionTitle = "Add Transaction Title",
+      addTransactionAmount = "Add Transaction Amount",
+      addTransactionDate = "Add Transaction Date",
+      category = "Category";
 }
