@@ -1,6 +1,5 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
@@ -16,6 +15,7 @@ class CustomChartCategory extends StatefulWidget {
 }
 
 class _CustomChartCategoryState extends State<CustomChartCategory> {
+  bool check = false;
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
@@ -31,124 +31,207 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
             color: AppColor.white,
             borderRadius: BorderRadius.circular(20),
           ),
-          child: Column(
-            children: [
-              SizedBox(
-                  height: 40,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: ListTile(
-                          title: Text(AppStrings.category),
-                          subtitle: Text(
-                              "${DateTime.parse(DateTime.now().toString()).day} / ${DateTime.parse(DateTime.now().toString()).month} / ${DateTime.parse(DateTime.now().toString()).year}"),
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.more_vert_outlined),
-                      ),
-                    ],
-                  )),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+          child: Card.filled(
+            elevation: 0,
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            color: AppColor.white,
+            borderOnForeground: false,
+            child: InkWell(
+              onTap: () {
+                setState(() {
+                  check = !check;
+                });
+              },
+              child: Column(
                 children: [
                   SizedBox(
-                    width: 150,
-                    height: 180,
-                    child: Row(
-                      children: [
-                        Stack(children: [
-                          Positioned(
-                            bottom: 80,
-                            left: 39,
-                            child: Text(AppStrings.expenses,
-                                style: AppTextStyle.montserrat500Style16
-                                    .copyWith(color: AppColor.primary)),
-                          ),
-                          SizedBox(
-                            height: 180,
-                            width: 150,
-                            child: PieChart(
-                              curve: Curves.linear,
-                              duration: const Duration(milliseconds: 150),
-                              PieChartData(
-                                  titleSunbeamLayout: true,
-                                  sectionsSpace: 1.4,
-                                  centerSpaceRadius: 40,
-                                  sections: List.generate(
-                                    categoryData.length,
-                                    (index) {
-                                      return PieChartSectionData(
-                                        color: categoryData[index].color,
-                                        value: categoryData[index].value,
-                                        radius: categoryData[index].radius,
-                                        title: categoryData[index].title,
-                                      );
-                                    },
-                                  )),
+                      height: 40,
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Expanded(
+                            child: ListTile(
+                              title: Text(AppStrings.category),
+                              subtitle: Text(
+                                  "${DateTime.parse(DateTime.now().toString()).day} / ${DateTime.parse(DateTime.now().toString()).month} / ${DateTime.parse(DateTime.now().toString()).year}"),
                             ),
                           ),
-                        ]),
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    width: 200,
-                    height: 200,
-                    // padding: const EdgeInsets.only(left: 10, right: 10),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: List.generate(categoryData.length, (index) {
-                            return Row(
-                              spacing: 10,
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 10,
-                                  height: 10,
-                                  decoration: BoxDecoration(
-                                    color: categoryData[index].color,
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.more_vert_outlined),
+                          ),
+                        ],
+                      )),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        width: 150,
+                        height: 180,
+                        child: Row(
+                          children: [
+                            Stack(children: [
+                              Positioned(
+                                bottom: 80,
+                                left: 39,
+                                child: Text(
+                                    check
+                                        ? AppStrings.expenses
+                                        : AppStrings.income,
+                                    style: AppTextStyle.montserrat500Style16
+                                        .copyWith(color: AppColor.primary)),
+                              ),
+                              SizedBox(
+                                height: 180,
+                                width: 150,
+                                child: PieChart(
+                                  curve: Curves.linear,
+                                  duration: const Duration(milliseconds: 150),
+                                  PieChartData(
+                                      titleSunbeamLayout: true,
+                                      sectionsSpace: 1.4,
+                                      centerSpaceRadius: 40,
+                                      sections: check
+                                          ? List.generate(
+                                              categoryExpensesData.length,
+                                              (index) {
+                                                return PieChartSectionData(
+                                                  color: categoryExpensesData[
+                                                          index]
+                                                      .color,
+                                                  value: categoryExpensesData[
+                                                          index]
+                                                      .value,
+                                                  radius: categoryExpensesData[
+                                                          index]
+                                                      .radius,
+                                                  title: categoryExpensesData[
+                                                          index]
+                                                      .title,
+                                                );
+                                              },
+                                            )
+                                          : List.generate(
+                                              categoryIncomeData.length,
+                                              (index) {
+                                                return PieChartSectionData(
+                                                  color:
+                                                      categoryIncomeData[index]
+                                                          .color,
+                                                  value:
+                                                      categoryIncomeData[index]
+                                                          .value,
+                                                  radius:
+                                                      categoryIncomeData[index]
+                                                          .radius,
+                                                  title:
+                                                      categoryIncomeData[index]
+                                                          .title,
+                                                );
+                                              },
+                                            )),
                                 ),
-                                Text(categoryData[index].name,
-                                    style: AppTextStyle.montserratStyle12),
-                              ],
-                            );
-                          }),
+                              ),
+                            ]),
+                          ],
                         ),
-                        Column(
-                          spacing: 5,
-                          mainAxisAlignment: MainAxisAlignment.center,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: Row(
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: List.generate(
-                              categoryData.length,
-                              (index) => Text("\$${categoryData[index].value}",
-                                  style: AppTextStyle.montserratStyle12
-                                      .copyWith(
-                                          fontSize: 12,
-                                          color: AppColor.error))),
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: check == true
+                                  ? List.generate(categoryExpensesData.length,
+                                      (index) {
+                                      return Row(
+                                        spacing: 10,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 10,
+                                            height: 10,
+                                            decoration: BoxDecoration(
+                                              color: categoryExpensesData[index]
+                                                  .color,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                          ),
+                                          Text(categoryExpensesData[index].name,
+                                              style: AppTextStyle
+                                                  .montserratStyle12),
+                                        ],
+                                      );
+                                    })
+                                  : List.generate(categoryIncomeData.length,
+                                      (index) {
+                                      return Row(
+                                        spacing: 10,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          Container(
+                                            width: 10,
+                                            height: 10,
+                                            decoration: BoxDecoration(
+                                              color: categoryIncomeData[index]
+                                                  .color,
+                                              borderRadius:
+                                                  BorderRadius.circular(5),
+                                            ),
+                                          ),
+                                          Text(categoryIncomeData[index].name,
+                                              style: AppTextStyle
+                                                  .montserratStyle12),
+                                        ],
+                                      );
+                                    }),
+                            ),
+                            Column(
+                              spacing: 5,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: check
+                                  ? List.generate(
+                                      categoryExpensesData.length,
+                                      (index) => Text(
+                                          "\$${categoryExpensesData[index].value}",
+                                          style: AppTextStyle.montserratStyle12
+                                              .copyWith(
+                                                  fontSize: 12,
+                                                  color: AppColor.error)))
+                                  : List.generate(
+                                      categoryIncomeData.length,
+                                      (index) => Text(
+                                          "\$${categoryIncomeData[index].value}",
+                                          style: AppTextStyle.montserratStyle12
+                                              .copyWith(
+                                                  fontSize: 12,
+                                                  color: AppColor.success))),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  )
+                      )
+                    ],
+                  ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),
     );
   }
 }
-
-

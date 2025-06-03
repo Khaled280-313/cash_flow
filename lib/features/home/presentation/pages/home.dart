@@ -25,6 +25,7 @@ class Home extends StatelessWidget {
             CustomWidegtCashFlow(),
             CustomChartCategory(),
             SliverToBoxAdapter(child: SizedBox(height: 50)),
+            
           ],
         ),
       ),

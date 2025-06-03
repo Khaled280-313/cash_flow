@@ -47,7 +47,7 @@ abstract class AppStrings {
       done = " Done",
       allAccounts = "All Accounts",
       account = " Account",
-      income = "Income",
+      income = "  Income",
       expenses = "Expenses",
       addTransaction = "Add Transaction",
       addTransactionTitle = "Add Transaction Title",
