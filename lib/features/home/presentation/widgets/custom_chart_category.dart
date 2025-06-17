@@ -169,7 +169,7 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                                           ),
                                           Text(categoryExpensesData[index].name,
                                               style: AppTextStyle
-                                                  .montserratStyle12),
+                                                  .montserratStyle14),
                                         ],
                                       );
                                     })
@@ -194,7 +194,7 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                                           ),
                                           Text(categoryIncomeData[index].name,
                                               style: AppTextStyle
-                                                  .montserratStyle12),
+                                                  .montserratStyle14),
                                         ],
                                       );
                                     }),
@@ -208,7 +208,7 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                                       categoryExpensesData.length,
                                       (index) => Text(
                                           "\$${categoryExpensesData[index].value}",
-                                          style: AppTextStyle.montserratStyle12
+                                          style: AppTextStyle.montserratStyle14
                                               .copyWith(
                                                   fontSize: 12,
                                                   color: AppColor.error)))
@@ -216,7 +216,7 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                                       categoryIncomeData.length,
                                       (index) => Text(
                                           "\$${categoryIncomeData[index].value}",
-                                          style: AppTextStyle.montserratStyle12
+                                          style: AppTextStyle.montserratStyle14
                                               .copyWith(
                                                   fontSize: 12,
                                                   color: AppColor.success))),

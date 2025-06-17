@@ -3,10 +3,11 @@ import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/analytics/presentation/pages/analytics_page.dart';
 import 'package:cash_flow/features/budgets/presentation/pages/budgets_page.dart';
 
-import 'package:cash_flow/features/expenses/presentation/pages/expenses_page.dart';
 import 'package:cash_flow/features/home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
+
+import '../../../transzctions/presentation/pages/transactions_page.dart';
 
 class BottomNavigationBarHome extends StatelessWidget {
   BottomNavigationBarHome({super.key});
@@ -42,7 +43,7 @@ class BottomNavigationBarHome extends StatelessWidget {
 List<Widget> _buildScreens() {
   return [
     Home(),
-    ExpensesPage(),
+    TransactionsPage(),
     BudgetsPage(),
     AnalyticsPage(),
   ];

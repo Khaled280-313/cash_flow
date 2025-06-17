@@ -8,6 +8,8 @@ import 'package:cash_flow/features/splash_view/pages/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/transzctions/presentation/pages/add_transactions.dart';
+
 final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/",
@@ -34,5 +36,9 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/BottomNavigatin",
     builder: (context, state) => BottomNavigationBarHome(),
+  ),
+  GoRoute(
+    path: "/Addtransaction",
+    builder: (context, state) => AddTransactions(),
   ),
 ]);
