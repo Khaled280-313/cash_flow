@@ -64,9 +64,48 @@ class TransactionsPage extends StatelessWidget {
                         ),
                       );
                     },
-                    childCount: 20, // Example count
+                    childCount: 10, // Example count
                   ),
                 ),
+                SliverPadding(padding: EdgeInsets.only(top: 20)),
+                SliverToBoxAdapter(
+                  child: Divider(
+                    color: AppColor.textSecondary,
+                    height: 0.5,
+                  ),
+                ),
+                // Here you can add your custom widgets for income
+                SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                  (context, index) {
+                    return ListTile(
+                      onTap: () {},
+                      trailing: Text(
+                        "0\$",
+                        style: AppTextStyle.montserratStyle14
+                            .copyWith(color: AppColor.success),
+                      ),
+                      title: Text(
+                        'Income Item $index',
+                      ),
+                      subtitle: Text(
+                        AppStrings.cash,
+                        style: AppTextStyle.montserratBoldStyle12
+                            .copyWith(color: AppColor.success),
+                      ),
+                      leading: Container(
+                        height: 35,
+                        width: 35,
+                        decoration: BoxDecoration(
+                          color: AppColor.primary,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(Icons.add_ic_call, color: AppColor.white),
+                      ),
+                    );
+                  },
+                  childCount: 10,
+                ))
               ],
             ),
           ),

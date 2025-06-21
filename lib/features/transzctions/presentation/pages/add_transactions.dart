@@ -1,5 +1,11 @@
 import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/custom_show_date_picker.dart';
+import '../widgets/custom_show_time_picker.dart';
+import '../widgets/custom_text_field.dart';
+import '../widgets/custom_top_contain.dart';
 
 class AddTransactions extends StatelessWidget {
   const AddTransactions({super.key});
@@ -7,30 +13,16 @@ class AddTransactions extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverToBoxAdapter(
-              child: Container(
-                height: 200,
-                decoration: BoxDecoration(
-                  color: Color(0xFFFF3E4C),
-                ),
-                child: Center(
-                  child: Text(
-                    'Add Transaction',
-                    style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            SliverToBoxAdapter(
-              child: Container(
+        backgroundColor: AppColor.white,
+        body: SingleChildScrollView(
+          child: Stack(
+            children: [
+              CustomTopContain(),
+              Container(
+                padding: const EdgeInsets.only(top: 16),
+                margin: const EdgeInsets.only(top: 200),
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height - 200,
                 decoration: BoxDecoration(
                   color: AppColor.white,
                   borderRadius: BorderRadius.only(
@@ -39,23 +31,17 @@ class AddTransactions extends StatelessWidget {
                   ),
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  spacing: 16,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Transaction Name',
-                        border: OutlineInputBorder(),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Amount',
-                        border: OutlineInputBorder(),
-                      ),
-                      keyboardType: TextInputType.number,
-                    ),
-                    const SizedBox(height: 16),
+                    SizedBox(height: 10),
+                    // MenuItemButton(),
+                    CustomTextField(hintText: AppStrings.category),
+                    CustomTextField(hintText: AppStrings.amount),
+                    CustomTextField(hintText: AppStrings.title),
+                    CustomTextField(hintText: AppStrings.description),
+                    CustomShowDatePicker(),
+                    CustomShowTimePicker(),
                     ElevatedButton(
                       onPressed: () {
                         // Handle save transaction logic
@@ -65,10 +51,8 @@ class AddTransactions extends StatelessWidget {
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-      ),
-    );
+            ],
+          ),
+        ));
   }
 }

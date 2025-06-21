@@ -53,5 +53,11 @@ abstract class AppStrings {
       addTransactionTitle = "Add Transaction Title",
       addTransactionAmount = "Add Transaction Amount",
       addTransactionDate = "Add Transaction Date",
-      category = "Category";
+      category = "Category",
+      amount = "Amount",
+      date = "Date",
+      description = "Description",
+      title = "Title",
+      selectDate = "Select Date",
+      selectTime = "Select Time";
 }
