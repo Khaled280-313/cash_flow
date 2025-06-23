@@ -3,7 +3,7 @@ import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_row.dart';
-import 'package:cash_flow/features/auth/presentation/widgets/custom_text_feild.dart';
+import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -19,7 +19,13 @@ class CustomFormSignUp extends StatelessWidget {
         return Form(
           key: authCubit.signUpFormKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                child: Text(AppStrings.userName),
+              ),
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -30,9 +36,12 @@ class CustomFormSignUp extends StatelessWidget {
                   return null;
                 },
                 controller: authCubit.signUpName,
-                text: AppStrings.userName,
                 hintText: AppStrings.userName,
                 textInputType: TextInputType.name,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                child: Text(AppStrings.email),
               ),
               CustomTextFormFeild(
                 validator: (value) {
@@ -46,9 +55,12 @@ class CustomFormSignUp extends StatelessWidget {
                   return null;
                 },
                 controller: authCubit.signUpEmail,
-                text: AppStrings.email,
                 hintText: AppStrings.email,
                 textInputType: TextInputType.emailAddress,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                child: Text(AppStrings.password),
               ),
               CustomTextFormFeild(
                 validator: (value) {
@@ -60,7 +72,6 @@ class CustomFormSignUp extends StatelessWidget {
                   return null;
                 },
                 controller: authCubit.signUpPassword,
-                text: AppStrings.password,
                 hintText: AppStrings.password,
                 textInputType: TextInputType.emailAddress,
                 obscureText: true,

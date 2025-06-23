@@ -5,8 +5,10 @@ import '../../../../core/utils/app_strings.dart';
 import 'custom_cntain_togle.dart';
 
 class CustomTopContain extends StatefulWidget {
-  const CustomTopContain({
+  String type;
+  CustomTopContain({
     super.key,
+    required this.type,
   });
 
   @override
@@ -26,6 +28,7 @@ class _CustomTopContainState extends State<CustomTopContain> {
           color: isSelected ? AppColor.success : Color(0xFFFF3E4C),
         ),
         child: Column(
+          spacing: 15,
           children: [
             Container(
               width: 342,
@@ -50,7 +53,13 @@ class _CustomTopContainState extends State<CustomTopContain> {
                   borderWidth: 3,
                   onPressed: (index) {
                     setState(() {
-                      isSelected = index == 0;
+                      if (isSelected == true) {
+                        isSelected = index == 0;
+                        widget.type = "income";
+                      } else {
+                        isSelected = index == 0;
+                        widget.type = "expenses";
+                      }
                     });
                   },
                   isSelected: [isSelected, !isSelected],

@@ -7,7 +7,7 @@ import 'package:cash_flow/features/home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
-import '../../../transzctions/presentation/pages/transactions_page.dart';
+import '../../../transactions/presentation/pages/transactions_page.dart';
 
 class BottomNavigationBarHome extends StatelessWidget {
   BottomNavigationBarHome({super.key});

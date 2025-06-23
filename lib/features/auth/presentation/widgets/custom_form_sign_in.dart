@@ -4,7 +4,7 @@ import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_row.dart';
-import 'package:cash_flow/features/auth/presentation/widgets/custom_text_feild.dart';
+import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -20,7 +20,13 @@ class CustomFormSignIn extends StatelessWidget {
         return Form(
           key: authCubit.signInFormKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                child: Text(AppStrings.email),
+              ),
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -33,9 +39,12 @@ class CustomFormSignIn extends StatelessWidget {
                   return null;
                 },
                 controller: authCubit.signInEmail,
-                text: AppStrings.email,
                 hintText: AppStrings.email,
                 textInputType: TextInputType.emailAddress,
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                child: Text(AppStrings.password),
               ),
               CustomTextFormFeild(
                 validator: (value) {
@@ -47,7 +56,6 @@ class CustomFormSignIn extends StatelessWidget {
                   return null;
                 },
                 controller: authCubit.signInPassword,
-                text: AppStrings.password,
                 hintText: AppStrings.password,
                 textInputType: TextInputType.emailAddress,
                 obscureText: true,
@@ -60,7 +68,7 @@ class CustomFormSignIn extends StatelessWidget {
                     authCubit.SignUpWithNameEmailAndPassword();
                     customNavigatPushReplacement(
                         context: context, path: "/BottomNavigatin");
-                      isAuthVisited();
+                    isAuthVisited();
                   }
                 },
               )

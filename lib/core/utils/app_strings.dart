@@ -59,5 +59,5 @@ abstract class AppStrings {
       description = "Description",
       title = "Title",
       selectDate = "Select Date",
-      selectTime = "Select Time";
+      selectTime = "Select Time", requiredField = "This field is required";
 }

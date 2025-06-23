@@ -1,22 +1,22 @@
-import 'package:cash_flow/core/function/get_Date.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/function/get_time.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
 
-class CustomShowDatePicker extends StatefulWidget {
-  const CustomShowDatePicker({
+class CustomShowTimePicker extends StatefulWidget {
+  final TimeOfDay selectTime;
+  const CustomShowTimePicker({
     super.key,
+    required this.selectTime,
   });
 
   @override
-  State<CustomShowDatePicker> createState() => _CustomShowDatePickerState();
+  State<CustomShowTimePicker> createState() => _CustomShowTimePickerState();
 }
 
-class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
-  DateTime selectedDate = DateTime.now();
-
+class _CustomShowTimePickerState extends State<CustomShowTimePicker> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -26,7 +26,7 @@ class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           MaterialButton(
-              color: AppColor.primary,
+              color: AppColor.success,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -34,9 +34,9 @@ class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
               height: 43,
               onPressed: () {
                 setState(() {
-                  getDate(context, selectedDate).then((value) {
+                  getTime(context, widget.selectTime).then((value) {
                     if (value != null) {
-                      selectedDate = value;
+                      widget.selectTime != value;
                     }
                   });
                 });
@@ -45,11 +45,11 @@ class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
                 spacing: 10,
                 children: [
                   Icon(
-                    Icons.calendar_month,
+                    Icons.access_time,
                     color: AppColor.white,
                   ),
                   Text(
-                    AppStrings.selectDate,
+                    AppStrings.selectTime,
                     style: AppTextStyle.montserrat500Style16.copyWith(
                       color: AppColor.white,
                     ),
@@ -57,7 +57,7 @@ class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
                 ],
               )),
           Text(
-            selectedDate.toString().split(' ')[0],
+            widget.selectTime.format(context),
             style: AppTextStyle.montserrat300Style16.copyWith(fontSize: 18),
           ),
         ],

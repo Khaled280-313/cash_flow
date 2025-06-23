@@ -17,6 +17,5 @@ Future<TimeOfDay?> getTime(BuildContext context, TimeOfDay selectedTime) async {
     // إذا تم اختيار وقت جديد، قم بتحديث الحالة
     selectedTime = picked;
   }
-  print(selectedTime);
   return selectedTime;
 }
