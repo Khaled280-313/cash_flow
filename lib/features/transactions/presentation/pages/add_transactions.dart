@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/widgets/custom_text_feild.dart';
 import '../cubit/transactions_cubit.dart';
+import '../widgets/custom_button.dart';
 import '../widgets/custom_show_date_picker.dart';
 import '../widgets/custom_show_time_picker.dart';
 import '../widgets/custom_text_field.dart';
@@ -32,8 +33,8 @@ class AddTransactions extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(top: 16, right: 20, left: 20),
                     margin: const EdgeInsets.only(top: 200),
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height - 200,
+                    // width: MediaQuery.of(context).size.width,
+                    // height: MediaQuery.of(context).size.height - 200,
                     decoration: BoxDecoration(
                       color: AppColor.white,
                       borderRadius: BorderRadius.only(
@@ -96,22 +97,7 @@ class AddTransactions extends StatelessWidget {
                             indent: 15,
                           ),
                           const SizedBox(height: 10),
-                          MaterialButton(
-                            onPressed: () {},
-                            color: AppColor.primary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            minWidth: 343,
-                            height: 56,
-                            child: Text(
-                              AppStrings.addTransaction,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(color: AppColor.white),
-                            ),
-                          )
+                          CustomButton()
                         ],
                       ),
                     ),
@@ -123,3 +109,5 @@ class AddTransactions extends StatelessWidget {
     );
   }
 }
+
+
