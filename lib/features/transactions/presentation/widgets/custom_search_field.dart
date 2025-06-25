@@ -46,6 +46,10 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
         width: 370, // Set a fixed width to avoid overflow
         // Set a fixed width to avoid overflow
         child: SearchField(
+          // emptyWidget: const Text(
+          //   AppStrings.noResultsFound,
+          //   style: TextStyle(color: Colors.grey),
+          // ),
           textInputAction: TextInputAction.search,
           searchInputDecoration: SearchInputDecoration(
             textCapitalization: TextCapitalization.words,
@@ -57,6 +61,8 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
             fillColor: AppColor.white,
             filled: true,
             prefixIcon: Icon(Icons.search),
+            suffixIcon: IconButton(
+                onPressed: () {}, icon: const Icon(Icons.filter_list_outlined)),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(20),
               borderSide: BorderSide(color: AppColor.black),
