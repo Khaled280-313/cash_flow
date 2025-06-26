@@ -33,8 +33,7 @@ class AddTransactions extends StatelessWidget {
                     padding:
                         const EdgeInsets.only(top: 16, right: 20, left: 20),
                     margin: const EdgeInsets.only(top: 200),
-                    // width: MediaQuery.of(context).size.width,
-                    // height: MediaQuery.of(context).size.height - 200,
+                   
                     decoration: BoxDecoration(
                       color: AppColor.white,
                       borderRadius: BorderRadius.only(

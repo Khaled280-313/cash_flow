@@ -33,34 +33,47 @@ class TransactionsPage extends StatelessWidget {
                   primary: true,
                 ),
 
-                SliverToBoxAdapter(child: SizedBox(height: 20)),
+                SliverToBoxAdapter(child: SizedBox(height: 10)),
                 // Here you can add your custom widgets for expenses
+                SliverToBoxAdapter(
+                  child: CustomText(
+                    text: AppStrings.expenses,
+                  ),
+                ),
+
                 SliverList(
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      return ListTile(
-                        onTap: () {},
-                        trailing: Text(
-                          "0\$",
-                          style: AppTextStyle.montserratStyle14
-                              .copyWith(color: AppColor.error),
-                        ),
-                        title: Text(
-                          'Expense Item $index',
-                        ),
-                        subtitle: Text(
-                          AppStrings.cash,
-                          style: AppTextStyle.montserratBoldStyle12
-                              .copyWith(color: AppColor.success),
-                        ),
-                        leading: Container(
-                          height: 35,
-                          width: 35,
-                          decoration: BoxDecoration(
-                            color: AppColor.primary,
-                            borderRadius: BorderRadius.circular(10),
+                      return Container(
+                        margin: const EdgeInsets.symmetric(
+                            horizontal: 10, vertical: 5),
+                        width: 333,
+                        height: 60,
+                        child: ListTile(
+                          onTap: () {},
+                          trailing: Text(
+                            "0\$",
+                            style: AppTextStyle.montserratStyle14
+                                .copyWith(color: AppColor.error),
                           ),
-                          child: Icon(Icons.add_ic_call, color: AppColor.white),
+                          title: Text(
+                            'Expense Item $index',
+                          ),
+                          subtitle: Text(
+                            AppStrings.cash,
+                            style: AppTextStyle.montserratBoldStyle12
+                                .copyWith(color: AppColor.success),
+                          ),
+                          leading: Container(
+                            height: 50,
+                            width: 50,
+                            decoration: BoxDecoration(
+                              color: AppColor.primary,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Icon(Icons.add_ic_call,
+                                color: AppColor.white, size: 35),
+                          ),
                         ),
                       );
                     },
@@ -69,38 +82,44 @@ class TransactionsPage extends StatelessWidget {
                 ),
                 SliverPadding(padding: EdgeInsets.only(top: 20)),
                 SliverToBoxAdapter(
-                  child: Divider(
-                    color: AppColor.textSecondary,
-                    height: 0.5,
+                  child: CustomText(
+                    text: AppStrings.income,
                   ),
                 ),
                 // Here you can add your custom widgets for income
                 SliverList(
                     delegate: SliverChildBuilderDelegate(
                   (context, index) {
-                    return ListTile(
-                      onTap: () {},
-                      trailing: Text(
-                        "0\$",
-                        style: AppTextStyle.montserratStyle14
-                            .copyWith(color: AppColor.success),
-                      ),
-                      title: Text(
-                        'Income Item $index',
-                      ),
-                      subtitle: Text(
-                        AppStrings.cash,
-                        style: AppTextStyle.montserratBoldStyle12
-                            .copyWith(color: AppColor.success),
-                      ),
-                      leading: Container(
-                        height: 35,
-                        width: 35,
-                        decoration: BoxDecoration(
-                          color: AppColor.primary,
-                          borderRadius: BorderRadius.circular(10),
+                    return Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 5),
+                      width: 333,
+                      height: 60,
+                      child: ListTile(
+                        onTap: () {},
+                        trailing: Text(
+                          "0\$",
+                          style: AppTextStyle.montserratStyle14
+                              .copyWith(color: AppColor.success),
                         ),
-                        child: Icon(Icons.add_ic_call, color: AppColor.white),
+                        title: Text(
+                          'Income Item $index',
+                        ),
+                        subtitle: Text(
+                          AppStrings.cash,
+                          style: AppTextStyle.montserratBoldStyle12
+                              .copyWith(color: AppColor.success),
+                        ),
+                        leading: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: AppColor.primary,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: Icon(Icons.add_ic_call,
+                              color: AppColor.white, size: 35),
+                        ),
                       ),
                     );
                   },
@@ -110,5 +129,26 @@ class TransactionsPage extends StatelessWidget {
             ),
           ),
         ));
+  }
+}
+
+class CustomText extends StatelessWidget {
+  final String text;
+  const CustomText({
+    super.key,
+    required this.text,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 375,
+      height: 30,
+      margin: EdgeInsets.symmetric(horizontal: 10),
+      child: Text(
+        text,
+        style: AppTextStyle.montserratBoldStyle12.copyWith(fontSize: 20),
+      ),
+    );
   }
 }
