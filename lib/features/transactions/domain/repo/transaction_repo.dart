@@ -4,7 +4,11 @@ import 'package:dartz/dartz.dart';
 
 abstract class TransactionRepo {
   Future<Either<Failure, TransactionEntities>> getAllTransactions();
-  addTransaction(TransactionEntities transaction);
-  deleteTransaction(String transactionId);
-  updateTransaction(TransactionEntities transaction);
+  Future<Either<Failure, TransactionEntities>> addTransaction(
+      TransactionEntities transaction);
+  Future<Either<Failure, void>> deleteTransaction(String transactionId);
+  Future<Either<Failure, TransactionEntities>> updateTransaction(
+      TransactionEntities transaction);
+
+  Future<Either<Failure, TransactionEntities>> getTransaction(String id);
 }
