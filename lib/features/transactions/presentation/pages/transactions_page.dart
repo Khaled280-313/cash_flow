@@ -19,6 +19,7 @@ class TransactionsPage extends StatelessWidget {
           },
           child: const Icon(Icons.add, size: 25, color: AppColor.white),
         ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
         backgroundColor: const Color.fromRGBO(235, 243, 246, 0.796),
         body: SafeArea(
           child: Padding(

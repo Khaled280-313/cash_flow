@@ -50,7 +50,7 @@ class _CustomSearchFieldState extends State<CustomSearchField> {
           //   AppStrings.noResultsFound,
           //   style: TextStyle(color: Colors.grey),
           // ),
-          textInputAction: TextInputAction.search,
+          textInputAction: TextInputAction.go,
           searchInputDecoration: SearchInputDecoration(
             textCapitalization: TextCapitalization.words,
             searchStyle: const TextStyle(fontSize: 16, color: Colors.black),
