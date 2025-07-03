@@ -1,5 +1,7 @@
-import 'package:cash_flow/core/utils/app_text_style.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../../core/utils/app_text_style.dart';
 
 class CustomWelcomText extends StatelessWidget {
   final String text1;

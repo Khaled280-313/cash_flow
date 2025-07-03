@@ -11,6 +11,7 @@ void setupServiceLocator() {
   getIt.registerSingleton<CacheHelper>(CacheHelper());
   getIt.registerSingleton<AuthCubit>(AuthCubit());
   getIt.registerSingleton<TransactionsCubit>(TransactionsCubit());
+  
   // getIt.registerSingleton<SizeConfig>(SizeConfig());
   // getIt.registerLazySingleton(() => DatabaseHelper());
   // getIt.registerFactory(() => UserRepository(dbHelper: getIt<DatabaseHelper>()));
