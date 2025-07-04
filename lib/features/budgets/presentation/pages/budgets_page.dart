@@ -30,6 +30,9 @@ class BudgetsPage extends StatelessWidget {
                   color: AppColor.white,
                   borderRadius: BorderRadius.circular(20),
                 ),
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.of(context).size.height * 1,
+                ),
                 child: Column(
                   spacing: 15,
                   children: List.generate(budgetsData.length, (index) {
@@ -44,4 +47,3 @@ class BudgetsPage extends StatelessWidget {
     );
   }
 }
-

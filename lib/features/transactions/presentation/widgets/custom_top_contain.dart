@@ -5,8 +5,8 @@ import '../../../../core/utils/app_strings.dart';
 import 'custom_cntain_togle.dart';
 
 class CustomTopContain extends StatefulWidget {
-  String type;
-  CustomTopContain({
+  final String type;
+  const CustomTopContain({
     super.key,
     required this.type,
   });
@@ -22,7 +22,7 @@ class _CustomTopContainState extends State<CustomTopContain> {
     return SafeArea(
       top: false,
       child: Container(
-        height: 230,
+        height: 280,
         width: double.infinity,
         decoration: BoxDecoration(
           color: isSelected ? AppColor.success : Color(0xFFFF3E4C),
@@ -55,10 +55,10 @@ class _CustomTopContainState extends State<CustomTopContain> {
                     setState(() {
                       if (isSelected == true) {
                         isSelected = index == 0;
-                        widget.type = "income";
+                        widget.type != "income";
                       } else {
                         isSelected = index == 0;
-                        widget.type = "expenses";
+                        widget.type != "expenses";
                       }
                     });
                   },

@@ -8,6 +8,7 @@ import 'package:cash_flow/features/splash_view/pages/splash_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../features/budgets/presentation/pages/add_budgets.dart';
 import '../../features/transactions/presentation/cubit/transactions_cubit.dart';
 import '../../features/transactions/presentation/pages/add_transactions.dart';
 
@@ -43,5 +44,9 @@ final GoRouter router = GoRouter(routes: [
     builder: (context, state) => BlocProvider(
         create: (context) => getIt<TransactionsCubit>(),
         child: AddTransactions()),
+  ),
+  GoRoute(
+    path: "/AddBudgets",
+    builder: (context, state) => AddBudgets(),
   ),
 ]);

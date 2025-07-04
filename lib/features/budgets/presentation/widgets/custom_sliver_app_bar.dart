@@ -1,3 +1,5 @@
+import 'package:animations/animations.dart';
+import 'package:cash_flow/features/budgets/presentation/pages/add_budgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
@@ -15,15 +17,17 @@ class CustomSliverAppBar extends StatelessWidget {
       floating: true,
       backgroundColor: AppColor.background,
       actions: [
-        IconButton(
-          icon: IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.add, size: 30, color: AppColor.black)),
-          onPressed: () {
-            // Navigate to add budget page
-            Navigator.pushNamed(context, '/addBudget');
-          },
-        ),
+        OpenContainer(
+          closedColor: AppColor.background,
+          closedElevation: 0,
+          transitionType: ContainerTransitionType.fadeThrough,
+          transitionDuration: const Duration(milliseconds: 300),
+          closedBuilder: (context, action) => IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: action,
+          ),
+          openBuilder: (context, action) => AddBudgets(),
+        )
       ],
     );
   }

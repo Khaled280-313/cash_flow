@@ -7,8 +7,7 @@ import '../../../../core/widgets/custom_text_feild.dart';
 import '../cubit/transactions_cubit.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_show_date_picker.dart';
-import '../widgets/custom_show_time_picker.dart';
-import '../widgets/custom_text_field.dart';
+import '../widgets/custom_category_field.dart';
 import '../widgets/custom_top_contain.dart';
 
 class AddTransactions extends StatelessWidget {
@@ -31,8 +30,8 @@ class AddTransactions extends StatelessWidget {
                   CustomTopContain(type: transactionsCubit.type),
                   Container(
                     padding:
-                        const EdgeInsets.only(top: 16, right: 20, left: 20),
-                    margin: const EdgeInsets.only(top: 200),
+                        const EdgeInsets.only(top: 10, right: 20, left: 20),
+                    margin: const EdgeInsets.only(top: 250),
                     decoration: BoxDecoration(
                       color: AppColor.white,
                       borderRadius: BorderRadius.only(
@@ -48,7 +47,7 @@ class AddTransactions extends StatelessWidget {
                         children: [
                           SizedBox(height: 10),
                           // MenuItemButton(),
-                          CustomTextField(hintText: AppStrings.category),
+                          CustomCategoryField(hintText: AppStrings.category),
                           CustomTextFormFeild(
                               hintText: AppStrings.amount,
                               textInputType: TextInputType.number,
@@ -83,9 +82,9 @@ class AddTransactions extends StatelessWidget {
                           CustomShowDatePicker(
                             selectedDate: transactionsCubit.selectedDate,
                           ),
-                          CustomShowTimePicker(
-                            selectTime: transactionsCubit.selectedTime,
-                          ),
+                          // CustomShowTimePicker(
+                          //   selectTime: transactionsCubit.selectedTime,
+                          // ),
                           const SizedBox(height: 10),
                           Divider(
                             color: AppColor.textSecondary,
