@@ -12,7 +12,7 @@ class ErrorModel {
   factory ErrorModel.fromMap(Map<String, dynamic> jsonData) {
     return ErrorModel(
       status: jsonData[ApiKey.status],
-      errorMassage: jsonData[ApiKey.errorMessage],
+      errorMassage: jsonData[ApiKey.message],
     );
   }
 }

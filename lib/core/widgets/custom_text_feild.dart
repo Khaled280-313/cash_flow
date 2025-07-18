@@ -30,6 +30,7 @@ class CustomTextFormFeild extends StatefulWidget {
 
 class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
   bool isObscure = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
