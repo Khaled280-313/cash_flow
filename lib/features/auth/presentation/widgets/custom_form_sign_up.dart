@@ -35,7 +35,10 @@ class CustomFormSignUp extends StatelessWidget {
                   }
                   return null;
                 },
-                controller: authCubit.signUpName,
+                // controller: authCubit.signUpName,
+                onChanged: (name) {
+                  authCubit.signUpName = name;
+                },
                 hintText: AppStrings.userName,
                 textInputType: TextInputType.name,
               ),
@@ -54,7 +57,10 @@ class CustomFormSignUp extends StatelessWidget {
                   }
                   return null;
                 },
-                controller: authCubit.signUpEmail,
+                // controller: authCubit.signUpEmail,
+                onChanged: (email) {
+                  authCubit.signUpEmail = email;
+                },
                 hintText: AppStrings.email,
                 textInputType: TextInputType.emailAddress,
               ),
@@ -71,7 +77,10 @@ class CustomFormSignUp extends StatelessWidget {
                   }
                   return null;
                 },
-                controller: authCubit.signUpPassword,
+                // controller: authCubit.signUpPassword,
+                onChanged: (password) {
+                  authCubit.signUpPassword = password;
+                },
                 hintText: AppStrings.password,
                 textInputType: TextInputType.emailAddress,
                 obscureText: true,

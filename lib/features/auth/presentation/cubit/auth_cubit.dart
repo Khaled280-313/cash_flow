@@ -5,12 +5,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit() : super(AuthInitial());
   GlobalKey<FormState> signUpFormKey = GlobalKey();
-  TextEditingController signUpName = TextEditingController();
-  TextEditingController signUpEmail = TextEditingController();
-  TextEditingController signUpPassword = TextEditingController();
+  String? signUpName;
+  String? signUpEmail;
+  String? signUpPassword;
   GlobalKey<FormState> signInFormKey = GlobalKey();
-  TextEditingController signInEmail = TextEditingController();
-  TextEditingController signInPassword = TextEditingController();
+  String? signInEmail;
+  String? signInPassword;
 
   bool isObscure = true;
   void togglePasswordVisibility() {

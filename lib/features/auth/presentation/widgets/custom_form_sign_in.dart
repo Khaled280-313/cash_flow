@@ -38,7 +38,10 @@ class CustomFormSignIn extends StatelessWidget {
                   }
                   return null;
                 },
-                controller: authCubit.signInEmail,
+                onChanged: (email) {
+                  authCubit.signInEmail = email;
+                },
+                // controller: authCubit.signInEmail,
                 hintText: AppStrings.email,
                 textInputType: TextInputType.emailAddress,
               ),
@@ -55,7 +58,10 @@ class CustomFormSignIn extends StatelessWidget {
                   }
                   return null;
                 },
-                controller: authCubit.signInPassword,
+                // controller: authCubit.signInPassword,
+                onChanged: (password) {
+                  authCubit.signInPassword = password;
+                },
                 hintText: AppStrings.password,
                 textInputType: TextInputType.emailAddress,
                 obscureText: true,

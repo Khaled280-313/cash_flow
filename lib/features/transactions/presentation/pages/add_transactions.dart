@@ -51,7 +51,7 @@ class AddTransactions extends StatelessWidget {
                           CustomTextFormFeild(
                               hintText: AppStrings.amount,
                               textInputType: TextInputType.number,
-                              controller: transactionsCubit.amountController,
+                              // controller: transactionsCubit.amountController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return AppStrings.requiredField;
@@ -61,7 +61,7 @@ class AddTransactions extends StatelessWidget {
                           CustomTextFormFeild(
                               hintText: AppStrings.title,
                               textInputType: TextInputType.emailAddress,
-                              controller: transactionsCubit.titleController,
+                              // controller: transactionsCubit.titleController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return AppStrings.requiredField;
@@ -71,8 +71,8 @@ class AddTransactions extends StatelessWidget {
                           CustomTextFormFeild(
                               hintText: AppStrings.description,
                               textInputType: TextInputType.multiline,
-                              controller:
-                                  transactionsCubit.descriptionController,
+                              // controller:
+                              //     transactionsCubit.descriptionController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return AppStrings.requiredField;
