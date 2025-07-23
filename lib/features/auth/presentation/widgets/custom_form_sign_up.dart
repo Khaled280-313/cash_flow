@@ -86,7 +86,7 @@ class CustomFormSignUp extends StatelessWidget {
                 obscureText: true,
                 suffixIcon: true,
               ),
-              CustomRow(
+             state is SignUpLoadingState?CircularProgressIndicator() : CustomRow(
                 text: AppStrings.signUp,
                 onPressed: () {
                   if (authCubit.signUpFormKey.currentState!.validate()) {
