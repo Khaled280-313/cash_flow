@@ -1,6 +1,4 @@
-class AuthState {
-  const AuthState();
-}
+class AuthState {}
 
 class AuthInitial extends AuthState {}
 

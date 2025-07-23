@@ -61,5 +61,6 @@ abstract class AppStrings {
       selectDate = "Select Date",
       selectTime = "Select Time",
       requiredField = "This field is required",
-      noResultsFound = "No results found";
+      noResultsFound = "No results found",
+      signUpSaccess = "Sign Up Saccess";
 }

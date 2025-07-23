@@ -7,13 +7,22 @@ import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/custom_snack_bar.dart';
+
 class CustomFormSignUp extends StatelessWidget {
   const CustomFormSignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is SignUpSaccessState) {
+          CustomSnackBar(message: AppStrings.signUpSaccess);
+          customNavigatPushReplacement(context: context, path: "/SignIn");
+        } else if (state is SignUpFailureState) {
+          CustomSnackBar(message: state.errorMessage);
+        }
+      },
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
@@ -86,16 +95,18 @@ class CustomFormSignUp extends StatelessWidget {
                 obscureText: true,
                 suffixIcon: true,
               ),
-             state is SignUpLoadingState?CircularProgressIndicator() : CustomRow(
-                text: AppStrings.signUp,
-                onPressed: () {
-                  if (authCubit.signUpFormKey.currentState!.validate()) {
-                    authCubit.SignUpWithNameEmailAndPassword();
-                    customNavigatPushReplacement(
-                        context: context, path: "/SignIn");
-                  }
-                },
-              )
+              state is SignUpLoadingState
+                  ? CircularProgressIndicator()
+                  : CustomRow(
+                      text: AppStrings.signUp,
+                      onPressed: () {
+                        if (authCubit.signUpFormKey.currentState!.validate()) {
+                          authCubit.SignUpWithNameEmailAndPassword();
+                          // customNavigatPushReplacement(
+                          //     context: context, path: "/SignIn");
+                        }
+                      },
+                    )
             ],
           ),
         );
