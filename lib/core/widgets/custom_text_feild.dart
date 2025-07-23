@@ -10,8 +10,10 @@ class CustomTextFormFeild extends StatefulWidget {
   final bool? isDense;
   final TextInputType textInputType;
   final String? Function(String?)? validator;
-  final TextEditingController? controller;
+  // final TextEditingController? controller;
   final void Function(String)? onFieldSubmitted;
+  final void Function(String)? onChanged;
+
   const CustomTextFormFeild({
     super.key,
     required this.hintText,
@@ -20,8 +22,9 @@ class CustomTextFormFeild extends StatefulWidget {
     this.isDense,
     this.obscureText = false,
     this.onFieldSubmitted,
-    required this.controller,
+    // required this.controller,
     required this.validator,
+    this.onChanged,
   });
 
   @override
@@ -34,9 +37,10 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onChanged: widget.onChanged,
       maxLength: widget.textInputType == TextInputType.multiline ? 50 : null,
       validator: widget.validator,
-      controller: widget.controller,
+      // controller: widget.controller,
       obscureText: (widget.obscureText && isObscure),
       onFieldSubmitted: widget.onFieldSubmitted,
       keyboardType: widget.textInputType,
