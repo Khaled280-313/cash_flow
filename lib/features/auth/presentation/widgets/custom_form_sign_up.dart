@@ -101,7 +101,7 @@ class CustomFormSignUp extends StatelessWidget {
                       text: AppStrings.signUp,
                       onPressed: () {
                         if (authCubit.signUpFormKey.currentState!.validate()) {
-                          authCubit.SignUpWithNameEmailAndPassword();
+                          authCubit.signUpWithNameEmailAndPassword();
                           // customNavigatPushReplacement(
                           //     context: context, path: "/SignIn");
                         }
