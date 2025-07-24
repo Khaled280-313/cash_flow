@@ -8,13 +8,23 @@ import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/custom_snack_bar.dart';
+
 class CustomFormSignIn extends StatelessWidget {
   const CustomFormSignIn({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is SignInSuccessState) {
+          CustomSnackBar(message: AppStrings.signUpSaccess);
+          customNavigatPushReplacement(
+              context: context, path: "/BottomNavigation");
+        } else if (state is SignInFailureState) {
+          CustomSnackBar(message: state.errorMessage);
+        }
+      },
       builder: (context, state) {
         AuthCubit authCubit = BlocProvider.of<AuthCubit>(context);
         return Form(
@@ -67,17 +77,19 @@ class CustomFormSignIn extends StatelessWidget {
                 obscureText: true,
                 suffixIcon: true,
               ),
-              CustomRow(
-                text: AppStrings.signIn,
-                onPressed: () {
-                  if (authCubit.signInFormKey.currentState!.validate()) {
-                    authCubit.SignUpWithNameEmailAndPassword();
-                    customNavigatPushReplacement(
-                        context: context, path: "/BottomNavigatin");
-                    isAuthVisited();
-                  }
-                },
-              )
+              state is SignInLoadingState
+                  ? const Center(child: CircularProgressIndicator())
+                  : CustomRow(
+                      text: AppStrings.signIn,
+                      onPressed: () {
+                        if (authCubit.signInFormKey.currentState!.validate()) {
+                          authCubit.signInWithEmailAndPassword();
+                          // customNavigatPushReplacement(
+                          //     context: context, path: "/BottomNavigation");
+                          isAuthVisited();
+                        }
+                      },
+                    )
             ],
           ),
         );
