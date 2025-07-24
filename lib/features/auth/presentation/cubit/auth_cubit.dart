@@ -18,8 +18,9 @@ class AuthCubit extends Cubit<AuthState> {
     emit(TogglePasswordVisibilityState(isObscure));
   }
 
-  signUpWithNameEmailAndPassword() async {
+ Future  signUpWithNameEmailAndPassword() async {
     emit(SignUpLoadingState());
+   
   }
 
   signInWithEmailAndPassword() {}
