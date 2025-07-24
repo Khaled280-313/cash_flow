@@ -36,7 +36,7 @@ final GoRouter router = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: "/BottomNavigatin",
+    path: "/BottomNavigation",
     builder: (context, state) => BottomNavigationBarHome(),
   ),
   GoRoute(
