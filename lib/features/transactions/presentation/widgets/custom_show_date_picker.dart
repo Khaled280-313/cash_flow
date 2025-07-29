@@ -1,6 +1,6 @@
-import 'package:cash_flow/core/function/get_Date.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/function/get_date.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
@@ -36,7 +36,7 @@ class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
                 setState(() {
                   getDate(context, widget.selectedDate).then((value) {
                     if (value != null) {
-                      widget.selectedDate!= value;
+                      widget.selectedDate != value;
                     }
                   });
                 });
