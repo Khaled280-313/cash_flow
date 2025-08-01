@@ -19,12 +19,12 @@ class SignUpPage extends StatelessWidget {
           child: CustomScrollView(
             physics: BouncingScrollPhysics(),
             slivers: [
-              SliverToBoxAdapter(child: SizedBox(height: 100)),
+              SliverToBoxAdapter(child: SizedBox(height: 50)),
               SliverToBoxAdapter(
                 child: CustomWelcomText(
                     text1: AppStrings.lets, text2: AppStrings.start),
               ),
-              SliverToBoxAdapter(child: SizedBox(height: 50)),
+              SliverToBoxAdapter(child: SizedBox(height: 10)),
               SliverToBoxAdapter(
                 child: CustomFormSignUp(),
               ),

@@ -1,5 +1,5 @@
 class Endpoint {
-  static const String baseUrl = '52.201.248.38:8080';
+  static const String baseUrl = 'http://18.234.52.39:8080';
 
 // AuthenticationController
   static const String registerEndpoint = "/api/register";

@@ -1,5 +1,4 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
-import 'package:cash_flow/core/function/on_boarding_visited.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
@@ -8,21 +7,26 @@ import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/widgets/custom_snack_bar.dart';
-
-class CustomFormSignIn extends StatelessWidget {
+class CustomFormSignIn extends StatefulWidget {
   const CustomFormSignIn({super.key});
 
+  @override
+  State<CustomFormSignIn> createState() => _CustomFormSignInState();
+}
+
+class _CustomFormSignInState extends State<CustomFormSignIn> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
-          CustomSnackBar(message: AppStrings.signUpSaccess);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(AppStrings.signUpSaccess)));
           customNavigatPushReplacement(
               context: context, path: "/BottomNavigation");
         } else if (state is SignInFailureState) {
-          CustomSnackBar(message: state.errorMessage);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
       builder: (context, state) {
@@ -35,26 +39,44 @@ class CustomFormSignIn extends StatelessWidget {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
-                child: Text(AppStrings.email),
+                child: Text(AppStrings.userName),
               ),
+
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.emailError;
-                  } else if (!value.contains("@gmail.com")) {
-                    return AppStrings.emailErrorFormat;
+                    return AppStrings.userNameError;
                   } else if (value.length < 3) {
-                    return AppStrings.emailErrorLength;
+                    return AppStrings.userNameErrorLength;
                   }
                   return null;
                 },
-                onChanged: (email) {
-                  authCubit.signInEmail = email;
+                onChanged: (userName) {
+                  authCubit.signInUserName = userName;
                 },
                 // controller: authCubit.signInEmail,
-                hintText: AppStrings.email,
-                textInputType: TextInputType.emailAddress,
+                hintText: AppStrings.userName,
+                textInputType: TextInputType.name,
               ),
+
+              // CustomTextFormFeild(
+              //   validator: (value) {
+              //     if (value!.isEmpty) {
+              //       return AppStrings.emailError;
+              //     } else if (!value.contains("@gmail.com")) {
+              //       return AppStrings.emailErrorFormat;
+              //     } else if (value.length < 3) {
+              //       return AppStrings.emailErrorLength;
+              //     }
+              //     return null;
+              //   },
+              //   onChanged: (email) {
+              //     authCubit.signInEmail = email;
+              //   },
+              //   // controller: authCubit.signInEmail,
+              //   hintText: AppStrings.email,
+              //   textInputType: TextInputType.emailAddress,
+              // ),
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
                 child: Text(AppStrings.password),
@@ -84,9 +106,8 @@ class CustomFormSignIn extends StatelessWidget {
                       onPressed: () {
                         if (authCubit.signInFormKey.currentState!.validate()) {
                           authCubit.signInWithEmailAndPassword();
-                          // customNavigatPushReplacement(
-                          //     context: context, path: "/BottomNavigation");
-                          isAuthVisited();
+
+                          // isAuthVisited();
                         }
                       },
                     )

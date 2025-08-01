@@ -6,21 +6,25 @@ import 'package:cash_flow/features/auth/presentation/widgets/custom_row.dart';
 import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../core/widgets/custom_snack_bar.dart';
-
-class CustomFormSignUp extends StatelessWidget {
+class CustomFormSignUp extends StatefulWidget {
   const CustomFormSignUp({super.key});
 
+  @override
+  State<CustomFormSignUp> createState() => _CustomFormSignUpState();
+}
+
+class _CustomFormSignUpState extends State<CustomFormSignUp> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignUpSaccessState) {
-          CustomSnackBar(message: AppStrings.signUpSaccess);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(AppStrings.signUpSaccess)));
           customNavigatPushReplacement(context: context, path: "/SignIn");
         } else if (state is SignUpFailureState) {
-          CustomSnackBar(message: state.errorMessage);
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.errorMessage)));
         }
       },
       builder: (context, state) {
@@ -32,7 +36,45 @@ class CustomFormSignUp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
+                child: Text(AppStrings.name),
+              ),
+              CustomTextFormFeild(
+                hintText: AppStrings.name,
+                textInputType: TextInputType.name,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return AppStrings.nameError;
+                  } else if (value.length < 2) {
+                    return AppStrings.nameErrorLength;
+                  }
+                  return null;
+                },
+                onChanged: (name) {
+                  authCubit.signUpName = name;
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
+                child: Text(AppStrings.lastName),
+              ),
+              CustomTextFormFeild(
+                hintText: AppStrings.lastName,
+                textInputType: TextInputType.name,
+                validator: (value) {
+                  if (value!.isEmpty) {
+                    return AppStrings.lastNameError;
+                  } else if (value.length < 2) {
+                    return AppStrings.lastNameErrorLength;
+                  }
+                  return null;
+                },
+                onChanged: (lastName) {
+                  authCubit.signUpLastName = lastName;
+                },
+              ),
+              Padding(
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
                 child: Text(AppStrings.userName),
               ),
               CustomTextFormFeild(
@@ -45,14 +87,14 @@ class CustomFormSignUp extends StatelessWidget {
                   return null;
                 },
                 // controller: authCubit.signUpName,
-                onChanged: (name) {
-                  authCubit.signUpName = name;
+                onChanged: (userName) {
+                  authCubit.signUpUserName = userName;
                 },
                 hintText: AppStrings.userName,
                 textInputType: TextInputType.name,
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
                 child: Text(AppStrings.email),
               ),
               CustomTextFormFeild(
@@ -74,7 +116,7 @@ class CustomFormSignUp extends StatelessWidget {
                 textInputType: TextInputType.emailAddress,
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
+                padding: EdgeInsets.fromLTRB(15, 15, 0, 5),
                 child: Text(AppStrings.password),
               ),
               CustomTextFormFeild(

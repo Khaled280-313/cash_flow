@@ -13,9 +13,7 @@ class SignUpFailureState extends AuthState {
 }
 
 class SignInSuccessState extends AuthState {
-  final String token;
-
-  SignInSuccessState({required this.token});
+  SignInSuccessState();
 }
 
 class SignInLoadingState extends AuthState {}

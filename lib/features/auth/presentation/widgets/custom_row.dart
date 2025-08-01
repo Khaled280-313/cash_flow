@@ -11,7 +11,7 @@ class CustomRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 18, top: 40, right: 10, bottom: 50),
+      padding: const EdgeInsets.only(left: 18, top: 40, right: 10, bottom: 30),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
