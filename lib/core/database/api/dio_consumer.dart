@@ -1,5 +1,4 @@
 import 'package:cash_flow/core/database/api/api_consumer.dart';
-import 'package:cash_flow/core/database/api/api_interceptors.dart';
 import 'package:cash_flow/core/database/api/endpoint.dart';
 import 'package:cash_flow/core/errors/exception.dart';
 import 'package:dio/dio.dart';
@@ -12,7 +11,7 @@ class DioConsumer extends ApiConsumer {
     //هنا نقوم بتحديد الرابط الذي سنقوم بالاتصال به
     dio.options.baseUrl = Endpoint.baseUrl;
 // هذا الانترسيبتور يمكننا من تعديل الطلبات قبل ارسالها
-    dio.interceptors.add(ApiInterceptors());
+    // dio.interceptors.add(ApiInterceptors());
     //هذا الانترسيبتور يمكننا من نرى الرساله المرسله والرساله المستلمه
     dio.interceptors.add(LogInterceptor(
       request: true,
