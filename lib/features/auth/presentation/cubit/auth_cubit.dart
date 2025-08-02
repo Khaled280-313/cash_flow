@@ -49,8 +49,14 @@ class AuthCubit extends Cubit<AuthState> {
       ).timeout(const Duration(seconds: 10));
 
       if (!isClosed) emit(SignUpSaccessState());
+    } on SocketException {
+      emit(SignUpFailureState(errorMessage: "No Internet Connection"));
     } on ServerException catch (e) {
       emit(SignUpFailureState(errorMessage: e.errorModel.errorMassage));
+    } catch (e) {
+      if (!isClosed) {
+        emit(SignUpFailureState(errorMessage: e.toString()));
+      }
     }
   }
 
@@ -88,9 +94,7 @@ class AuthCubit extends Cubit<AuthState> {
         emit(SignInFailureState(errorMessage: e.errorModel.errorMassage));
       }
     } catch (e) {
-      if (!isClosed) {
-        emit(SignInFailureState(errorMessage: e.toString()));
-      }
+      if (!isClosed) emit(SignInFailureState(errorMessage: e.toString()));
     }
   }
 }
