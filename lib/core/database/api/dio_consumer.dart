@@ -10,7 +10,10 @@ class DioConsumer extends ApiConsumer {
   DioConsumer({required this.dio}) {
     //هنا نقوم بتحديد الرابط الذي سنقوم بالاتصال به
     dio.options.baseUrl = Endpoint.baseUrl;
-// هذا الانترسيبتور يمكننا من تعديل الطلبات قبل ارسالها
+    dio.options.connectTimeout = const Duration(seconds: 10);
+    dio.options.receiveTimeout = const Duration(seconds: 10);
+
+    // هذا الانترسيبتور يمكننا من تعديل الطلبات قبل ارسالها
     // dio.interceptors.add(ApiInterceptors());
     //هذا الانترسيبتور يمكننا من نرى الرساله المرسله والرساله المستلمه
     dio.interceptors.add(LogInterceptor(

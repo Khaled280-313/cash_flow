@@ -81,10 +81,6 @@ class AuthCubit extends Cubit<AuthState> {
           .saveData(key: ApiKey.username, value: decodedToken[ApiKey.username]);
 
       if (!isClosed) emit(SignInSuccessState());
-    } on RawSocketEvent {
-      if (!isClosed) {
-        emit(SignInFailureState(errorMessage: "No Internet Connection"));
-      }
     } on SocketException {
       if (!isClosed) {
         emit(SignInFailureState(errorMessage: "No Internet Connection"));
