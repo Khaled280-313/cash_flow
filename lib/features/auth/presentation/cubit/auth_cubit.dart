@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 import 'package:cash_flow/core/database/api/endpoint.dart';
 import 'package:cash_flow/core/database/cache/cache_helper.dart';
 import 'package:cash_flow/core/errors/exception.dart';
@@ -44,7 +46,7 @@ class AuthCubit extends Cubit<AuthState> {
           ApiKey.email: signUpEmail,
           ApiKey.password: signUpPassword
         },
-      );
+      ).timeout(const Duration(seconds: 10));
 
       if (!isClosed) emit(SignUpSaccessState());
     } on ServerException catch (e) {
@@ -62,7 +64,7 @@ class AuthCubit extends Cubit<AuthState> {
           ApiKey.email: signInUserName,
           ApiKey.password: signInPassword,
         },
-      );
+      ).timeout(const Duration(seconds: 10));
 
       user = SignInModel.fromMap(response);
       var decodedToken = JwtDecoder.decode(user!.token);
@@ -73,9 +75,21 @@ class AuthCubit extends Cubit<AuthState> {
           .saveData(key: ApiKey.username, value: decodedToken[ApiKey.username]);
 
       if (!isClosed) emit(SignInSuccessState());
+    } on RawSocketEvent {
+      if (!isClosed) {
+        emit(SignInFailureState(errorMessage: "No Internet Connection"));
+      }
+    } on SocketException {
+      if (!isClosed) {
+        emit(SignInFailureState(errorMessage: "No Internet Connection"));
+      }
     } on ServerException catch (e) {
       if (!isClosed) {
         emit(SignInFailureState(errorMessage: e.errorModel.errorMassage));
+      }
+    } catch (e) {
+      if (!isClosed) {
+        emit(SignInFailureState(errorMessage: e.toString()));
       }
     }
   }
