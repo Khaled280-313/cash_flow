@@ -1,6 +1,5 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
-
+import 'package:intl/intl.dart';
 import 'package:cash_flow/core/database/api/endpoint.dart';
 import 'package:cash_flow/core/database/cache/cache_helper.dart';
 import 'package:cash_flow/core/errors/exception.dart';
@@ -11,8 +10,6 @@ import 'package:cash_flow/core/database/api/api_consumer.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 
-import '../../model/sign_in_model.dart';
-
 class AuthCubit extends Cubit<AuthState> {
   final ApiConsumer api;
   AuthCubit(this.api) : super(AuthInitial());
@@ -22,11 +19,14 @@ class AuthCubit extends Cubit<AuthState> {
   String? signUpUserName;
   String? signUpEmail;
   String? signUpPassword;
+  DateTime? selectedDate = DateTime.now();
+  String get formattedBirthDate =>
+      DateFormat('yyyy-MM-dd').format(selectedDate!);
   GlobalKey<FormState> signInFormKey = GlobalKey();
   // String? signInEmail;
   String? signInUserName;
   String? signInPassword;
-  SignInModel? user;
+  // SignInModel? user;
 
   bool isObscure = true;
   void togglePasswordVisibility() {
@@ -40,15 +40,20 @@ class AuthCubit extends Cubit<AuthState> {
       final response = await api.post(
         endpoint: Endpoint.registerEndpoint,
         data: {
-          ApiKey.name: signUpName,
-          ApiKey.lastName: signUpLastName,
           ApiKey.username: signUpUserName,
+          ApiKey.password: signUpPassword,
           ApiKey.email: signUpEmail,
-          ApiKey.password: signUpPassword
+          ApiKey.firstName: signUpName,
+          ApiKey.lastName: signUpLastName,
+          ApiKey.profileImage: null,
+          ApiKey.bio: "",
+          ApiKey.job: "",
+          ApiKey.birthDate: formattedBirthDate,
         },
-      ).timeout(const Duration(seconds: 10));
+      );
 
       if (!isClosed) emit(SignUpSaccessState());
+      return response;
     } on SocketException {
       emit(SignUpFailureState(errorMessage: "No Internet Connection"));
     } on ServerException catch (e) {
@@ -60,27 +65,27 @@ class AuthCubit extends Cubit<AuthState> {
     }
   }
 
-  Future signInWithEmailAndPassword() async {
+  Future signInWithUserNameAndPassword() async {
     try {
       if (!isClosed) emit(SignInLoadingState());
 
       final response = await api.post(
         endpoint: Endpoint.loginEndpoint,
         data: {
-          ApiKey.email: signInUserName,
+          ApiKey.username: signInUserName,
           ApiKey.password: signInPassword,
         },
-      ).timeout(const Duration(seconds: 10));
+      );
 
-      user = SignInModel.fromMap(response);
-      var decodedToken = JwtDecoder.decode(user!.token);
-
-      await getIt<CacheHelper>()
-          .saveData(key: ApiKey.token, value: user!.token);
-      await getIt<CacheHelper>()
-          .saveData(key: ApiKey.username, value: decodedToken[ApiKey.username]);
+      var token = getIt<CacheHelper>().getData(key: ApiKey.token);
+      if (token != null) {
+        var decodedToken = JwtDecoder.decode(token);
+        await getIt<CacheHelper>().saveData(
+            key: ApiKey.username, value: decodedToken[ApiKey.username]);
+      }
 
       if (!isClosed) emit(SignInSuccessState());
+      return response;
     } on SocketException {
       if (!isClosed) {
         emit(SignInFailureState(errorMessage: "No Internet Connection"));
