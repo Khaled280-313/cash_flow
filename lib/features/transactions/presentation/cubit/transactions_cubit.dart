@@ -11,6 +11,6 @@ class TransactionsCubit extends Cubit<TransactionsState> {
   TextEditingController titleController = TextEditingController();
   TextEditingController descriptionController = TextEditingController();
   DateTime selectedDate = DateTime.now();
-  TimeOfDay selectedTime = TimeOfDay.now();
+
   String type = 'expenses'; // <-- Initialize with a default value
 }

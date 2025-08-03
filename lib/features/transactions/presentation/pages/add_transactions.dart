@@ -79,8 +79,11 @@ class AddTransactions extends StatelessWidget {
                                 }
                                 return null;
                               }),
-                          CustomShowDatePicker(
-                            selectedDate: transactionsCubit.selectedDate,
+                          CustomDatePicker(
+                            initialDate: transactionsCubit.selectedDate,
+                            onDateChanged: (date) {
+                              transactionsCubit.selectedDate = date;
+                            },
                           ),
                           // CustomShowTimePicker(
                           //   selectTime: transactionsCubit.selectedTime,

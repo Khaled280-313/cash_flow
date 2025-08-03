@@ -1,67 +1,70 @@
+import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
-import '../../../../core/function/get_date.dart';
-import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
-import '../../../../core/utils/app_text_style.dart';
+class CustomDatePicker extends StatefulWidget {
+  final DateTime initialDate;
+  final ValueChanged<DateTime> onDateChanged;
 
-class CustomShowDatePicker extends StatefulWidget {
-  final DateTime selectedDate;
-  const CustomShowDatePicker({
+  const CustomDatePicker({
     super.key,
-    required this.selectedDate,
+    required this.initialDate,
+    required this.onDateChanged,
   });
 
   @override
-  State<CustomShowDatePicker> createState() => _CustomShowDatePickerState();
+  _CustomDatePickerState createState() => _CustomDatePickerState();
 }
 
-class _CustomShowDatePickerState extends State<CustomShowDatePicker> {
+class _CustomDatePickerState extends State<CustomDatePicker> {
+  late DateTime _selectedDate;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedDate = widget.initialDate;
+  }
+
+  Future<void> _pickDate() async {
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(1900),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
+    );
+    if (picked != null && picked != _selectedDate) {
+      setState(() => _selectedDate = picked);
+      widget.onDateChanged(picked);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 350,
-      height: 56,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          MaterialButton(
-              color: AppColor.primary,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              minWidth: 164,
-              height: 43,
-              onPressed: () {
-                setState(() {
-                  getDate(context, widget.selectedDate).then((value) {
-                    if (value != null) {
-                      widget.selectedDate != value;
-                    }
-                  });
-                });
-              },
-              child: Row(
-                spacing: 10,
-                children: [
-                  Icon(
-                    Icons.calendar_month,
-                    color: AppColor.white,
-                  ),
-                  Text(
-                    AppStrings.selectDate,
-                    style: AppTextStyle.montserrat500Style16.copyWith(
-                      color: AppColor.white,
-                    ),
-                  ),
-                ],
-              )),
-          Text(
-            widget.selectedDate.toString().split(' ')[0],
-            style: AppTextStyle.montserrat300Style16.copyWith(fontSize: 18),
+    // Format date as yyyy-MM-dd
+    final formatted = DateFormat('yyyy-MM-dd').format(_selectedDate);
+    return Row(
+      spacing: 50,
+      children: [
+        ElevatedButton.icon(
+          onPressed: _pickDate,
+          icon: const Icon(Icons.calendar_today, color: AppColor.white),
+          label: const Text(
+            'Select Date',
+            style: TextStyle(color: AppColor.white),
           ),
-        ],
-      ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColor.primary,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+          ),
+        ),
+        const SizedBox(width: 16),
+        Text(formatted,
+            style: AppTextStyle.montserrat500Style16.copyWith(fontSize: 18)),
+      ],
     );
   }
 }

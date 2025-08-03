@@ -2,10 +2,13 @@ import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
-import 'package:cash_flow/features/auth/presentation/widgets/custom_row.dart';
 import 'package:cash_flow/core/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../core/utils/app_color.dart';
+import '../../../../core/utils/app_text_style.dart';
+import '../../../onboarding/presentation/widgets/custom_botton.dart';
 
 class CustomFormSignIn extends StatefulWidget {
   const CustomFormSignIn({super.key});
@@ -99,18 +102,42 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                 obscureText: true,
                 suffixIcon: true,
               ),
-              state is SignInLoadingState
-                  ? const Center(child: CircularProgressIndicator())
-                  : CustomRow(
-                      text: AppStrings.signIn,
-                      onPressed: () {
-                        if (authCubit.signInFormKey.currentState!.validate()) {
-                          authCubit.signInWithEmailAndPassword();
-
-                          // isAuthVisited();
-                        }
-                      },
-                    )
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 18, top: 40, right: 10, bottom: 30),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      AppStrings.signIn,
+                      style:
+                          AppTextStyle.kaushan400Style64.copyWith(fontSize: 30),
+                    ),
+                    state is SignInLoadingState
+                        ? CustomBotton(
+                            height: 50,
+                            onPressed: () {},
+                            color: AppColor.primary,
+                            child: CircularProgressIndicator(
+                                color: AppColor.white),
+                          )
+                        : CustomBotton(
+                            height: 50,
+                            onPressed: () {
+                              if (authCubit.signInFormKey.currentState!
+                                  .validate()) {
+                                authCubit.signInWithUserNameAndPassword();
+                              }
+                            },
+                            color: AppColor.primary,
+                            child: Icon(
+                              Icons.arrow_forward,
+                              color: AppColor.white,
+                              size: 30,
+                            ))
+                  ],
+                ),
+              )
             ],
           ),
         );
