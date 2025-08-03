@@ -3,6 +3,9 @@ import 'package:cash_flow/core/database/api/endpoint.dart';
 import 'package:cash_flow/core/errors/exception.dart';
 import 'package:dio/dio.dart';
 
+import '../../services/servic_locator.dart';
+import '../cache/cache_helper.dart';
+
 //هذا الكلاس يقوم بتنفيذ الطلبات الى السيرفر
 class DioConsumer extends ApiConsumer {
   final Dio dio;
@@ -12,6 +15,10 @@ class DioConsumer extends ApiConsumer {
     dio.options.baseUrl = Endpoint.baseUrl;
     dio.options.connectTimeout = const Duration(seconds: 10);
     dio.options.receiveTimeout = const Duration(seconds: 10);
+    dio.options.headers = {
+      "Content-Type": "application/json",
+      "Accept": "application/json",
+    };
 
     // هذا الانترسيبتور يمكننا من تعديل الطلبات قبل ارسالها
     // dio.interceptors.add(ApiInterceptors());
@@ -58,6 +65,23 @@ class DioConsumer extends ApiConsumer {
         data: data,
         queryParameters: queryParameters,
       );
+      final rawCookies = response.headers['set-cookie'];
+
+      if (rawCookies != null && rawCookies.isNotEmpty) {
+        for (var rawCookie in rawCookies) {
+          final cookies = rawCookie.split(';');
+          for (var cookie in cookies) {
+            if (cookie.trim().startsWith('token=')) {
+              final token = cookie.trim().substring('token='.length);
+              await getIt<CacheHelper>()
+                  .saveData(key: ApiKey.token, value: token);
+
+              break;
+            }
+          }
+        }
+      }
+
       return response.data;
     } on DioException catch (e) {
       handelExceptionDio(e);
