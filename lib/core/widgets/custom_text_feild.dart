@@ -47,7 +47,7 @@ class _CustomTextFormFeildState extends State<CustomTextFormFeild> {
       cursorColor: AppColor.primary,
       decoration: InputDecoration(
         contentPadding:
-            const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+            const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
         isDense: (widget.isDense != null) ? widget.isDense : false,
         enabled: true,
         filled: true,
