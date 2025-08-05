@@ -1,5 +1,5 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
-import 'package:cash_flow/core/function/on_boarding_visited.dart';
+import 'package:cash_flow/core/function/on_boarding_and_auth_visited.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
