@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cash_flow/core/database/api/api_consumer.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
-import 'package:jwt_decoder/jwt_decoder.dart';
 
 class AuthCubit extends Cubit<AuthState> {
   final ApiConsumer api;
@@ -77,11 +76,9 @@ class AuthCubit extends Cubit<AuthState> {
         },
       );
 
-      var token = getIt<CacheHelper>().getData(key: ApiKey.token);
-      if (token != null) {
-        var decodedToken = JwtDecoder.decode(token);
-        await getIt<CacheHelper>().saveData(
-            key: ApiKey.username, value: decodedToken[ApiKey.username]);
+      final cookie = response.headers['set-cookie']?.first;
+      if (cookie != null) {
+        await getIt<CacheHelper>().saveData(key: 'auth_cookie', value: cookie);
       }
 
       if (!isClosed) emit(SignInSuccessState());

@@ -1,8 +1,10 @@
 import 'package:cash_flow/core/database/cache/cache_helper.dart';
+import 'package:data_connection_checker_tv/data_connection_checker.dart';
 
 import 'package:get_it/get_it.dart';
 
 import '../../features/transactions/presentation/cubit/transactions_cubit.dart';
+import '../connection/network_info.dart';
 
 final getIt = GetIt.instance;
 void setupServiceLocator() {
@@ -11,6 +13,11 @@ void setupServiceLocator() {
   getIt.registerSingleton<CacheHelper>(CacheHelper());
   // getIt.registerSingleton<AuthCubit>(AuthCubit(DioConsumer(dio: Dio())));
   getIt.registerSingleton<TransactionsCubit>(TransactionsCubit());
+  getIt.registerLazySingleton<DataConnectionChecker>(
+      () => DataConnectionChecker());
+
+  getIt.registerLazySingleton<NetworkInfo>(() =>
+      NetworkInfoImpl(dataConnectionChecker: getIt<DataConnectionChecker>()));
 
   // getIt.registerSingleton<SizeConfig>(SizeConfig());
   // getIt.registerLazySingleton(() => DatabaseHelper());

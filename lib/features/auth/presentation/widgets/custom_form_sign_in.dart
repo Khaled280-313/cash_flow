@@ -1,4 +1,5 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
+import 'package:cash_flow/core/function/on_boarding_and_auth_visited.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
@@ -23,6 +24,7 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is SignInSuccessState) {
+          isAuthVisited();
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(AppStrings.signUpSaccess)));
           customNavigatPushReplacement(
@@ -44,7 +46,6 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
                 child: Text(AppStrings.userName),
               ),
-
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -61,25 +62,6 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                 hintText: AppStrings.userName,
                 textInputType: TextInputType.name,
               ),
-
-              // CustomTextFormFeild(
-              //   validator: (value) {
-              //     if (value!.isEmpty) {
-              //       return AppStrings.emailError;
-              //     } else if (!value.contains("@gmail.com")) {
-              //       return AppStrings.emailErrorFormat;
-              //     } else if (value.length < 3) {
-              //       return AppStrings.emailErrorLength;
-              //     }
-              //     return null;
-              //   },
-              //   onChanged: (email) {
-              //     authCubit.signInEmail = email;
-              //   },
-              //   // controller: authCubit.signInEmail,
-              //   hintText: AppStrings.email,
-              //   textInputType: TextInputType.emailAddress,
-              // ),
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
                 child: Text(AppStrings.password),
