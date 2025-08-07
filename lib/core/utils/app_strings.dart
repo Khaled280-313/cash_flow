@@ -69,7 +69,9 @@ abstract class AppStrings {
       requiredField = "This field is required",
       noResultsFound = "No results found",
       signUpSaccess = "Sign Up Saccess",
-      profile = "Profile" , profileSetting = "Profile Settings", editAccount = "Edit Account",
+      profile = "Profile",
+      profileSetting = "Profile Settings",
+      editAccount = "Edit Account",
       logout = "Logout",
       settings = "Settings",
       notifications = "Notifications",
@@ -86,5 +88,6 @@ abstract class AppStrings {
       theme = "Theme",
       darkMode = "Dark Mode",
       lightMode = "Light Mode",
-      systemDefault = "System Default";
+      systemDefault = "System Default",
+      app = "App";
 }
