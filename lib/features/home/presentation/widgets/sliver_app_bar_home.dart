@@ -1,3 +1,4 @@
+import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
@@ -32,7 +33,9 @@ class SliverAppBarHome extends StatelessWidget {
         ),
         IconButton(
           iconSize: 30,
-          onPressed: () {},
+          onPressed: () {
+            customNavigatPush(context: context, path: "/SettingPage");
+          },
           icon: Icon(
             Icons.settings,
             color: AppColor.black,
