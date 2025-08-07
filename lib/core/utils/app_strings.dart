@@ -69,5 +69,22 @@ abstract class AppStrings {
       requiredField = "This field is required",
       noResultsFound = "No results found",
       signUpSaccess = "Sign Up Saccess",
-      profile = "Profile" , profileSetting = "Profile Settings" ;
+      profile = "Profile" , profileSetting = "Profile Settings", editAccount = "Edit Account",
+      logout = "Logout",
+      settings = "Settings",
+      notifications = "Notifications",
+      privacy = "Privacy",
+      about = "About",
+      help = "Help",
+      termsOfService = "Terms of Service",
+      privacyPolicy = "Privacy Policy",
+      contactUs = "Contact Us",
+      feedback = "Feedback",
+      version = "Version",
+      language = "Language",
+      currency = "Currency",
+      theme = "Theme",
+      darkMode = "Dark Mode",
+      lightMode = "Light Mode",
+      systemDefault = "System Default";
 }
