@@ -6,7 +6,6 @@ import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
-
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
 
@@ -22,7 +21,7 @@ class _SplashViewState extends State<SplashView> {
     bool isAuthVisited =
         getIt<CacheHelper>().getData(key: "isAuthVisited") ?? false;
     if (isAuthVisited == true) {
-      delayedNavigator(context, "/BottomNavigatin");
+      delayedNavigator(context, "/BottomNavigation");
     } else if (isOnBoardingVisited == true) {
       delayedNavigator(context, "/SignUp");
     } else {
