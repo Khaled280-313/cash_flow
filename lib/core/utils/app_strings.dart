@@ -30,12 +30,11 @@ abstract class AppStrings {
       name = "Name",
       nameError = "Please enter your name",
       nameErrorLength = "name must be at least 3 characters",
-      lastName ="Last Name",
+      lastName = "Last Name",
       lastNameError = "Please enter your Last name",
       lastNameErrorLength = "Last name must be at least 3 characters",
       userName = "User Name",
       userNameError = "Please enter your user name",
-      
       userNameErrorLength = "User name must be at least 3 characters",
       emailError = "Please enter your email",
       emailErrorFormat = "Email format is incorrect",
@@ -69,5 +68,6 @@ abstract class AppStrings {
       selectTime = "Select Time",
       requiredField = "This field is required",
       noResultsFound = "No results found",
-      signUpSaccess = "Sign Up Saccess";
+      signUpSaccess = "Sign Up Saccess",
+      profile = "Profile" , profileSetting = "Profile Settings" ;
 }
