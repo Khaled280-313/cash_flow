@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/repositories/bank_acount_transaction.dart';
 import '../../data/repositories/cash_transaction.dart';
 import 'custum_row_acount.dart';
@@ -33,7 +33,7 @@ class CustumWidgetAcount extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(AppStrings.account,
+                Text(S.of(context).account,
                     style: AppTextStyle.montserratBoldStyle20),
                 Icon(
                   Icons.arrow_forward_ios_outlined,
@@ -48,13 +48,13 @@ class CustumWidgetAcount extends StatelessWidget {
                   CustumRowAcount(
                       data: cashTransaction,
                       color: Colors.green,
-                      title: AppStrings.cash,
+                      title: S.of(context).cash,
                       amount: "1000\$",
                       icon: Icons.payments),
                   CustumRowAcount(
                       data: bankAcountTransaction,
                       color: Colors.blue,
-                      title: AppStrings.bankAccount,
+                      title: S.of(context).bankAccount,
                       amount: "5000\$",
                       icon: Icons.account_balance_outlined),
                 ],

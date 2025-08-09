@@ -1,3 +1,4 @@
+import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
@@ -22,7 +23,9 @@ class CustomProfil extends StatelessWidget {
             child: ListTile(
               tileColor: AppColor.white,
               title: Text(AppStrings.profile),
-              onTap: () {},
+              onTap: () {
+                customNavigatPush(context: context, path: "/ProfilePage");
+              },
               leading: Icon(Icons.person),
             ),
           ),

@@ -1,10 +1,11 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/utils/app_color.dart';
-import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_welcom_text.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_form_sign_up.dart';
 import 'package:cash_flow/features/auth/presentation/widgets/custom_row_text.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../generated/l10n.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
@@ -22,7 +23,7 @@ class SignUpPage extends StatelessWidget {
               SliverToBoxAdapter(child: SizedBox(height: 10)),
               SliverToBoxAdapter(
                 child: CustomWelcomText(
-                    text1: AppStrings.lets, text2: AppStrings.start),
+                    text1: S.of(context).lets, text2: S.of(context).start),
               ),
               SliverToBoxAdapter(child: SizedBox(height: 10)),
               SliverToBoxAdapter(
@@ -34,8 +35,8 @@ class SignUpPage extends StatelessWidget {
                     customNavigatPushReplacement(
                         context: context, path: '/SignIn');
                   },
-                  text1: AppStrings.alreadyHaveAccount,
-                  text2: AppStrings.signIn,
+                  text1: S.of(context).alreadyHaveAccount,
+                  text2: S.of(context).signIn,
                 ),
               )
             ],

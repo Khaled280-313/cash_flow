@@ -1,6 +1,5 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/function/on_boarding_and_auth_visited.dart';
-import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_state.dart';
 import 'package:cash_flow/core/widgets/custom_text_feild.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../onboarding/presentation/widgets/custom_botton.dart';
 
 class CustomFormSignIn extends StatefulWidget {
@@ -26,7 +26,7 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
         if (state is SignInSuccessState) {
           isAuthVisited();
           ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(AppStrings.signUpSaccess)));
+              .showSnackBar(SnackBar(content: Text(S.of(context).signUpSaccess)));
           customNavigatPushReplacement(
               context: context, path: "/BottomNavigation");
         } else if (state is SignInFailureState) {
@@ -44,14 +44,14 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
             children: [
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
-                child: Text(AppStrings.userName),
+                child: Text(S.of(context).userName),
               ),
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.userNameError;
+                    return S.of(context).userNameError;
                   } else if (value.length < 3) {
-                    return AppStrings.userNameErrorLength;
+                    return S.of(context).userNameErrorLength;
                   }
                   return null;
                 },
@@ -59,19 +59,19 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                   authCubit.signInUserName = userName;
                 },
                 // controller: authCubit.signInEmail,
-                hintText: AppStrings.userName,
+                hintText: S.of(context).userName,
                 textInputType: TextInputType.name,
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(15, 20, 0, 5),
-                child: Text(AppStrings.password),
+                child: Text(S.of(context).password),
               ),
               CustomTextFormFeild(
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return AppStrings.passwordError;
+                    return S.of(context).passwordError;
                   } else if (value.length < 6) {
-                    return AppStrings.passwordErrorLength;
+                    return S.of(context).passwordErrorLength;
                   }
                   return null;
                 },
@@ -79,7 +79,7 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                 onChanged: (password) {
                   authCubit.signInPassword = password;
                 },
-                hintText: AppStrings.password,
+                hintText: S.of(context).password,
                 textInputType: TextInputType.emailAddress,
                 obscureText: true,
                 suffixIcon: true,
@@ -91,7 +91,7 @@ class _CustomFormSignInState extends State<CustomFormSignIn> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      AppStrings.signIn,
+                      S.of(context).signIn,
                       style:
                           AppTextStyle.kaushan400Style64.copyWith(fontSize: 30),
                     ),

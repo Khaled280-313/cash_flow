@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../../onboarding/presentation/widgets/custom_botton.dart';
 
 class CustomButtonBottomSheet extends StatefulWidget {
@@ -53,11 +53,11 @@ class _CustomButtonBottomSheetState extends State<CustomButtonBottomSheet> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Text(AppStrings.totalBalanceFilter,
+                      child: Text(S.of(context).totalBalanceFilter,
                           style: AppTextStyle.montserratBoldStyle20),
                     ),
                     ListTile(
-                      title: Text(AppStrings.allAccounts),
+                      title: Text(S.of(context).allAccounts),
                       trailing: Checkbox(
                           value: isChecked1,
                           onChanged: (value) {
@@ -74,7 +74,7 @@ class _CustomButtonBottomSheetState extends State<CustomButtonBottomSheet> {
                       height: 1,
                     ),
                     ListTile(
-                      title: Text(AppStrings.cash),
+                      title: Text(S.of(context).cash),
                       subtitle: Text("1000 \$"),
                       trailing: Checkbox(
                           value: isChecked2,
@@ -88,7 +88,7 @@ class _CustomButtonBottomSheetState extends State<CustomButtonBottomSheet> {
                       },
                     ),
                     ListTile(
-                      title: Text(AppStrings.bankAccount),
+                      title: Text(S.of(context).bankAccount),
                       subtitle: Text("1000 \$"),
                       trailing: Checkbox(
                           value: isChecked3,
@@ -111,7 +111,7 @@ class _CustomButtonBottomSheetState extends State<CustomButtonBottomSheet> {
                           },
                           color: AppColor.primary,
                           child: Text(
-                            AppStrings.done,
+                            S.of(context).done,
                             style: AppTextStyle.montserrat500Style24
                                 .copyWith(color: AppColor.white, fontSize: 20),
                           )),

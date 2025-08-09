@@ -1,8 +1,8 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 import '../../data/repositories/category_data.dart';
 
 class CustomChartCategory extends StatefulWidget {
@@ -52,7 +52,7 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                         children: [
                           Expanded(
                             child: ListTile(
-                              title: Text(AppStrings.category),
+                              title: Text(S.of(context).category),
                               subtitle: Text(
                                   "${DateTime.parse(DateTime.now().toString()).day} / ${DateTime.parse(DateTime.now().toString()).month} / ${DateTime.parse(DateTime.now().toString()).year}"),
                             ),
@@ -77,8 +77,8 @@ class _CustomChartCategoryState extends State<CustomChartCategory> {
                                 left: 39,
                                 child: Text(
                                     check
-                                        ? AppStrings.expenses
-                                        : AppStrings.income,
+                                        ? S.of(context).expenses
+                                        : S.of(context).income,
                                     style: AppTextStyle.montserrat500Style16
                                         .copyWith(color: AppColor.primary)),
                               ),

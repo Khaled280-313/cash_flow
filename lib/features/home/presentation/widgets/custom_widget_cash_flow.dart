@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomWidegtCashFlow extends StatelessWidget {
   const CustomWidegtCashFlow({
@@ -40,7 +40,7 @@ class CustomWidegtCashFlow extends StatelessWidget {
                   children: [
                     Expanded(
                       child: ListTile(
-                        title: Text(AppStrings.appName),
+                        title: Text(S.of(context).appName),
                         subtitle: Text(
                             "${DateTime.parse(DateTime.now().toString()).day} / ${DateTime.parse(DateTime.now().toString()).month} / ${DateTime.parse(DateTime.now().toString()).year}"),
                       ),
@@ -57,7 +57,7 @@ class CustomWidegtCashFlow extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListTile(
-                    title: Text(AppStrings.income,
+                    title: Text(S.of(context).income,
                         style: AppTextStyle.montserrat500Style16),
                     horizontalTitleGap: 1,
                     leading: Container(
@@ -90,7 +90,7 @@ class CustomWidegtCashFlow extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListTile(
-                    title: Text(AppStrings.expenses,
+                    title: Text(S.of(context).expenses,
                         style: AppTextStyle.montserrat500Style16),
                     horizontalTitleGap: 1,
                     leading: Container(
@@ -127,7 +127,7 @@ class CustomWidegtCashFlow extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListTile(
-                    title: Text("${AppStrings.totalBalance} :",
+                    title: Text("${S.of(context).totalBalance} :",
                         style: AppTextStyle.montserrat500Style16),
                     horizontalTitleGap: 1,
                     leading: Container(

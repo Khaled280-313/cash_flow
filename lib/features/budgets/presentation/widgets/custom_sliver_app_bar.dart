@@ -3,6 +3,7 @@ import 'package:cash_flow/features/budgets/presentation/pages/add_budgets.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({
@@ -12,7 +13,7 @@ class CustomSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: const Text('Budgets'),
+      title: Text(S.of(context).budgets),
       pinned: true,
       floating: true,
       backgroundColor: AppColor.background,

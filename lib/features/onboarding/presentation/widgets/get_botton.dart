@@ -2,11 +2,12 @@ import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:cash_flow/core/function/on_boarding_and_auth_visited.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/core/utils/app_color.dart';
-import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_botton.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_botton_skip.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../generated/l10n.dart';
 
 class GetBotton extends StatelessWidget {
   final PageController pageController;
@@ -30,7 +31,7 @@ class GetBotton extends StatelessWidget {
                 customNavigatPushReplacement(context: context, path: "/SignIn");
               },
               child: Text(
-                AppStrings.signIn,
+                S.of(context).signIn,
                 style: AppTextStyle.montserrat300Style16.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -53,7 +54,7 @@ class GetBotton extends StatelessWidget {
                 customNavigatPushReplacement(context: context, path: "/SignUp");
               },
               child: Text(
-                AppStrings.createAccount,
+                S.of(context).createAccount,
                 style: AppTextStyle.montserrat300Style16.copyWith(
                   color: AppColor.primary,
                   fontWeight: FontWeight.w600,
@@ -79,8 +80,8 @@ class GetBotton extends StatelessWidget {
                       duration: Duration(milliseconds: 300),
                       curve: Curves.easeInOutCubicEmphasized);
                 },
-                child: const Text(
-                  AppStrings.next,
+                child: Text(
+                  S.of(context).next,
                   style: TextStyle(color: AppColor.white),
                 ),
               ),

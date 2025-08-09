@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 import 'custom_button_bottom_sheet.dart';
 
 class CustomTitleChart extends StatelessWidget {
@@ -15,7 +15,7 @@ class CustomTitleChart extends StatelessWidget {
         padding: const EdgeInsets.only(
           left: 20,
         ),
-        child: Text(AppStrings.totalBalance,
+        child: Text(S.of(context).totalBalance,
             style: AppTextStyle.montserratBoldStyle20),
       ),
       CustomButtonBottomSheet()
