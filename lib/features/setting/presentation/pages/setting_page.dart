@@ -77,6 +77,13 @@ class _CustomSittingAppState extends State<CustomSittingApp> {
                             child: ListBody(
                               children: <Widget>[
                                 ListTile(
+                                  title: Text("System Default"),
+                                  onTap: () {
+                                    // Change theme to System Default
+                                    Navigator.of(context).pop();
+                                  },
+                                ),
+                                ListTile(
                                   title: Text("Light"),
                                   onTap: () {
                                     // Change theme to Light
