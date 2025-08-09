@@ -1,3 +1,4 @@
+import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_onboarding_body.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/get_botton.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        backgroundColor: AppColor.background,
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16,

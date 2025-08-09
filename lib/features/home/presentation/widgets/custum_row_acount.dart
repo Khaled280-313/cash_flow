@@ -21,8 +21,6 @@ class CustumRowAcount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      hoverColor: AppColor.black,
-      splashColor: AppColor.black,
       onLongPress: () {},
       onTap: () {
         showModalBottomSheet(

@@ -54,7 +54,7 @@ class CustumWidgetAcount extends StatelessWidget {
                   CustumRowAcount(
                       data: bankAcountTransaction,
                       color: Colors.blue,
-                      title: AppStrings.cash,
+                      title: AppStrings.bankAccount,
                       amount: "5000\$",
                       icon: Icons.account_balance_outlined),
                 ],
