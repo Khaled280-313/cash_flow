@@ -11,6 +11,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../features/budgets/presentation/pages/add_budgets.dart';
 import '../../features/home/presentation/widgets/bottom_navigation_bar.dart';
+import '../../features/setting/presentation/pages/profile_page.dart';
 import '../../features/setting/presentation/pages/setting_page.dart';
 import '../../features/transactions/presentation/cubit/transactions_cubit.dart';
 import '../../features/transactions/presentation/pages/add_transactions.dart';
@@ -55,5 +56,9 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/SettingPage",
     builder: (context, state) => SettingPage(),
-  )
+  ),
+  GoRoute(
+    path: "/ProfilePage",
+    builder: (context, state) => ProfilePage(),
+  ),
 ]);
