@@ -24,7 +24,7 @@ class CustomLogout extends StatelessWidget {
           // For example, you might want to clear user data and navigate to the login screen
           // Navigator.pushReplacementNamed(context, '/login');
           getIt<CacheHelper>().clearData(key: "isAuthVisited");
-          customNavigatPushReplacement(context: context, path: '/login');
+          customNavigatPushReplacement(context: context, path: '/SignIn');
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(AppStrings.logout),
