@@ -28,9 +28,9 @@ class Endpoint {
   static const String getMyProfileEndpoint = "/api/users/me";
   static const String getUserProfileEndpoint = "/api/users/{username}";
 
-  static String getUserDataAndIdEndpoint(id) {
-    return "user/get-user/$id";
-  }
+  // static String getUserDataAndIdEndpoint(id) {
+  //   return "user/get-user/$id";
+  // }
 }
 
 class ApiKey {
@@ -86,9 +86,10 @@ class ApiKey {
   static const String birthdate = "birthdate";
   static const String joinDate = "joinDate";
   static const String families = "families";
+ 
 
 // حقول العائلة في الملف الشخصي
   static const String familyId = "id";
 // static const String familyName = "familyName";
-  static const String familyRole = "role";
+  static const String role = "role";
 }

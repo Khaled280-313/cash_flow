@@ -21,6 +21,7 @@ class AppTheme {
       background: AppColor.lightBg,
       onBackground: AppColor.lightText,
     ),
+    
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColor.lightInput,
