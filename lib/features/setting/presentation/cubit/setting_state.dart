@@ -7,7 +7,7 @@ abstract class SettingState {
 class SettingInitial extends SettingState {}
 
 class GetUserSucess extends SettingState {
-  final UserEntities user ;
+  final UserEntities user;
 
   GetUserSucess({required this.user});
 }
@@ -19,3 +19,13 @@ class GetUserFailuer extends SettingState {
 }
 
 class GetUserLoading extends SettingState {}
+
+class LogoutUserFailure extends SettingState {
+  final String errorMessage;
+
+  LogoutUserFailure({required this.errorMessage});
+}
+
+class LogoutUserSuccess extends SettingState {}
+
+class LogoutUserLoading extends SettingState {}

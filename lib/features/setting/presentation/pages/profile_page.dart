@@ -24,7 +24,10 @@ class ProfilePage extends StatelessWidget {
             backgroundColor: AppColor.background,
           ),
           body: state is GetUserLoading
-              ? Center(child: CircularProgressIndicator())
+              ? Center(
+                  child: CircularProgressIndicator(
+                  color: AppColor.primary,
+                ))
               : state is GetUserSucess
                   ? Container(
                       height: 500,

@@ -7,10 +7,12 @@ import 'package:cash_flow/features/setting/domain/entities/user_entities.dart';
 import 'package:cash_flow/features/setting/domain/repo/user_repo.dart';
 import 'package:dartz/dartz.dart';
 
+import '../../domain/entities/logout_user_entities.dart';
+
 class UserRepoImp extends UserRepo {
-  final UserDataLocalSource localData;
-  final UsreDataRemoteSource remoteData;
-  final NetworkInfo internet;
+  late UserDataLocalSource? localData;
+  late UsreDataRemoteSource? remoteData;
+  late NetworkInfo? internet;
 
   UserRepoImp(
       {required this.localData,
@@ -19,21 +21,31 @@ class UserRepoImp extends UserRepo {
 
   @override
   Future<Either<Failure, UserEntities>> getUser() async {
-    if (await internet.isConnected!) {
+    if (await internet!.isConnected!) {
       try {
-        final remotUser = await remoteData.getUser();
-        localData.cacheUser(remotUser);
+        final remotUser = await remoteData!.getUser();
+        localData!.cacheUser(remotUser);
         return Right(remotUser);
       } on ServerException catch (e) {
         return Left(Failure(message: e.errorModel.errorMassage));
       }
     } else {
       try {
-        final localUser = await localData.getUserFromCache();
+        final localUser = await localData!.getUserFromCache();
         return right(localUser);
       } on CacheException catch (e) {
         return Left(Failure(message: e.errorMessage));
       }
+    }
+  }
+
+  @override
+  Future<Either<Failure, LogoutUserEntities>> logoutUser() async {
+    try {
+      final response = await remoteData!.logoutUser();
+      return Right(response);
+    } on ServerException catch (e) {
+      return Left(Failure(message: e.toString()));
     }
   }
 }

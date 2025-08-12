@@ -45,8 +45,8 @@ class AuthCubit extends Cubit<AuthState> {
           ApiKey.firstName: signUpName,
           ApiKey.lastName: signUpLastName,
           ApiKey.profileImage: null,
-          ApiKey.bio: "",
-          ApiKey.job: "",
+          ApiKey.bio: "Bio",
+          ApiKey.job: "Job",
           ApiKey.birthDate: formattedBirthDate,
         },
       );

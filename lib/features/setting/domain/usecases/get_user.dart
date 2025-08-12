@@ -11,4 +11,4 @@ class GetUser {
   Future<Either<Failure, UserEntities>> call() {
     return user.getUser();
   }
-}
+} 
