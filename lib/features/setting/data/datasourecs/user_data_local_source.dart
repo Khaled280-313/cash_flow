@@ -6,7 +6,6 @@ import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/features/setting/data/model/user_model.dart';
 
 class UserDataLocalSource {
-  // احفظ المستخدم في الكاش كـ JSON string (آمن)
   Future<void> cacheUser(UserModel? user) async {
     if (user == null) {
       throw CacheException(errorMessage: "No user to cache");
@@ -15,7 +14,6 @@ class UserDataLocalSource {
     await getIt<CacheHelper>().saveData(key: "UserCache", value: jsonString);
   }
 
-  // اقرأ المستخدم من الكاش وأعد UserModel; إن لم يكن موجود أو تالف -> رمي CacheException
   Future<UserModel> getUserFromCache() async {
     final jsonString = await getIt<CacheHelper>().getData(key: "UserCache");
     if (jsonString == null || (jsonString is String && jsonString.isEmpty)) {
