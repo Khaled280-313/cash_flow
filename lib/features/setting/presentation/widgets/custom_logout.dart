@@ -24,7 +24,7 @@ class CustomLogout extends StatelessWidget {
               customNavigatPushReplacement(context: context, path: '/SignIn');
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(AppStrings.logout),
+                  content: Text(state.message),
                   backgroundColor: AppColor.error,
                 ),
               );
@@ -40,14 +40,13 @@ class CustomLogout extends StatelessWidget {
             return Material(
               child: ListTile(
                 tileColor: AppColor.white,
-                trailing: Icon(Icons.logout, color: AppColor.error),
-                title: state is LogoutUserLoading
-                    ? Center(
-                        child: CircularProgressIndicator(
+                trailing: state is LogoutUserLoading
+                    ? CircularProgressIndicator(
                         color: AppColor.primary,
-                      ))
-                    : const Text(AppStrings.logout,
-                        style: TextStyle(color: AppColor.error)),
+                      )
+                    : Icon(Icons.logout, color: AppColor.error),
+                title: const Text(AppStrings.logout,
+                    style: TextStyle(color: AppColor.error)),
                 onTap: () {
                   context.read<SettingCubit>().logoutUser();
                 },

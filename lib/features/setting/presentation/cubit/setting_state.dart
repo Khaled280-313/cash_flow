@@ -26,6 +26,10 @@ class LogoutUserFailure extends SettingState {
   LogoutUserFailure({required this.errorMessage});
 }
 
-class LogoutUserSuccess extends SettingState {}
+class LogoutUserSuccess extends SettingState {
+  final String message;
+
+  LogoutUserSuccess({required this.message});
+}
 
 class LogoutUserLoading extends SettingState {}
