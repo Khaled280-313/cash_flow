@@ -16,4 +16,13 @@ class CategoryModel extends CategoryEntities {
       ApiKey.type: type,
     };
   }
+
+  // تحويل إلى الـ domain entity
+  CategoryEntities toEntity() => CategoryEntities(name: name, type: type);
+
+  // إن احتجت بناء من الـ domain entity
+  factory CategoryModel.fromEntity(CategoryEntities e) => CategoryModel(
+        name: e.name,
+        type: e.type,
+      );
 }
