@@ -6,6 +6,6 @@ import '../../entities/catecory/category_entities.dart';
 abstract class CategoryRepo {
   Future<Either<Failure, List<CategoryEntities>>> getCategories();
   Future<Either<Failure, void>> addCategory(CategoryEntities category);
-  Future<Either<Failure, void>> updateCategory(CategoryEntities category);
-  Future<Either<Failure, void>> deleteCategory(String id);
+  // Future<Either<Failure, void>> updateCategory(CategoryEntities category);
+  // Future<Either<Failure, void>> deleteCategory(String id);
 }
