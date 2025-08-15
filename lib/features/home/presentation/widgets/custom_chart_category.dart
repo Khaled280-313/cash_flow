@@ -1,9 +1,11 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../../../generated/l10n.dart';
 import '../../data/repositories/category_data.dart';
+import '../cubit/home_cubit.dart';
 
 class CustomChartCategory extends StatefulWidget {
   const CustomChartCategory({
@@ -15,6 +17,12 @@ class CustomChartCategory extends StatefulWidget {
 }
 
 class _CustomChartCategoryState extends State<CustomChartCategory> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<HomeCubit>().getCategories();
+  }
+
   bool check = false;
   @override
   Widget build(BuildContext context) {

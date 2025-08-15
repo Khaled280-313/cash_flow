@@ -1,5 +1,6 @@
-
+import 'package:cash_flow/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../widgets/custom_chart.dart';
 import '../widgets/custom_chart_category.dart';
 import '../widgets/custom_widget_cash_flow.dart';
@@ -23,9 +24,11 @@ class Home extends StatelessWidget {
             CustomChart(),
             CustumWidgetAcount(),
             CustomWidegtCashFlow(),
-            CustomChartCategory(),
+            BlocProvider(
+              create: (context) => HomeCubit(),
+              child: CustomChartCategory(),
+            ),
             SliverToBoxAdapter(child: SizedBox(height: 50)),
-            
           ],
         ),
       ),

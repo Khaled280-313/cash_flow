@@ -28,6 +28,7 @@ class _SplashViewState extends State<SplashView> {
     } else {
       delayedNavigator(context, "/onboarding");
     }
+
     super.initState();
   }
 

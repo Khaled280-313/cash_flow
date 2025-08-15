@@ -1,5 +1,4 @@
 import 'package:cash_flow/core/database/api/dio_consumer.dart';
-import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_up_page.dart';
@@ -47,8 +46,7 @@ final GoRouter router = GoRouter(routes: [
   GoRoute(
     path: "/Addtransaction",
     builder: (context, state) => BlocProvider(
-        create: (context) => getIt<TransactionsCubit>(),
-        child: AddTransactions()),
+        create: (context) => TransactionsCubit(), child: AddTransactions()),
   ),
   GoRoute(
     path: "/AddBudgets",

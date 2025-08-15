@@ -1,11 +1,8 @@
-enum CategoryType {
-  income,
-  expense,
-}
+
 
 class CategoryEntities {
   final String name;
-  final CategoryType type;
+  final String type;
 
   CategoryEntities({
     required this.name,
