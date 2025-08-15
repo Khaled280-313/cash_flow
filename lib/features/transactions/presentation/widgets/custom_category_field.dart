@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:cash_flow/core/database/cache/cache_helper.dart';
+import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
@@ -14,15 +18,11 @@ class CustomCategoryField extends StatefulWidget {
 }
 
 class _CustomCategoryFieldState extends State<CustomCategoryField> {
-  List<String> category = [
-    'Food',
-    'Transport',
-    'Shopping',
-    'Bills',
-    'Entertainment',
-    'Health',
-    'Other',
-  ];
+  static final List<dynamic> cachedList =
+      jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
+
+  List<String> category =
+      cachedList.map((item) => item['categoryName'] as String).toList();
 
   @override
   Widget build(BuildContext context) {
