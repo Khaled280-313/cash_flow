@@ -1,9 +1,14 @@
+import 'dart:convert';
+
+import 'package:cash_flow/core/function/custom_navigat.dart';
+import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/features/transactions/presentation/cubit/transactions_cubit.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/database/cache/cache_helper.dart';
 import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_text_feild.dart';
 import '../widgets/custom_button.dart';
@@ -13,6 +18,13 @@ import '../widgets/custom_top_contain.dart';
 
 class AddTransactions extends StatelessWidget {
   const AddTransactions({super.key});
+  static List<dynamic> cachedList =
+      jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
+
+  static final List<String> category =
+      cachedList.map((item) => item['categoryName'] as String).toList();
+
+  static List<String> categories = [...category, "Add Category"];
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +40,16 @@ class AddTransactions extends StatelessWidget {
             body: SingleChildScrollView(
               child: Stack(
                 children: [
-                  CustomTopContain(type: transactionsCubit.type),
+                  CustomTopContain(
+                    onPressed: (transactionsTypeIndex) {
+                      transactionsCubit
+                          .changeTransactionType(transactionsTypeIndex);
+                    },
+                    isSelected: [
+                      transactionsCubit.type == "income",
+                      transactionsCubit.type == "expenses"
+                    ],
+                  ),
                   Container(
                     padding:
                         const EdgeInsets.only(top: 10, right: 20, left: 20),
@@ -48,7 +69,18 @@ class AddTransactions extends StatelessWidget {
                         children: [
                           SizedBox(height: 10),
                           // MenuItemButton(),
-                          CustomCategoryField(hintText: AppStrings.category),
+                          CustomCategoryField(
+                              hintText: AppStrings.category,
+                              categories: categories,
+                              onChanged: (value) {
+                                if (value == "Add Category") {
+                                  // Show dialog to add new category
+                                  customNavigatPush(
+                                      context: context, path: "/AddBudgets");
+                                } else {
+                                  transactionsCubit.selectedCategory = value!;
+                                }
+                              }),
                           CustomTextFormFeild(
                               hintText: AppStrings.amount,
                               textInputType: TextInputType.number,
@@ -86,9 +118,7 @@ class AddTransactions extends StatelessWidget {
                               transactionsCubit.selectedDate = date;
                             },
                           ),
-                          // CustomShowTimePicker(
-                          //   selectTime: transactionsCubit.selectedTime,
-                          // ),
+
                           const SizedBox(height: 10),
                           Divider(
                             color: AppColor.textSecondary,
