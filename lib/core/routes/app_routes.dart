@@ -63,4 +63,8 @@ final GoRouter router = GoRouter(routes: [
       child: ProfilePage(),
     ),
   ),
+  GoRoute(
+    path: "/AddBudgets",
+    builder: (context, state) => AddBudgets(),
+  )
 ]);
