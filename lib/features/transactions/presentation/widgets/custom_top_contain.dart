@@ -5,10 +5,13 @@ import '../../../../core/utils/app_strings.dart';
 import 'custom_cntain_togle.dart';
 
 class CustomTopContain extends StatefulWidget {
-  final String type;
+  final List<bool> isSelected;
+  final void Function(int)? onPressed;
+
   const CustomTopContain({
     super.key,
-    required this.type,
+    required this.isSelected,
+    this.onPressed,
   });
 
   @override
@@ -51,18 +54,13 @@ class _CustomTopContainState extends State<CustomTopContain> {
                   ),
                   fillColor: AppColor.white,
                   borderWidth: 3,
-                  onPressed: (index) {
+                  onPressed: ((index) {
                     setState(() {
-                      if (isSelected == true) {
-                        isSelected = index == 0;
-                        widget.type != "income";
-                      } else {
-                        isSelected = index == 0;
-                        widget.type != "expenses";
-                      }
+                      isSelected = !isSelected;
+                      widget.onPressed?.call(index);
                     });
-                  },
-                  isSelected: [isSelected, !isSelected],
+                  }),
+                  isSelected: widget.isSelected,
                   children: [
                     CustomCntainTogle(
                       text: AppStrings.income,

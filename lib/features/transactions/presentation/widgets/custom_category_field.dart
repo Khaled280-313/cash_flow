@@ -1,16 +1,17 @@
-import 'dart:convert';
-
-import 'package:cash_flow/core/database/cache/cache_helper.dart';
-import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
 
 class CustomCategoryField extends StatefulWidget {
   final String hintText;
+  final List<String> categories;
+  final void Function(String?)? onChanged;
+
   const CustomCategoryField({
     super.key,
     required this.hintText,
+    required this.categories,
+    this.onChanged,
   });
 
   @override
@@ -18,12 +19,6 @@ class CustomCategoryField extends StatefulWidget {
 }
 
 class _CustomCategoryFieldState extends State<CustomCategoryField> {
-  static final List<dynamic> cachedList =
-      jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
-
-  List<String> category =
-      cachedList.map((item) => item['categoryName'] as String).toList();
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -38,16 +33,14 @@ class _CustomCategoryFieldState extends State<CustomCategoryField> {
           enabledBorder: getBorderStyle(),
           focusedBorder: getBorderStyle(),
         ),
-        items: category.map((String value) {
+        items: widget.categories.map((String value) {
           return DropdownMenuItem<String>(
             alignment: Alignment.centerLeft,
             value: value,
             child: Text(value),
           );
         }).toList(),
-        onChanged: (String? newValue) {
-          // Handle the change in selected category
-        },
+        onChanged: widget.onChanged,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return 'Please select a category';
