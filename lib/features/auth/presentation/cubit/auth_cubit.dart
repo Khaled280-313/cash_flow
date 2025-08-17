@@ -55,8 +55,8 @@ class AuthCubit extends Cubit<AuthState> {
       return response;
     } on SocketException {
       emit(SignUpFailureState(errorMessage: "No Internet Connection"));
-    } on ServerException catch (e) {
-      emit(SignUpFailureState(errorMessage: e.errorModel.errorMassage));
+    } on AppException catch (e) {
+      emit(SignUpFailureState(errorMessage: e.message));
     } catch (e) {
       if (!isClosed) {
         emit(SignUpFailureState(errorMessage: e.toString()));
@@ -87,9 +87,9 @@ class AuthCubit extends Cubit<AuthState> {
       if (!isClosed) {
         emit(SignInFailureState(errorMessage: "No Internet Connection"));
       }
-    } on ServerException catch (e) {
+    } on AppException catch (e) {
       if (!isClosed) {
-        emit(SignInFailureState(errorMessage: e.errorModel.errorMassage));
+        emit(SignInFailureState(errorMessage: e.message));
       }
     } catch (e) {
       if (!isClosed) emit(SignInFailureState(errorMessage: e.toString()));
