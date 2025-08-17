@@ -26,6 +26,7 @@ class _CustomCategoryFieldState extends State<CustomCategoryField> {
       height: 60,
       child: DropdownButtonFormField<String>(
         dropdownColor: AppColor.white,
+        
         decoration: InputDecoration(
           contentPadding:
               const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
@@ -39,6 +40,7 @@ class _CustomCategoryFieldState extends State<CustomCategoryField> {
             value: value,
             child: Text(value),
           );
+          
         }).toList(),
         onChanged: widget.onChanged,
         validator: (value) {
