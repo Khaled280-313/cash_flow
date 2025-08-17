@@ -6,7 +6,6 @@ import 'package:dio/dio.dart';
 
 //هذا الكلاس يقوم بتنفيذ الطلبات الى السيرفر
 class DioConsumer extends ApiConsumer {
-  
   final Dio dio;
 
   DioConsumer({required this.dio}) {
@@ -15,8 +14,8 @@ class DioConsumer extends ApiConsumer {
     dio.options.connectTimeout = const Duration(seconds: 10);
     dio.options.receiveTimeout = const Duration(seconds: 10);
     dio.options.headers = {
-      "Content-Type": "application/json",
-      "Accept": "application/json",
+      // "Content-Type": "application/json",
+      // "Accept": "application/json",
     };
 
     // هذا الانترسيبتور يمكننا من تعديل الطلبات قبل ارسالها
@@ -47,7 +46,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      handelExceptionDio(e);
+      throw handleDioException(e);
     }
   }
 
@@ -65,7 +64,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response.data;
     } on DioException catch (e) {
-      handelExceptionDio(e);
+      throw handleDioException(e);
     }
   }
 
@@ -86,7 +85,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response;
     } on DioException catch (e) {
-      handelExceptionDio(e);
+      throw handleDioException(e);
     }
   }
 
@@ -107,7 +106,7 @@ class DioConsumer extends ApiConsumer {
       );
       return response;
     } on DioException catch (e) {
-      handelExceptionDio(e);
+      throw handleDioException(e);
     }
   }
 }
