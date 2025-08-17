@@ -1,8 +1,9 @@
-import 'package:cash_flow/core/database/cache/cache_helper.dart';
 import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/features/home/data/datasources/category/categoty_local_data_source.dart';
 import 'package:cash_flow/features/home/data/repositories/category/category_repo_impl.dart';
+import 'package:cash_flow/features/home/model/entities/catecory/category_add_message.dart' show CategoryAddMessage;
 import 'package:cash_flow/features/home/model/usecases/addCategory.dart';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,18 +15,21 @@ part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
-  String name = 'Personal';
-  var type = 'income';
-  void addCategory(CategoryEntities category) async {
+  String? name;
+  String? type;
+  final formKey = GlobalKey<FormState>();
+
+  void addCategory() async {
     emit(CategoryLoading());
     final result = await AddCategory(
         categoryRepo: CategoryRepoImpl(
       localData: null,
-      remoteData: getIt<CategoryRemoteDataSource>(),
-    )).call(CategoryEntities(name: name, type: type));
+      remoteData: CategoryRemoteDataSource(api: getIt<DioConsumer>()),
+    )).call(CategoryEntities(
+        name: name!.trim().toUpperCase(), type: type!.toUpperCase()));
     result.fold(
       (failure) => emit(CategoryError(message: failure.message)),
-      (success) => emit(CategoryAdded()),
+      (success) => emit(CategoryAdded(category: success)),
     );
   }
 
@@ -40,6 +44,6 @@ class HomeCubit extends Cubit<HomeState> {
       (failure) => emit(CategoryError(message: failure.message)),
       (categories) => emit(CategoryLoaded(categories: categories)),
     );
-    print(getIt<CacheHelper>().getData(key: 'cached_categories'));
+    // print(getIt<CacheHelper>().getData(key: 'cached_categories'));
   }
 }

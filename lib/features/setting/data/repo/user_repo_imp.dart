@@ -26,15 +26,15 @@ class UserRepoImp extends UserRepo {
         final remotUser = await remoteData!.getUser();
         localData!.cacheUser(remotUser);
         return Right(remotUser);
-      } on ServerException catch (e) {
-        return Left(Failure(message: e.errorModel.errorMassage));
+      } on AppException catch (e) {
+        return Left(mapAppExceptionToFailure(e));
       }
     } else {
       try {
         final localUser = await localData!.getUserFromCache();
         return right(localUser);
       } on CacheException catch (e) {
-        return Left(Failure(message: e.errorMessage));
+        return Left(Failure(message: e.message));
       }
     }
   }
@@ -48,8 +48,8 @@ class UserRepoImp extends UserRepo {
       } else {
         return Left(Failure(message: "No internet connection"));
       }
-    } on ServerException catch (e) {
-      return Left(Failure(message: e.toString()));
+    } on AppException catch (e) {
+      return Left(mapAppExceptionToFailure(e));
     }
   }
 }

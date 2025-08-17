@@ -8,7 +8,7 @@ import 'package:cash_flow/features/setting/data/model/user_model.dart';
 class UserDataLocalSource {
   Future<void> cacheUser(UserModel? user) async {
     if (user == null) {
-      throw CacheException(errorMessage: "No user to cache");
+      throw CacheException("No user to cache");
     }
     final jsonString = jsonEncode(user.toJson());
     await getIt<CacheHelper>().saveData(key: "UserCache", value: jsonString);
@@ -17,7 +17,7 @@ class UserDataLocalSource {
   Future<UserModel> getUserFromCache() async {
     final jsonString = await getIt<CacheHelper>().getData(key: "UserCache");
     if (jsonString == null || (jsonString is String && jsonString.isEmpty)) {
-      throw CacheException(errorMessage: "No Cached User");
+      throw CacheException("No Cached User");
     }
 
     try {
@@ -27,11 +27,11 @@ class UserDataLocalSource {
         return UserModel.fromJson(decoded);
       } else {
         // أحيانًا يُخزن كـ List أو String خاطئ
-        throw CacheException(errorMessage: "Cached user has invalid format");
+        throw CacheException("Cached user has invalid format");
       }
     } catch (e) {
       // المسار هنا يعني أن الكاش تالف أو toJson/fromJson غير متوافقين
-      throw CacheException(errorMessage: "Failed to parse cached user: $e");
+      throw CacheException("Failed to parse cached user: $e");
     }
   }
 

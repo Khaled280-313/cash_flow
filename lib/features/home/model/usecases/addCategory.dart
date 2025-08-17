@@ -3,6 +3,7 @@ import 'package:cash_flow/features/home/model/repo/category/category_repo.dart'
     show CategoryRepo;
 import 'package:dartz/dartz.dart';
 
+import '../entities/catecory/category_add_message.dart';
 import '../entities/catecory/category_entities.dart';
 
 class AddCategory {
@@ -10,7 +11,7 @@ class AddCategory {
 
   AddCategory({required this.categoryRepo});
 
-  Future<Either<Failure, void>> call(CategoryEntities category) {
+  Future<Either<Failure, CategoryAddMessage>> call(CategoryEntities category) {
     return categoryRepo.addCategory(category);
   }
 }

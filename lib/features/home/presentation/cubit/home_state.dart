@@ -20,4 +20,10 @@ class CategoryError extends HomeState {
   CategoryError({required this.message});
 }
 
-class CategoryAdded extends HomeState {}
+class CategoryAdded extends HomeState {
+  final CategoryAddMessage category;
+
+  CategoryAdded({required this.category});
+}
+
+
