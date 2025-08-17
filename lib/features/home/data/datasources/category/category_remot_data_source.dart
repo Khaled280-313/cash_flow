@@ -1,6 +1,7 @@
 import 'package:cash_flow/core/database/api/api_consumer.dart';
 import 'package:cash_flow/core/database/api/endpoint.dart';
 
+import '../../../model/entities/catecory/category_add_message.dart';
 import '../../model/category/category_model.dart';
 
 class CategoryRemoteDataSource {
@@ -29,8 +30,10 @@ class CategoryRemoteDataSource {
         .toList();
   }
 
-  Future<void> addCategory(CategoryModel category) async {
-    await api.post(
+  Future<CategoryAddMessage> addCategory(CategoryModel category) async {
+    final response = await api.post(
         endpoint: Endpoint.createUserCategoryEndpoint, data: category.toJson());
+
+    return CategoryAddMessage(message: response.data.toString());
   }
 }

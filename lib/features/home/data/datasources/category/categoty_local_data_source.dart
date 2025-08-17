@@ -9,7 +9,7 @@ import '../../model/category/category_model.dart';
 class CategoryLocalDataSource {
   Future categoryCache(List<CategoryModel>? categories) async {
     if (categories == null) {
-      throw CacheException(errorMessage: "No user to cache");
+      throw CacheException("No user to cache");
     }
     final jsonString = jsonEncode(categories.map((c) => c.toJson()).toList());
     getIt<CacheHelper>().saveData(key: "cached_categories", value: jsonString);
@@ -19,7 +19,7 @@ class CategoryLocalDataSource {
     final jsonString =
         await getIt<CacheHelper>().getData(key: "cached_categories");
     if (jsonString == null || (jsonString is String && jsonString.isEmpty)) {
-      throw CacheException(errorMessage: "No cached categories found");
+      throw CacheException("No cached categories found");
     }
     final List<dynamic> jsonList = jsonDecode(jsonString);
 
