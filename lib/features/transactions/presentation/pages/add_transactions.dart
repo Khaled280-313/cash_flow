@@ -74,7 +74,6 @@ class AddTransactions extends StatelessWidget {
                               categories: categories,
                               onChanged: (value) {
                                 if (value == "Add Category") {
-                                  // Show dialog to add new category
                                   customNavigatPush(
                                       context: context, path: "/AddBudgets");
                                 } else {
