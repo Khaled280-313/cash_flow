@@ -2,6 +2,7 @@ import 'package:cash_flow/core/database/api/dio_consumer.dart';
 import 'package:cash_flow/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_in_page.dart';
 import 'package:cash_flow/features/auth/presentation/pages/sign_up_page.dart';
+import 'package:cash_flow/features/home/presentation/cubit/home_cubit.dart';
 import 'package:cash_flow/features/onboarding/presentation/page/onboarding_page.dart';
 import 'package:cash_flow/features/setting/presentation/cubit/setting_cubit.dart';
 import 'package:cash_flow/features/splash_view/pages/splash_view.dart';
@@ -49,10 +50,6 @@ final GoRouter router = GoRouter(routes: [
         create: (context) => TransactionsCubit(), child: AddTransactions()),
   ),
   GoRoute(
-    path: "/AddBudgets",
-    builder: (context, state) => AddBudgets(),
-  ),
-  GoRoute(
     path: "/SettingPage",
     builder: (context, state) => SettingPage(),
   ),
@@ -65,6 +62,9 @@ final GoRouter router = GoRouter(routes: [
   ),
   GoRoute(
     path: "/AddBudgets",
-    builder: (context, state) => AddBudgets(),
+    builder: (context, state) => BlocProvider(
+      create: (context) => HomeCubit(),
+      child: AddBudgets(),
+    ),
   )
 ]);
