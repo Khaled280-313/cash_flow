@@ -1,3 +1,5 @@
+import 'package:cash_flow/core/database/api/endpoint.dart';
+
 import '../../domain/entities/transaction_entities.dart';
 
 class TransactionModel extends TransactionEntities {
@@ -9,21 +11,21 @@ class TransactionModel extends TransactionEntities {
       required super.category});
   factory TransactionModel.fromJson(Map<String, dynamic> json) {
     return TransactionModel(
-      amount: (json['amount'] as num).toDouble(),
-      date: DateTime.parse(json['date'] as String),
-      description: json['description'] as String,
-      currency: json['currency'] as String,
-      category: json['category'] as String,
+      amount: (json[ApiKey.amount] as num).toDouble(),
+      date: DateTime.parse(json[ApiKey.date] as String),
+      description: json[ApiKey.description] as String,
+      currency: json[ApiKey.currency] as String,
+      category: json[ApiKey.category] as String,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'amount': amount,
-      'date': date.toIso8601String(),
-      'description': description,
-      'currency': currency,
-      'category': category,
+      ApiKey.amount: amount,
+      ApiKey.date: date.toIso8601String(),
+      ApiKey.description: description,
+      ApiKey.currency: currency,
+      ApiKey.category: category,
     };
   }
 
