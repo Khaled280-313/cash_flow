@@ -9,7 +9,7 @@ import '../../model/category/category_model.dart';
 class CategoryLocalDataSource {
   Future categoryCache(List<CategoryModel>? categories) async {
     if (categories == null) {
-      throw CacheException("No user to cache");
+      throw CacheException("No Categories to cache");
     }
     final jsonString = jsonEncode(categories.map((c) => c.toJson()).toList());
     getIt<CacheHelper>().saveData(key: "cached_categories", value: jsonString);
