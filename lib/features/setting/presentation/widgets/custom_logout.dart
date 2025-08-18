@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 import '../cubit/setting_cubit.dart';
 
 class CustomLogout extends StatelessWidget {
@@ -45,7 +45,7 @@ class CustomLogout extends StatelessWidget {
                         color: AppColor.primary,
                       )
                     : Icon(Icons.logout, color: AppColor.error),
-                title: const Text(AppStrings.logout,
+                title:  Text(S.of(context).logout,
                     style: TextStyle(color: AppColor.error)),
                 onTap: () {
                   context.read<SettingCubit>().logoutUser();

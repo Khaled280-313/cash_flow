@@ -1,8 +1,7 @@
 import 'package:cash_flow/core/function/custom_navigat.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomProfil extends StatelessWidget {
   const CustomProfil({
@@ -22,7 +21,7 @@ class CustomProfil extends StatelessWidget {
           Material(
             child: ListTile(
               tileColor: AppColor.white,
-              title: Text(AppStrings.profile),
+              title: Text(S.of(context).profile),
               onTap: () {
                 customNavigatPush(context: context, path: "/ProfilePage");
               },
@@ -32,7 +31,7 @@ class CustomProfil extends StatelessWidget {
           Material(
             child: ListTile(
               tileColor: AppColor.white,
-              title: Text(AppStrings.profileSetting),
+              title: Text(S.of(context).profileSetting),
               onTap: () {},
               leading: Icon(Icons.settings),
             ),
@@ -40,7 +39,7 @@ class CustomProfil extends StatelessWidget {
           Material(
             child: ListTile(
               tileColor: AppColor.white,
-              title: Text(AppStrings.editAccount),
+              title: Text(S.of(context).editAccount),
               onTap: () {},
               leading: Icon(Icons.edit),
             ),

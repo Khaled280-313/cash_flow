@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 import '../../../home/presentation/cubit/home_cubit.dart';
 import '../../../transactions/presentation/widgets/custom_cntain_togle.dart';
 
@@ -110,11 +110,11 @@ class _CustomTogleButtonState extends State<CustomTogleButton> {
       isSelected: widget.isSelected,
       children: [
         CustomCntainTogle(
-          text: AppStrings.income,
+          text: S.of(context).income,
           isSelected: isSelected,
         ),
         CustomCntainTogle(
-          text: AppStrings.expenses,
+          text: S.of(context).expenses,
           isSelected: !isSelected,
         ),
       ],

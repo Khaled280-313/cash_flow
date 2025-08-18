@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 import 'custom_cntain_togle.dart';
 
 class CustomTopContain extends StatefulWidget {
@@ -63,11 +63,11 @@ class _CustomTopContainState extends State<CustomTopContain> {
                   isSelected: widget.isSelected,
                   children: [
                     CustomCntainTogle(
-                      text: AppStrings.income,
+                      text: S.of(context).income,
                       isSelected: isSelected,
                     ),
                     CustomCntainTogle(
-                      text: AppStrings.expenses,
+                      text: S.of(context).expenses,
                       isSelected: !isSelected,
                     ),
                   ],

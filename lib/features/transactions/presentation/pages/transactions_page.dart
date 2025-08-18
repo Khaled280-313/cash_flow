@@ -1,9 +1,9 @@
 import 'package:cash_flow/core/utils/app_color.dart';
-import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/function/custom_navigat.dart';
+import '../../../../generated/l10n.dart';
 import '../widgets/custom_search_field.dart';
 
 class TransactionsPage extends StatelessWidget {
@@ -38,7 +38,7 @@ class TransactionsPage extends StatelessWidget {
                 // Here you can add your custom widgets for expenses
                 SliverToBoxAdapter(
                   child: CustomText(
-                    text: AppStrings.expenses,
+                    text: S.of(context).expenses,
                   ),
                 ),
 
@@ -61,7 +61,7 @@ class TransactionsPage extends StatelessWidget {
                             'Expense Item $index',
                           ),
                           subtitle: Text(
-                            AppStrings.cash,
+                            S.of(context).cash,
                             style: AppTextStyle.montserratBoldStyle12
                                 .copyWith(color: AppColor.success),
                           ),
@@ -84,7 +84,7 @@ class TransactionsPage extends StatelessWidget {
                 SliverPadding(padding: EdgeInsets.only(top: 20)),
                 SliverToBoxAdapter(
                   child: CustomText(
-                    text: AppStrings.income,
+                    text: S.of(context).income,
                   ),
                 ),
                 // Here you can add your custom widgets for income
@@ -107,7 +107,7 @@ class TransactionsPage extends StatelessWidget {
                           'Income Item $index',
                         ),
                         subtitle: Text(
-                          AppStrings.cash,
+                          S.of(context).cash,
                           style: AppTextStyle.montserratBoldStyle12
                               .copyWith(color: AppColor.success),
                         ),

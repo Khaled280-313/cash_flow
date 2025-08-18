@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/function/get_time.dart';
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/utils/app_text_style.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomShowTimePicker extends StatefulWidget {
   final TimeOfDay selectTime;
@@ -49,7 +49,7 @@ class _CustomShowTimePickerState extends State<CustomShowTimePicker> {
                     color: AppColor.white,
                   ),
                   Text(
-                    AppStrings.selectTime,
+                    S.of(context).selectTime,
                     style: AppTextStyle.montserrat500Style16.copyWith(
                       color: AppColor.white,
                     ),

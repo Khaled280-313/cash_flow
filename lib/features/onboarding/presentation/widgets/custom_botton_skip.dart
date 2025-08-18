@@ -1,7 +1,8 @@
 import 'package:cash_flow/core/utils/app_color.dart';
-import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../generated/l10n.dart';
 
 class CustombottonSkip extends StatelessWidget {
   const CustombottonSkip({
@@ -28,7 +29,7 @@ class CustombottonSkip extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)),
         child: Center(
           child: Text(
-            AppStrings.skip,
+            S.of(context).skip,
             style: TextStyle(color: AppColor.primary),
           ),
         ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomSettingApp extends StatefulWidget {
   const CustomSettingApp({
@@ -26,19 +26,19 @@ class _CustomSettingAppState extends State<CustomSettingApp> {
           Material(
             child: ListTile(
                 tileColor: AppColor.white,
-                title: Text(AppStrings.theme),
+                title: Text(S.of(context).theme),
                 onTap: () {
                   showDialog(
                       context: context,
                       builder: (BuildContext context) {
                         return AlertDialog(
                           backgroundColor: AppColor.white,
-                          title: Text(AppStrings.theme),
+                          title: Text(S.of(context).theme),
                           content: SingleChildScrollView(
                             child: ListBody(
                               children: <Widget>[
                                 ListTile(
-                                  title: Text("System Default"),
+                                  title: Text(S.of(context).systemDefault),
                                   onTap: () {
                                     // Change theme to System Default
                                     Navigator.of(context).pop();
@@ -69,14 +69,14 @@ class _CustomSettingAppState extends State<CustomSettingApp> {
           Material(
             child: ListTile(
                 tileColor: AppColor.white,
-                title: Text(AppStrings.language),
+                title: Text(S.of(context).language),
                 onTap: () {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
                         backgroundColor: AppColor.white,
-                        title: Text(AppStrings.language),
+                        title: Text(S.of(context).language),
                         content: SingleChildScrollView(
                           child: ListBody(
                             children: <Widget>[
@@ -106,14 +106,14 @@ class _CustomSettingAppState extends State<CustomSettingApp> {
           Material(
             child: ListTile(
                 tileColor: AppColor.white,
-                title: Text(AppStrings.currency),
+                title: Text(S.of(context).currency),
                 onTap: () {
                   showDialog(
                     context: context,
                     builder: (BuildContext context) {
                       return AlertDialog(
                         backgroundColor: AppColor.white,
-                        title: Text(AppStrings.currency),
+                        title: Text(S.of(context).currency),
                         content: SingleChildScrollView(
                           child: ListBody(
                             children: <Widget>[

@@ -7,10 +7,9 @@ import 'package:cash_flow/features/transactions/presentation/cubit/transactions_
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../core/database/cache/cache_helper.dart';
-import '../../../../core/utils/app_strings.dart';
 import '../../../../core/widgets/custom_text_feild.dart';
+import '../../../../generated/l10n.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_category_field.dart';
 import '../widgets/custom_show_date_picker.dart';
@@ -37,7 +36,11 @@ class _AddTransactionsState extends State<AddTransactions> {
         return;
       }
       final List<dynamic> cachedList = jsonDecode(raw) as List<dynamic>;
-      final list = cachedList.map((e) => e['categoryName'] as String).toList();
+      final list = cachedList
+          .map((e) => e['categoryName'] as String)
+          .toList()
+          .toSet()
+          .toList();
       setState(() {
         categories = [...list, 'Add Category'];
         loadingCategories = false;
@@ -104,45 +107,40 @@ class _AddTransactionsState extends State<AddTransactions> {
                             const CircularProgressIndicator(),
                           if (!loadingCategories)
                             CustomCategoryField(
-                                hintText: AppStrings.category,
+                                hintText: S.of(context).category,
                                 categories: categories,
-                                onChanged: (value)  async{
+                                onChanged: (value) async {
                                   if (value == "Add Category") {
                                     customNavigatPushReplacement(
                                         context: context, path: "/AddBudgets");
-                                         await _loadCategories();
+                                    await _loadCategories();
                                   } else {
                                     transactionsCubit.selectedCategory = value!;
                                   }
                                 }),
                           CustomTextFormFeild(
-                              hintText: AppStrings.amount,
+                              hintText: S.of(context).amount,
                               textInputType: TextInputType.number,
                               // controller: transactionsCubit.amountController,
+                              onChanged: (value) {
+                                transactionsCubit.amount = num.tryParse(value)!;
+                              },
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return AppStrings.requiredField;
+                                  return S.of(context).requiredField;
                                 }
                                 return null;
                               }),
+
                           CustomTextFormFeild(
-                              hintText: AppStrings.title,
-                              textInputType: TextInputType.emailAddress,
-                              // controller: transactionsCubit.titleController,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return AppStrings.requiredField;
-                                }
-                                return null;
-                              }),
-                          CustomTextFormFeild(
-                              hintText: AppStrings.description,
+                              hintText: S.of(context).description,
                               textInputType: TextInputType.multiline,
-                              // controller:
-                              //     transactionsCubit.descriptionController,
+                              onChanged: (value) {
+                                transactionsCubit.description = value;
+                              },
                               validator: (value) {
                                 if (value!.isEmpty) {
-                                  return AppStrings.requiredField;
+                                  return S.of(context).requiredField;
                                 }
                                 return null;
                               }),
@@ -162,7 +160,15 @@ class _AddTransactionsState extends State<AddTransactions> {
                             indent: 15,
                           ),
                           const SizedBox(height: 10),
-                          CustomButton()
+                          CustomButton(
+                            onPressed: () {
+                              if (transactionsCubit
+                                  .addTransactionFormKey.currentState!
+                                  .validate()) {
+                                // transactionsCubit.addTransaction();
+                              }
+                            },
+                          )
                         ],
                       ),
                     ),

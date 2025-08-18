@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../core/utils/app_strings.dart';
+import '../../../../generated/l10n.dart';
 
 class CustomButton extends StatelessWidget {
+  final void Function()? onPressed ;
   const CustomButton({
-    super.key,
+    super.key, this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
+      onPressed: onPressed,
       color: AppColor.primary,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(30),
@@ -19,7 +20,7 @@ class CustomButton extends StatelessWidget {
       minWidth: 343,
       height: 56,
       child: Text(
-        AppStrings.addTransaction,
+        S.of(context).addTransaction,
         style: Theme.of(context)
             .textTheme
             .titleLarge!
