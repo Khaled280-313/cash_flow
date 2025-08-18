@@ -31,6 +31,23 @@ class Endpoint {
   // static String getUserDataAndIdEndpoint(id) {
   //   return "user/get-user/$id";
   // }
+
+  static const String getAllTransactions = "/api/transactions";
+  static String getAllTransactionsByCurrency(String currency) =>
+      "/api/currency/$currency";
+  static String getAllTransactionsByCategory(String category) =>
+      "/api/transactions/$category";
+  static String getAllTransactionsByCurrencyAndCategory(
+          String currency, String category) =>
+      "/api/transactions/$currency/$category";
+  static String getTransactionsBySingleDate(DateTime date) =>
+      "/api/transactions/${date.toIso8601String()}";
+  static String getTransactionsForLastWeek = "/api/transactions/last-week";
+
+  static String addTransaction = "/api/transactions";
+  static String getTransactionsBySingleDateAndCurrencyAndCategory(
+          DateTime date, String currency, String category) =>
+      "/api/transactions/${date.toIso8601String()}/$currency/$category";
 }
 
 class ApiKey {
@@ -86,10 +103,15 @@ class ApiKey {
   static const String birthdate = "birthdate";
   static const String joinDate = "joinDate";
   static const String families = "families";
- 
 
 // حقول العائلة في الملف الشخصي
   static const String familyId = "id";
 // static const String familyName = "familyName";
   static const String role = "role";
+
+  static const String amount = "amount";
+  static const String date = "date";
+  static const String currency = "currency";
+  static const String category = "category";
+  static const String desc = "desc";
 }
