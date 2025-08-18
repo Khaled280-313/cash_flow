@@ -7,19 +7,18 @@ class TransactionsCubit extends Cubit<TransactionsState> {
   TransactionsCubit() : super(TransactionsInitial());
   GlobalKey<FormState> addTransactionFormKey = GlobalKey();
   // TextEditingController categoryController = TextEditingController();
-  late String selectedCategory;
-  TextEditingController amountController = TextEditingController();
-  TextEditingController titleController = TextEditingController();
-  TextEditingController descriptionController = TextEditingController();
+  late num amount;
   DateTime selectedDate = DateTime.now();
+  late String description;
+  late String currency;
+  late String selectedCategory;
+  String type = 'EXPENSE';
 
   void changeTransactionType(int index) {
     if (index == 0) {
-      type = 'income';
+      type = 'INCOME';
     } else {
-      type = 'expenses';
+      type = 'EXPENSE';
     }
   }
-
-  String type = 'expenses'; // <-- Initialize with a default value
 }

@@ -18,13 +18,6 @@ import '../widgets/custom_top_contain.dart';
 
 class AddTransactions extends StatefulWidget {
   const AddTransactions({super.key});
-  // static List<dynamic> cachedList =
-  //     jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
-
-  // static final List<String> category =
-  //     cachedList.map((item) => item['categoryName'] as String).toList();
-
-  // static List<String> categories = [...category, "Add Category"];
 
   @override
   State<AddTransactions> createState() => _AddTransactionsState();
@@ -84,8 +77,8 @@ class _AddTransactionsState extends State<AddTransactions> {
                           .changeTransactionType(transactionsTypeIndex);
                     },
                     isSelected: [
-                      transactionsCubit.type == "income",
-                      transactionsCubit.type == "expenses"
+                      transactionsCubit.type == "INCOME",
+                      transactionsCubit.type == "EXPENSE"
                     ],
                   ),
                   Container(

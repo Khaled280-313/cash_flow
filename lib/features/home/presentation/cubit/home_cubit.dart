@@ -1,7 +1,8 @@
 import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:cash_flow/features/home/data/datasources/category/categoty_local_data_source.dart';
 import 'package:cash_flow/features/home/data/repositories/category/category_repo_impl.dart';
-import 'package:cash_flow/features/home/model/entities/catecory/category_add_message.dart' show CategoryAddMessage;
+import 'package:cash_flow/features/home/model/entities/catecory/category_add_message.dart'
+    show CategoryAddMessage;
 import 'package:cash_flow/features/home/model/usecases/addCategory.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
   String? name;
-  String? type;
+  String type = "INCOME";
   final formKey = GlobalKey<FormState>();
 
   void addCategory() async {
@@ -26,7 +27,7 @@ class HomeCubit extends Cubit<HomeState> {
       localData: null,
       remoteData: CategoryRemoteDataSource(api: getIt<DioConsumer>()),
     )).call(CategoryEntities(
-        name: name!.trim().toUpperCase(), type: type!.toUpperCase()));
+        name: name!.trim().toUpperCase(), type: type.toUpperCase()));
     result.fold(
       (failure) => emit(CategoryError(message: failure.message)),
       (success) => emit(CategoryAdded(category: success)),
