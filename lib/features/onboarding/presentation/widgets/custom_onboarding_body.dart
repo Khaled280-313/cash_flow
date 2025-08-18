@@ -22,14 +22,14 @@ class CustomOnboardingBody extends StatelessWidget {
           return Column(
             children: [
               SizedBox(
-                height: 290,
-                width: 343,
+                height: 280,
+                width: double.infinity,
                 child: SvgPicture.asset(
                   onBoardingList[index].image,
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
-              SizedBox(height: 80),
+              SizedBox(height: 50),
               CustomPageIndicator(
                 pageController: pageController,
               ),

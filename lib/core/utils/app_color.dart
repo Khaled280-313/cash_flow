@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 abstract class AppColor {
   // Define your color palette here
   // static const Color primary = Color(0xD0432BDC);
-  static const Color background = Color.fromARGB(203, 235, 243, 246);
+  static const Color background = Color.fromARGB(238, 255, 255, 255);
   static const Color textPrimary = Color(0xFF000000);
   static const Color textSecondary = Color(0xFF757575);
   static const Color error = Color(0xFFEF4444);
@@ -33,10 +33,8 @@ abstract class AppColor {
   // Borders
   static const Color lightBorder = Color(0xFFE5E7EB);
   static const Color darkBorder = Color(0xFF3D3D3D);
-  
+
   // Inputs
   static const Color lightInput = Color(0xFFF9FAFB);
   static const Color darkInput = Color(0xFF2D2D2D);
 }
-
-
