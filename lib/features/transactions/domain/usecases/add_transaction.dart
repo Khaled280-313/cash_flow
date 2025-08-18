@@ -1,3 +1,4 @@
+import 'package:cash_flow/features/transactions/domain/entities/transaction_message.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/errors/failure.dart';
@@ -9,7 +10,7 @@ class PostTransaction {
 
   PostTransaction(this.transactionRepo);
 
-  Future<Either<Failure, TransactionEntities>> call(
+  Future<Either<Failure, TransactionMessage>> call(
       TransactionEntities transaction) async {
     return await transactionRepo.addTransaction(transaction);
   }
