@@ -37,9 +37,9 @@ class Endpoint {
       "/api/currency/$currency";
   static String getAllTransactionsByCategory(String category) =>
       "/api/transactions/$category";
-  static String getAllTransactionsByCurrencyAndCategory(
-          String currency, String category) =>
-      "/api/transactions/$currency/$category";
+  static String getTransactionsBySingleDateAndCategory(
+          DateTime date, String category) =>
+      "/api/transactions/${date.toIso8601String()}/category/$category";
   static String getTransactionsBySingleDate(DateTime date) =>
       "/api/transactions/${date.toIso8601String()}";
   static String getTransactionsForLastWeek = "/api/transactions/last-week";

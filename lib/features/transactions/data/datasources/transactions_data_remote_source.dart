@@ -68,11 +68,11 @@ class TransactionsDataRemoteSource {
         .toList();
   }
 
-  Future<List<TransactionModel>> getAllTransactionsByCurrencyAndCategory(
-      String currency, String category) async {
+  Future<List<TransactionModel>> getTransactionsBySingleDateAndCategory(
+      DateTime date, String category) async {
     final response = await api.get(
-        endpoint: Endpoint.getAllTransactionsByCurrencyAndCategory(
-            currency, category));
+        endpoint:
+            Endpoint.getTransactionsBySingleDateAndCategory(date, category));
     final dynamic payload = response;
 
     List<dynamic> jsonList;
