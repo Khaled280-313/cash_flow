@@ -2,6 +2,7 @@ import 'package:cash_flow/core/utils/app_text_style.dart';
 import 'package:cash_flow/features/onboarding/data/model/on_boarding_model.dart';
 import 'package:cash_flow/features/onboarding/presentation/widgets/custom_page_indicator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CustomOnboardingBody extends StatelessWidget {
   final PageController pageController;
@@ -20,13 +21,13 @@ class CustomOnboardingBody extends StatelessWidget {
         itemBuilder: (context, index) {
           return Column(
             children: [
-              Container(
+              SizedBox(
                 height: 290,
                 width: 343,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(onBoardingList[index].image),
-                        fit: BoxFit.fill)),
+                child: SvgPicture.asset(
+                  onBoardingList[index].image,
+                  fit: BoxFit.fill,
+                ),
               ),
               SizedBox(height: 80),
               CustomPageIndicator(

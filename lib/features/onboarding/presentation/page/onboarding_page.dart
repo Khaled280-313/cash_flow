@@ -24,7 +24,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColor.background,
+        backgroundColor: AppColor.lightBg,
         body: Padding(
           padding: const EdgeInsets.symmetric(
             horizontal: 16,
