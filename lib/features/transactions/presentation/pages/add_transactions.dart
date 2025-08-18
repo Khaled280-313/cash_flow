@@ -16,15 +16,53 @@ import '../widgets/custom_category_field.dart';
 import '../widgets/custom_show_date_picker.dart';
 import '../widgets/custom_top_contain.dart';
 
-class AddTransactions extends StatelessWidget {
+class AddTransactions extends StatefulWidget {
   const AddTransactions({super.key});
-  static List<dynamic> cachedList =
-      jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
+  // static List<dynamic> cachedList =
+  //     jsonDecode(getIt<CacheHelper>().getData(key: "cached_categories"));
 
-  static final List<String> category =
-      cachedList.map((item) => item['categoryName'] as String).toList();
+  // static final List<String> category =
+  //     cachedList.map((item) => item['categoryName'] as String).toList();
 
-  static List<String> categories = [...category, "Add Category"];
+  // static List<String> categories = [...category, "Add Category"];
+
+  @override
+  State<AddTransactions> createState() => _AddTransactionsState();
+}
+
+class _AddTransactionsState extends State<AddTransactions> {
+  List<String> categories = ['Add Category']; // default
+  bool loadingCategories = true;
+  Future<void> _loadCategories() async {
+    try {
+      final raw = getIt<CacheHelper>().getData(key: "cached_categories");
+      if (raw == null) {
+        setState(() {
+          categories = ['Add Category'];
+          loadingCategories = false;
+        });
+        return;
+      }
+      final List<dynamic> cachedList = jsonDecode(raw) as List<dynamic>;
+      final list = cachedList.map((e) => e['categoryName'] as String).toList();
+      setState(() {
+        categories = [...list, 'Add Category'];
+        loadingCategories = false;
+      });
+    } catch (e) {
+      // handle parse error
+      setState(() {
+        categories = ['Add Category'];
+        loadingCategories = false;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,17 +107,21 @@ class AddTransactions extends StatelessWidget {
                         children: [
                           SizedBox(height: 10),
                           // MenuItemButton(),
-                          CustomCategoryField(
-                              hintText: AppStrings.category,
-                              categories: categories,
-                              onChanged: (value) {
-                                if (value == "Add Category") {
-                                  customNavigatPush(
-                                      context: context, path: "/AddBudgets");
-                                } else {
-                                  transactionsCubit.selectedCategory = value!;
-                                }
-                              }),
+                          if (loadingCategories)
+                            const CircularProgressIndicator(),
+                          if (!loadingCategories)
+                            CustomCategoryField(
+                                hintText: AppStrings.category,
+                                categories: categories,
+                                onChanged: (value)  async{
+                                  if (value == "Add Category") {
+                                    customNavigatPushReplacement(
+                                        context: context, path: "/AddBudgets");
+                                         await _loadCategories();
+                                  } else {
+                                    transactionsCubit.selectedCategory = value!;
+                                  }
+                                }),
                           CustomTextFormFeild(
                               hintText: AppStrings.amount,
                               textInputType: TextInputType.number,
