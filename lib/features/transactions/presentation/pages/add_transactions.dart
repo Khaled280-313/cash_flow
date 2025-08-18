@@ -64,7 +64,13 @@ class _AddTransactionsState extends State<AddTransactions> {
   Widget build(BuildContext context) {
     return BlocConsumer<TransactionsCubit, TransactionsState>(
       listener: (context, state) {
-        // You can handle state changes here if needed
+        if (state is TransactionAdded) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.transaction.message)));
+        } else if (state is TransactionsError) {
+          ScaffoldMessenger.of(context)
+              .showSnackBar(SnackBar(content: Text(state.message)));
+        }
       },
       builder: (context, state) {
         TransactionsCubit transactionsCubit =
@@ -160,15 +166,24 @@ class _AddTransactionsState extends State<AddTransactions> {
                             indent: 15,
                           ),
                           const SizedBox(height: 10),
-                          CustomButton(
-                            onPressed: () {
-                              if (transactionsCubit
-                                  .addTransactionFormKey.currentState!
-                                  .validate()) {
-                                // transactionsCubit.addTransaction();
-                              }
-                            },
-                          )
+                          state is TransactionsLoading
+                              ? CustomButton(child: CircularProgressIndicator())
+                              : CustomButton(
+                                  child: Text(
+                                    S.of(context).addTransaction,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(color: AppColor.white),
+                                  ),
+                                  onPressed: () {
+                                    if (transactionsCubit
+                                        .addTransactionFormKey.currentState!
+                                        .validate()) {
+                                      transactionsCubit.addTransactions();
+                                    }
+                                  },
+                                )
                         ],
                       ),
                     ),

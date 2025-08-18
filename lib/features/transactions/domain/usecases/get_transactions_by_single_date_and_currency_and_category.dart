@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 class GetTransactionsBySingleDateAndCurrencyAndCategory {
   final TransactionRepo transactionRepo;
 
-  GetTransactionsBySingleDateAndCurrencyAndCategory(this.transactionRepo);
+  GetTransactionsBySingleDateAndCurrencyAndCategory({required this.transactionRepo});
 
   Future<Either<Failure, List<TransactionEntities>>> call(
       DateTime date, String currency, String category) async {

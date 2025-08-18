@@ -8,7 +8,7 @@ import '../repo/transaction_repo.dart';
 class PostTransaction {
   final TransactionRepo transactionRepo;
 
-  PostTransaction(this.transactionRepo);
+  PostTransaction({required this.transactionRepo});
 
   Future<Either<Failure, TransactionMessage>> call(
       TransactionEntities transaction) async {

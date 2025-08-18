@@ -1,7 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 class TransactionEntities {
-  final double amount;
-  final DateTime date;
+  final num amount;
+  final String date;
   final String description;
   final String currency;
   final String category;

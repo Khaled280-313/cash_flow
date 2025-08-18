@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 class GetTransactionsForLastWeek {
   final TransactionRepo transactionRepo;
 
-  GetTransactionsForLastWeek(this.transactionRepo);
+  GetTransactionsForLastWeek({required this.transactionRepo});
 
   Future<Either<Failure, List<TransactionEntities>>> call() async {
     return await transactionRepo.getTransactionsForLastWeek();

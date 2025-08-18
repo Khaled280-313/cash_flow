@@ -12,7 +12,7 @@ class TransactionModel extends TransactionEntities {
   factory TransactionModel.fromJson(Map<String, dynamic> json) {
     return TransactionModel(
       amount: (json[ApiKey.amount] as num).toDouble(),
-      date: DateTime.parse(json[ApiKey.date] as String),
+      date: json[ApiKey.date] as String,
       description: json[ApiKey.description] as String,
       currency: json[ApiKey.currency] as String,
       category: json[ApiKey.category] as String,
@@ -22,7 +22,7 @@ class TransactionModel extends TransactionEntities {
   Map<String, dynamic> toJson() {
     return {
       ApiKey.amount: amount,
-      ApiKey.date: date.toIso8601String(),
+      ApiKey.date: date,
       ApiKey.description: description,
       ApiKey.currency: currency,
       ApiKey.category: category,

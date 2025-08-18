@@ -6,7 +6,7 @@ import 'package:cash_flow/features/transactions/domain/entities/transaction_mess
 class TransactionsDataRemoteSource {
   final ApiConsumer api;
 
-  TransactionsDataRemoteSource(this.api);
+  TransactionsDataRemoteSource({required this.api});
 
   Future<List<TransactionModel>> getAllTransactions() async {
     final response = await api.get(endpoint: Endpoint.getAllTransactions);

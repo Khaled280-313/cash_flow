@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 import '../../../../core/utils/app_color.dart';
-import '../../../../generated/l10n.dart';
-
 class CustomButton extends StatelessWidget {
   final void Function()? onPressed ;
+  final Widget? child;
   const CustomButton({
-    super.key, this.onPressed,
+    super.key, this.onPressed, this.child,
   });
 
   @override
@@ -19,13 +18,7 @@ class CustomButton extends StatelessWidget {
       ),
       minWidth: 343,
       height: 56,
-      child: Text(
-        S.of(context).addTransaction,
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(color: AppColor.white),
-      ),
+      child: child,
     );
   }
 }

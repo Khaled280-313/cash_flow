@@ -6,7 +6,7 @@ import 'package:dartz/dartz.dart';
 class GetAllTransactionsByCategory {
   final TransactionRepo transactionRepo;
 
-  GetAllTransactionsByCategory(this.transactionRepo);
+  GetAllTransactionsByCategory({required this.transactionRepo});
 
   Future<Either<Failure, List<TransactionEntities>>> call(
       String category) async {

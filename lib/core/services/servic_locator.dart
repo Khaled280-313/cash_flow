@@ -1,4 +1,5 @@
 import 'package:cash_flow/core/database/cache/cache_helper.dart';
+import 'package:cash_flow/features/transactions/data/datasources/transactions_data_local_source.dart';
 import 'package:data_connection_checker_tv/data_connection_checker.dart';
 import 'package:dio/dio.dart';
 
@@ -21,8 +22,8 @@ void setupServiceLocator() {
   getIt.registerLazySingleton<NetworkInfo>(() =>
       NetworkInfoImpl(dataConnectionChecker: getIt<DataConnectionChecker>()));
 
-  // getIt.registerLazySingleton<CategoryLocalDataSource>(
-  //     () => CategoryLocalDataSource());
+  getIt.registerLazySingleton<TransactionsDataLocalSource>(
+      () => TransactionsDataLocalSource());
 
   // getIt.registerLazySingleton<CategoryRemoteDataSource>(
   //     () => CategoryRemoteDataSource(api: getIt<DioConsumer>()));

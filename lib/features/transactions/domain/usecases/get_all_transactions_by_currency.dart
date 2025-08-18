@@ -7,7 +7,7 @@ import '../entities/transaction_entities.dart';
 class GetAllTransactionsByCurrency {
   final TransactionRepo transactionRepo;
 
-  GetAllTransactionsByCurrency(this.transactionRepo);
+  GetAllTransactionsByCurrency({required this.transactionRepo});
 
   Future<Either<Failure, List<TransactionEntities>>> call(
       String currency) async {

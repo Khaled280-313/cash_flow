@@ -7,7 +7,7 @@ import '../repo/transaction_repo.dart';
 class GetTransactionsBySingleDate {
   final TransactionRepo transactionRepo;
 
-  GetTransactionsBySingleDate(this.transactionRepo);
+  GetTransactionsBySingleDate({required this.transactionRepo});
 
   Future<Either<Failure, List<TransactionEntities>>> call(
       DateTime date) async {
