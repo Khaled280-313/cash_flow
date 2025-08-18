@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cash_flow/core/routes/app_routes.dart';
 import 'package:cash_flow/core/services/servic_locator.dart';
 import 'package:dio/dio.dart';
 import 'package:device_info_plus/device_info_plus.dart';
@@ -60,11 +61,13 @@ class CustomInterceptor extends InterceptorsWrapper {
           return handler.resolve(clone);
         }
       } catch (_) {
-        // فشل التج
+        // فشل التجديد
         getIt<CacheHelper>().removeData(key: "isAuthVisited");
+        router.go('/SignIn');
       }
       // فشل التجديد → مسح الكوكي وإظهار خطأ
       await getIt<CacheHelper>().removeData(key: _cookieKey);
+      router.go('/SignIn');
       return handler.reject(
         DioException(
           requestOptions: err.requestOptions,
@@ -73,8 +76,11 @@ class CustomInterceptor extends InterceptorsWrapper {
         ),
       );
     }
+
     handler.next(err);
+
+    Future.microtask(() {
+      router.go('/SignIn'); // ينقلك لصفحة تسجيل الدخول
+    });
   }
-
-
 }
