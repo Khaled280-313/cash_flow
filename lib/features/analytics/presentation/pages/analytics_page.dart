@@ -1,3 +1,7 @@
+import 'package:cash_flow/core/utils/app_color.dart';
+import 'package:cash_flow/features/analytics/presentation/widgets/custom_chart_analysis.dart';
+import 'package:cash_flow/features/analytics/presentation/widgets/custom_widget_avarge.dart';
+import 'package:cash_flow/features/analytics/presentation/widgets/custom_widget_cash_flow_analysis.dart';
 import 'package:flutter/material.dart';
 
 class AnalyticsPage extends StatelessWidget {
@@ -5,6 +9,19 @@ class AnalyticsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: AppColor.background,
+      appBar: AppBar(
+        title: Text('Analytics'),
+      ),
+      body: CustomScrollView(
+        slivers: [
+          SliverPadding(padding: EdgeInsetsGeometry.all(20)),
+          CustomChartAnalysis(),
+          CustomWidgetCashFlowAnalysis(),
+          CustomWidgetAvarge()
+        ],
+      ),
+    );
   }
 }
