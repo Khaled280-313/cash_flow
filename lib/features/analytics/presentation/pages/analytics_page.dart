@@ -18,7 +18,9 @@ class AnalyticsPage extends StatelessWidget {
         slivers: [
           SliverPadding(padding: EdgeInsetsGeometry.all(20)),
           CustomChartAnalysis(),
+          SliverPadding(padding: EdgeInsetsGeometry.all(10)),
           CustomWidgetCashFlowAnalysis(),
+          SliverPadding(padding: EdgeInsetsGeometry.all(10)),
           CustomWidgetAvarge()
         ],
       ),
