@@ -4,16 +4,16 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../data/budgets_data.dart';
 
-class CustomBudgetChart extends StatefulWidget {
-  const CustomBudgetChart({
+class CustomCategoryChart extends StatefulWidget {
+  const CustomCategoryChart({
     super.key,
   });
 
   @override
-  State<CustomBudgetChart> createState() => _CustomBudgetChartState();
+  State<CustomCategoryChart> createState() => _CustomCategoryChartState();
 }
 
-class _CustomBudgetChartState extends State<CustomBudgetChart> {
+class _CustomCategoryChartState extends State<CustomCategoryChart> {
   int touchedIndex = -1;
   @override
   Widget build(BuildContext context) {

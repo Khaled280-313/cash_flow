@@ -44,7 +44,7 @@ List<Widget> _buildScreens() {
   return [
     Home(),
     TransactionsPage(),
-    BudgetsPage(),
+    CategoryPage(),
     AnalyticsPage(),
   ];
 }

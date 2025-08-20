@@ -7,8 +7,8 @@ import '../../../home/presentation/cubit/home_cubit.dart';
 import '../../../transactions/presentation/widgets/custom_button.dart';
 import '../../../transactions/presentation/widgets/custom_cntain_togle.dart';
 
-class AddBudgets extends StatelessWidget {
-  const AddBudgets({super.key});
+class Addcategory extends StatelessWidget {
+  const Addcategory({super.key});
 
   @override
   Widget build(BuildContext context) {

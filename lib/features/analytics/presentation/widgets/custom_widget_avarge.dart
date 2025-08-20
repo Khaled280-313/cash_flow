@@ -26,6 +26,14 @@ class CustomWidgetAvarge extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.white,
           borderRadius: BorderRadius.circular(20),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withAlpha(26),
+              blurRadius: 10,
+              offset: const Offset(5, 5),
+              spreadRadius: 5,
+            ),
+          ],
         ),
         child: Column(
           children: [

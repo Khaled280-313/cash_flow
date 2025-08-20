@@ -12,6 +12,7 @@ class AnalyticsPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColor.background,
       appBar: AppBar(
+        backgroundColor: AppColor.background,
         title: Text('Analytics'),
       ),
       body: CustomScrollView(
@@ -21,7 +22,8 @@ class AnalyticsPage extends StatelessWidget {
           SliverPadding(padding: EdgeInsetsGeometry.all(10)),
           CustomWidgetCashFlowAnalysis(),
           SliverPadding(padding: EdgeInsetsGeometry.all(10)),
-          CustomWidgetAvarge()
+          CustomWidgetAvarge(),
+          SliverPadding(padding: EdgeInsetsGeometry.all(10)),
         ],
       ),
     );

@@ -12,7 +12,7 @@ class CustomSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      title: Text(S.of(context).budgets),
+      title: Text(S.of(context).category),
       pinned: true,
       floating: true,
       backgroundColor: AppColor.background,
@@ -20,7 +20,7 @@ class CustomSliverAppBar extends StatelessWidget {
         IconButton(
           icon: const Icon(Icons.add),
           onPressed: () {
-            customNavigatPush(context: context, path: "/AddBudgets");
+            customNavigatPush(context: context, path: "/Addcategory");
           },
         ),
       ],

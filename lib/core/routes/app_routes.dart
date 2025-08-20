@@ -61,10 +61,10 @@ final GoRouter router = GoRouter(routes: [
     ),
   ),
   GoRoute(
-    path: "/AddBudgets",
+    path: "/Addcategory",
     builder: (context, state) => BlocProvider(
       create: (context) => HomeCubit(),
-      child: AddBudgets(),
+      child: Addcategory(),
     ),
   )
 ]);

@@ -2,12 +2,12 @@ import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/budgets_data.dart';
-import '../widgets/custom_budget_chart.dart';
-import '../widgets/custom_budget_tile.dart';
+import '../widgets/custom_category_chart.dart';
+import '../widgets/custom_category_tile.dart';
 import '../widgets/custom_sliver_app_bar.dart';
 
-class BudgetsPage extends StatelessWidget {
-  const BudgetsPage({super.key});
+class CategoryPage extends StatelessWidget {
+  const CategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class BudgetsPage extends StatelessWidget {
           slivers: [
             CustomSliverAppBar(),
             SliverToBoxAdapter(
-              child: CustomBudgetChart(),
+              child: CustomCategoryChart(),
             ),
             SliverToBoxAdapter(
               child: Container(
@@ -43,7 +43,7 @@ class BudgetsPage extends StatelessWidget {
                 child: Column(
                   spacing: 15,
                   children: List.generate(budgetsData.length, (index) {
-                    return CustomBudgetTile(data: budgetsData[index]);
+                    return CustomCategoryTile(data: budgetsData[index]);
                   }),
                 ),
               ),

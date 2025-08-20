@@ -4,9 +4,9 @@ import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_text_style.dart';
 import '../../data/budgets_data.dart';
 
-class CustomBudgetTile extends StatelessWidget {
+class CustomCategoryTile extends StatelessWidget {
   final BudgetsData data;
-  const CustomBudgetTile({
+  const CustomCategoryTile({
     super.key,
     required this.data,
   });
