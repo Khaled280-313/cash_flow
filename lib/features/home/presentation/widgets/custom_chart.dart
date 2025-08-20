@@ -19,9 +19,15 @@ class CustomChart extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
-          color: AppColor.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
+            color: AppColor.white,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                  color: Colors.black.withAlpha(26),
+                  blurRadius: 10,
+                  offset: Offset(5, 5),
+                  spreadRadius: 5)
+            ]),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,

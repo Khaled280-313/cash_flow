@@ -10,7 +10,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../features/budgets/presentation/pages/add_budgets.dart';
+import '../../features/category/presentation/pages/add_category.dart';
 import '../../features/home/presentation/widgets/bottom_navigation_bar.dart';
 import '../../features/setting/presentation/pages/profile_page.dart';
 import '../../features/setting/presentation/pages/setting_page.dart';

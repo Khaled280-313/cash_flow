@@ -6,9 +6,14 @@ import '../../../../core/function/custom_navigat.dart';
 import '../../../../generated/l10n.dart';
 import '../widgets/custom_search_field.dart';
 
-class TransactionsPage extends StatelessWidget {
+class TransactionsPage extends StatefulWidget {
   const TransactionsPage({super.key});
 
+  @override
+  State<TransactionsPage> createState() => _TransactionsPageState();
+}
+
+class _TransactionsPageState extends State<TransactionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +25,7 @@ class TransactionsPage extends StatelessWidget {
           child: const Icon(Icons.add, size: 25, color: AppColor.white),
         ),
         floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        backgroundColor: const Color.fromRGBO(235, 243, 246, 0.796),
+        backgroundColor: AppColor.background,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.only(top: 5, left: 5, right: 5),

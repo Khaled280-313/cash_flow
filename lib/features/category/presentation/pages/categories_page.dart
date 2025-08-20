@@ -12,6 +12,7 @@ class BudgetsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.background,
       body: Center(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
@@ -27,9 +28,15 @@ class BudgetsPage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 3),
                 decoration: BoxDecoration(
-                  color: AppColor.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
+                    color: AppColor.white,
+                    borderRadius: BorderRadius.circular(20),
+                    boxShadow: [
+                      BoxShadow(
+                          color: Colors.black.withAlpha(26),
+                          blurRadius: 10,
+                          offset: Offset(5, 5),
+                          spreadRadius: 5)
+                    ]),
                 constraints: BoxConstraints(
                   maxHeight: MediaQuery.of(context).size.height * 1,
                 ),

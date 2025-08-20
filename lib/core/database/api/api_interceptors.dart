@@ -79,8 +79,8 @@ class CustomInterceptor extends InterceptorsWrapper {
 
     handler.next(err);
 
-    Future.microtask(() {
-      router.go('/SignIn'); // ينقلك لصفحة تسجيل الدخول
-    });
+    // Future.microtask(() {
+    //   router.go('/SignIn'); // ينقلك لصفحة تسجيل الدخول
+    // });
   }
 }

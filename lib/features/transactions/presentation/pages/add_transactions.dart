@@ -76,7 +76,7 @@ class _AddTransactionsState extends State<AddTransactions> {
         TransactionsCubit transactionsCubit =
             BlocProvider.of<TransactionsCubit>(context);
         return Scaffold(
-            backgroundColor: AppColor.white,
+            backgroundColor: AppColor.background,
             body: SingleChildScrollView(
               child: Stack(
                 children: [

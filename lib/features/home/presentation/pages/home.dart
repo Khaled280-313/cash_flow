@@ -1,3 +1,4 @@
+import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/features/home/presentation/cubit/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,7 +14,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(203, 235, 243, 246),
+      backgroundColor: AppColor.white,
       body: Padding(
         padding: const EdgeInsets.only(top: 5, left: 5, right: 5),
         child: CustomScrollView(

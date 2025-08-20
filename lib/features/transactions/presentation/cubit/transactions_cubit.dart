@@ -23,7 +23,7 @@ part 'transactions_state.dart';
 class TransactionsCubit extends Cubit<TransactionsState> {
   TransactionsCubit() : super(TransactionsInitial());
   GlobalKey<FormState> addTransactionFormKey = GlobalKey();
-  // TextEditingController categoryController = TextEditingController();
+
   late num amount;
   DateTime selectedDate = DateTime.now();
   String get formattedBirthDate =>
@@ -49,11 +49,12 @@ class TransactionsCubit extends Cubit<TransactionsState> {
           remoteDataSource:
               TransactionsDataRemoteSource(api: getIt<DioConsumer>())),
     ).call(TransactionEntities(
-        amount: amount,
-        date: formattedBirthDate,
-        description: description,
-        currency: currency,
-        category: "FOOD"));
+      amount: amount,
+      category: selectedCategory,
+      date: formattedBirthDate,
+      description: description,
+      currency: currency,
+    ));
     result.fold(
       (failure) => emit(TransactionsError(failure.message)),
       (message) => emit(TransactionAdded(message)),
@@ -130,7 +131,8 @@ class TransactionsCubit extends Cubit<TransactionsState> {
     );
   }
 
-  getTransactionsBySingleDateAndCurrencyAndCategory(DateTime date, String currency, String category) async {
+  getTransactionsBySingleDateAndCurrencyAndCategory(
+      DateTime date, String currency, String category) async {
     emit(TransactionsLoading());
     final result = await GetTransactionsBySingleDateAndCurrencyAndCategory(
       transactionRepo: TransactionsRepoImpl(

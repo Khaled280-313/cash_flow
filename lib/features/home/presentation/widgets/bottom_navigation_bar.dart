@@ -1,7 +1,7 @@
 import 'package:cash_flow/core/utils/app_color.dart';
 import 'package:cash_flow/core/utils/app_strings.dart';
 import 'package:cash_flow/features/analytics/presentation/pages/analytics_page.dart';
-import 'package:cash_flow/features/budgets/presentation/pages/budgets_page.dart';
+import 'package:cash_flow/features/category/presentation/pages/categories_page.dart';
 
 import 'package:cash_flow/features/home/presentation/pages/home.dart';
 import 'package:flutter/material.dart';
